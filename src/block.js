@@ -54,7 +54,7 @@ function block() {
             }
         }
 
-        if (this.monster === "smallRed") {
+        if (this.monster === "Birds") {
             if (this.direction === "right") {
                 this.x += 1;
                 this.moveTime -= 1;

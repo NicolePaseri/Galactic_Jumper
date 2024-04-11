@@ -11,7 +11,7 @@ function spawnMonster() {
 
 var smallRed = new function() {
     this.img = new Image();
-    this.img.src = "Sprites/Monsters/smallRed.png";
+    this.img.src = "Sprites/GalacticDangers/oiseau-transformed.png";
     this.xDif = 10;
     this.yDif = -30;
     this.width = 69;
