@@ -50,7 +50,7 @@ var player = new function() {
                     this.y >= blocks[i].y - this.height && this.y <= blocks[i].y + blocks[i].height - this.height) {
                     if (blocks[i].type === "break") {
                         blocks[i] = 0;
-                    } else if (blocks[i].monster !== 0) {
+                    } else if (blocks[i].bird !== 0) {
                         this.jump(blocks[i].powerup, blocks[i].type);
                         blocks[i] = 0;
                     } else {
@@ -59,8 +59,8 @@ var player = new function() {
                 }
             } 
             if (this.y > blocks[i].y) {
-                //Check for hit monster
-                if (blocks[i].monster !== 0 && blocks[i].monster !== undefined) {
+                //Check for hit bird
+                if (blocks[i].bird !== 0 && blocks[i].monster !== undefined) {
                     if (this.x >= blocks[i].x - this.width + 15 && this.x <= blocks[i].x + blocks[i].width - 15 &&
                         this.y >= blocks[i].y - blocks[i].height && this.y <= blocks[i].y + blocks[i].height) {
                         dead = true;

@@ -5,12 +5,12 @@ function block() {
     this.height = 15;
     this.powerup;
     this.type;
-    this.monster;
+    this.bird;
     this.direction = "right";
     this.moveTime = 10;
 
     
-
+// Plateformes qui se cassent et plateformes qui bougent
     this.draw = function() {
         if (this.type === "break") {
             ctx.fillStyle = "#876537";
@@ -20,10 +20,10 @@ function block() {
             ctx.fillStyle = "#FFFFFF";
         }
 
-        if (this.monster === 0) {
+        if (this.bird === 0) {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         } else {
-            monsterFunctions[this.monster].draw(this.x, this.y);
+            birdFunctions[this.bird].draw(this.x, this.y);
         }
 
         if (this.powerup === "spring") {
@@ -54,14 +54,14 @@ function block() {
             }
         }
 
-        if (this.monster === "Birds") {
+        if (this.bird === "Birds") {
             if (this.direction === "right") {
                 this.x += 1;
                 this.moveTime -= 1;
 
                 if (this.moveTime === 0) {
                     this.direction = "left";
-                    this.moveTime = 50;
+                    this.moveTime = 25;
                 }
             } else {
                 this.x -= 1;
@@ -69,7 +69,7 @@ function block() {
 
                 if (this.moveTime === 0) {
                     this.direction = "right";
-                    this.moveTime = 50;
+                    this.moveTime = 25;
                 }
             }
         }
