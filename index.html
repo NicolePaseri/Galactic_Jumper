@@ -1,19 +1,106 @@
-<html>
-    <head>
-        <title>Doodle Jump in JS</title>
-        <style>
-            body {
-                margin: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <script src="src/player.js"></script>
-        <script src="src/monsters.js"></script>
-        <script src="src/block.js"></script>
-        <script src="src/powerups.js"></script>
-        <script src="src/blockType.js"></script>
-        <script src="src/blockSpawner.js"></script>
-        <script src="src/main.js"></script>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doodle Jump in JS</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        /* Styles spécifiques au formulaire d'inscription */
+        .inscription-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 530px; /* Moitié de la largeur de l'écran */
+            height: 110vh; /* Hauteur de l'écran */
+            background-image: url('Sprites/fondecraninscription.png');
+            background-size : contain;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .inscription-container h1 {
+            font-size: 24px;
+        }
+        .inscription-container form {
+            margin-top: 20px;
+        }
+        .inscription-container input[type="text"],
+        .inscription-container input[type="email"],
+        .inscription-container button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        /* Styles spécifiques au jeu */
+        .game-container {
+            position: absolute;
+            top: 0;
+            left: 50%; /* À partir de la moitié de l'écran */
+            width: 50%; /* Moitié de la largeur de l'écran */
+            height: 100vh; /* Hauteur de l'écran */
+            background-color: #c0c0c0; /* Couleur de fond */
+        }
+        /* Cacher le jeu par défaut */
+        .game-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+     <!-- Contenu du jeu ici -->
+    </div>
+    
+    <script src="src/player.js"></script>
+    <script src="src/monsters.js"></script>
+    <script src="src/block.js"></script>
+    <script src="src/powerups.js"></script>
+    <script src="src/blockType.js"></script>
+    <script src="src/blockSpawner.js"></script>
+    <script src="src/inscription.js"></script>
+    <script src="src/main.js"></script>
+
+     <!-- page inscription -->
+    <div class="inscription-container" id="inscriptionContainer">
+        <h1>Inscription au jeu</h1>
+        <form id="inscriptionForm">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+
+    
+       
+    
+    <script>
+        document.getElementById("inscriptionForm").addEventListener("submit", function(event){
+    event.preventDefault(); // Empêche l'envoi du formulaire par défaut
+
+    // Récupération des valeurs des champs
+    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+
+    // Afficher les valeurs dans la console pour déboguer
+    console.log("Nom d'utilisateur :", username);
+    console.log("Email :", email);
+
+    // Afficher le jeu et masquer le formulaire d'inscription
+    document.getElementById("inscriptionContainer").style.display = "none";
+    document.getElementById("gameContainer").style.display = "block";
+});
+
+    </script>
+</body>
 </html>
