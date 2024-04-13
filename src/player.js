@@ -27,16 +27,16 @@ var player = new function() {
             ctx.textAlign = "center";
             ctx.fillText("The astronaut failed the mission!", screenWidth / 2, screenHeight / 2); 
             ctx.font = "36px Arial";
-            ctx.fillText("Press r to restart", screenWidth / 2, (screenHeight / 2) + 50);
+            ctx.fillText("Press espace to restart", screenWidth / 2, (screenHeight / 2) + 50);
         }
 
-        //A key pressed
+        // ← key pressed
         if (holdingLeftKey) {
             this.direction = "left";
             this.img.src = "Sprites/jumpLeft.png";
             player.moveLeft();
         }
-        //D key pressed 
+        // → key pressed 
         if (holdingRightKey) {
             this.direction = "right";
             this.img.src = "Sprites/jumpRight.png";
@@ -60,10 +60,10 @@ var player = new function() {
             } 
             if (this.y > blocks[i].y) {
                 //Check for hit bird
-                if (blocks[i].bird !== 0 && blocks[i].monster !== undefined) {
+                if (blocks[i].bird !== 0 && blocks[i].bird !== undefined) {
                     if (this.x >= blocks[i].x - this.width + 15 && this.x <= blocks[i].x + blocks[i].width - 15 &&
                         this.y >= blocks[i].y - blocks[i].height && this.y <= blocks[i].y + blocks[i].height) {
-                        dead = true;
+                        loseLife();
                     }
                 }
             }

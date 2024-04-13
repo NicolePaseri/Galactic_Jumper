@@ -19,13 +19,16 @@ var difficulty = 0;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
+let lives = 3;
+var canLoseLife = true;
 
 var blocks = [];
 var powerups = [];
 var backgroundImage = new Image();
+var backgroundImageLevel1 = new Image();
 var backgroundImageLevel2 = new Image();
 var backgroundImageLevel3 = new Image();
-backgroundImage.src = "Sprites/level1.png"; // Chemin d'accès pour le fond d'écran du niveau 1
+backgroundImageLevel1.src = "Sprites/level1.png"; // Chemin d'accès pour le fond d'écran du niveau 1
 backgroundImageLevel2.src = "Sprites/level2.png"; // Chemin d'accès pour le fond d'écran du niveau 2
 backgroundImageLevel3.src = "Sprites/level3.png"; // Chemin d'accès pour le fond d'écran du niveau 3
 
@@ -38,41 +41,21 @@ var interval = 1000 / fps;
 var delta;
 
 function keydown(e) {
-    if (e.keyCode === 65) {
+    if (e.keyCode === 37) {
         holdingLeftKey = true;
-    } else if (e.keyCode === 68) {
+    } else if (e.keyCode === 39) {
         holdingRightKey = true;
     }
 
-    if (e.keyCode === 82 && dead) {
-        blocks = [];
-        lowestBlock = 0;
-        difficulty = 0;
-        score = 0;
-        yDistanceTravelled = 0;
-        player.springBootsDurability = 0;
-
-        blocks.push(new block);
-        blocks[0].x = 300;
-        blocks[0].y = 650;
-        blocks[0].bird = 0;
-        blocks[0].type = 0;
-        blocks[0].powerup = 0;
-
-        blockSpawner();
-        
-        player.x = 300;
-        player.y = 550;
-
-
-        dead = false;
+    if (e.keyCode === 32 && dead) {
+        resetGame();
     }
 }
 
 function keyup(e) {
-    if (e.keyCode === 65) {
+    if (e.keyCode === 37) {
         holdingLeftKey = false;
-    } else if (e.keyCode === 68) {
+    } else if (e.keyCode === 39) {
         holdingRightKey = false;
     }
 }
@@ -86,6 +69,67 @@ function showScore() {
     ctx.fillStyle = "white";
     ctx.textAlign = "left";
     ctx.fillText(score, 15, 40); 
+}
+
+// Lives
+
+function drawLives() {
+    for (let i = 0; i < lives; i++) {
+        let heartImg = new Image();
+        heartImg.src = "Sprites/heart.png";
+        ctx.drawImage(heartImg, screenWidth - (i + 1) * 30, 5, 25, 25);
+    }
+}
+
+function loseLife() {
+    if(canLoseLife) {
+        lives--; 
+        canLoseLife = false;
+        if (lives <= 0) {
+            gameOver();
+        }
+        setTimeout(function(){canLoseLife = true;}, 20)    
+    }
+}
+
+function gameOver() {
+    dead = true;
+}
+
+function resetGame() {
+    blocks = [];
+    lowestBlock = 0;
+    difficulty = 0;
+    score = 0;
+    lives = 3;
+    yDistanceTravelled = 0;
+    player.springBootsDurability = 0;
+    backgroundImage = backgroundImageLevel1;
+
+    blocks.push(new block);
+    blocks[0].x = 300;
+    blocks[0].y = 650;
+    blocks[0].bird = 0;
+    blocks[0].type = 0;
+    blocks[0].powerup = 0;
+
+    blockSpawner();
+    
+    player.x = 300;
+    player.y = 550;
+
+    dead = false;
+}
+
+// Collision
+
+function collisionWithPlayer(block) {
+    return (
+        player.x < block.x + block.width &&
+        player.x + player.width > block.x &&
+        player.y < block.y + block.height &&
+        player.y + player.height > block.y
+    );
 }
 
 blocks.push(new block);
@@ -113,10 +157,12 @@ function loop() {
         } else if (score > 1000) {
             backgroundImage = backgroundImageLevel2;
         } else {
-            backgroundImage = backgroundImage;
+            backgroundImage = backgroundImageLevel1;
             showScore();
         }
         ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
+
+        drawLives();
 
 
         // Mise à jour et affichage des blocs
@@ -124,8 +170,14 @@ function loop() {
             if (blocks[i] !== 0) {
                 blocks[i].update();
                 blocks[i].draw();
+
+                if (blocks[i].bird === 1 && collisionWithPlayer(blocks[i])) {
+                    loseLife(); // Appelle la fonction pour perdre une vie
+                    blocks[i] = 0;
+                }
             }
         }
+
 
         // Mise à jour et affichage du joueur
         player.update();
