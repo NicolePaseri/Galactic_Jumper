@@ -33,14 +33,13 @@
             margin-top: 20px;
         }
         .inscription-container input[type="text"],
-        .inscription-container input[type="email"],
         .inscription-container button {
             padding: 10px;
             margin: 5px;
             font-size: 16px;
         }
-        /* Styles spécifiques au jeu */
-        .game-container {
+          /* Styles spécifiques au jeu */
+          .game-container {
             position: absolute;
             top: 0;
             left: 50%; /* À partir de la moitié de l'écran */
@@ -52,53 +51,106 @@
         .game-container {
             display: none;
         }
+        /* Style de la boîte de dialogue modale */
+        .modal {
+          display: none; /* Par défaut, la boîte de dialogue est masquée */
+          position: fixed; /* Position fixe pour couvrir toute la fenêtre */
+          z-index: 1; /* Position au-dessus de tout le reste */
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto; /* Permet le défilement si nécessaire */
+          background-color: rgba(0,0,0,0.4); /* Fond semi-transparent */
+        }
+        /* Style du contenu de la boîte de dialogue */
+        .modal-content {
+          background-color: #fefefe;
+          margin: 10% auto; /* Centrer verticalement et horizontalement */
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+        /* Style pour le bouton de fermeture */
+        .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
     </style>
 </head>
 <body>
     
-    </div>
-    
-    <script src="src/player.js"></script>
-    <script src="src/bird.js"></script>
-    <script src="src/block.js"></script>
-    <script src="src/powerups.js"></script>
-    <script src="src/blockType.js"></script>
-    <script src="src/blockSpawner.js"></script>
-    <script src="src/inscription.js"></script>
-    <script src="src/main.js"></script>
+    <script>
+        // Fonction pour ouvrir la boîte de dialogue modale
+        function ouvrirModal() {
+            document.getElementById("modal").style.display = "block";
+        }
+        
+        // Fonction pour fermer la boîte de dialogue modale
+        function fermerModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+        
+    </script>
 
-     <!-- page inscription -->
+<script src="src/player.js"></script>
+<script src="src/bird.js"></script>
+<script src="src/block.js"></script>
+<script src="src/powerups.js"></script>
+<script src="src/blockType.js"></script>
+<script src="src/blockSpawner.js"></script>
+<script src="src/inscription.js"></script>
+<script src="src/main.js"></script>
+
+    <!-- page inscription -->
     <div class="inscription-container" id="inscriptionContainer">
         <h1>Inscription au jeu</h1>
         <form id="inscriptionForm">
             <label for="username">Nom d'utilisateur :</label>
             <input type="text" id="username" name="username" required>
-            <br>
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
-            <br>
             <button type="submit">S'inscrire</button>
         </form>
+        <button onclick="ouvrirModal()">Rules of Galactic Jumper</button>
     </div>
 
-    
-       
-    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="fermerModal()">&times;</span>
+          <h2>Rules of Galactic Jumper</h2>
+          <p>Dive into the space adventure as an astronaut on a quest to reach the moon and survive as long as possible by avoiding galactic dangers. Each life lost brings you closer to the end. In the beginning of the game, the player will have 3 lifes.</p>
+          <h3>Level 1 : </h3>
+          <p> During the first level, the astronaut can jump on clouds to do small bound while avoiding the bird that will cost a life. Progress to the next level by preserving your lives. Ready for the challenge of "Level 2"?"          </p>
+            <h3> Level 2 : </h3>
+            <p>In Level 2 of the game, the astronaut must skillfully avoid colliding with satellites, which will result in the loss of a life. If he collides with a rocket, the astronaut is propelled five stages ahead in the game. Encountering space debris disorients the astronaut, causing the left and right controls to be inverted for five seconds. When the astronaut successfully navigates through this loop with enough lives, he progresses to Level 3</p>
+            <h3>Level 3 : </h3>
+            <p>If during the level 3 the astronaut collides with meteors or gets drawn into a black hole, he lose a life. Contact with aliens sends the astronaut back to the beginning of level 3. Successfully navigating through the obstacles allows the astronaut to reach the moon, representing the conclusion and victory in the game.</p>
+        </div>
+    </div>
+
     <script>
         document.getElementById("inscriptionForm").addEventListener("submit", function(event){
     event.preventDefault(); // Empêche l'envoi du formulaire par défaut
 
     // Récupération des valeurs des champs
     var username = document.getElementById("username").value;
-    var email = document.getElementById("email").value;
 
     // Afficher les valeurs dans la console pour déboguer
     console.log("Nom d'utilisateur :", username);
-    console.log("Email :", email);
 
     // Afficher le jeu et masquer le formulaire d'inscription
     document.getElementById("inscriptionContainer").style.display = "none";
     document.getElementById("gameContainer").style.display = "block";
+
+    // Démarrer le jeu (appeler une fonction ou un script de démarrage du jeu)
+    startGame(username); // Exemple : fonction startGame avec le nom d'utilisateur comme argument
 });
 
     </script>
