@@ -21,6 +21,7 @@ var score = 0;
 var yDistanceTravelled = 0;
 let lives = 3;
 var canLoseLife = true;
+var isBlinking = false;
 
 var blocks = [];
 var powerups = [];
@@ -85,10 +86,11 @@ function loseLife() {
     if(canLoseLife) {
         lives--; 
         canLoseLife = false;
+        isBlinking = true;
         if (lives <= 0) {
             gameOver();
         }
-        setTimeout(function(){canLoseLife = true;}, 20)    
+        setTimeout(function(){canLoseLife = true; isBlinking = false;}, 2000)    
     }
 }
 
@@ -109,7 +111,7 @@ function resetGame() {
     blocks.push(new block);
     blocks[0].x = 300;
     blocks[0].y = 650;
-    blocks[0].bird = 0;
+    blocks[0].obstacle = 0;
     blocks[0].type = 0;
     blocks[0].powerup = 0;
 
@@ -135,7 +137,7 @@ function collisionWithPlayer(block) {
 blocks.push(new block);
 blocks[0].x = 300;
 blocks[0].y = 650;
-blocks[0].bird = 0;
+blocks[0].obstacle = 0;
 blocks[0].type = 0;
 blocks[0].powerup = 0;
 
@@ -154,11 +156,15 @@ function loop() {
         // Affichage du fond d'écran
         if (score > 2000) {
             backgroundImage = backgroundImageLevel3;
+            updateLevel(3);
         } else if (score > 1000) {
             backgroundImage = backgroundImageLevel2;
+            updateLevel(2);
         } else {
             backgroundImage = backgroundImageLevel1;
+            updateLevel(1);
             showScore();
+            
         }
         ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
 
@@ -171,7 +177,7 @@ function loop() {
                 blocks[i].update();
                 blocks[i].draw();
 
-                if (blocks[i].bird === 1 && collisionWithPlayer(blocks[i])) {
+                if (blocks[i].obstacle === 1 && collisionWithPlayer(blocks[i])) {
                     loseLife(); // Appelle la fonction pour perdre une vie
                     blocks[i] = 0;
                 }

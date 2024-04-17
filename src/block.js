@@ -5,7 +5,7 @@ function block() {
     this.height = 15;
     this.powerup;
     this.type;
-    this.bird;
+    this.obstacle;
     this.direction = "right";
     this.moveTime = 10;
 
@@ -20,10 +20,10 @@ function block() {
             ctx.fillStyle = "#FFFFFF";
         }
 
-        if (this.bird === 0) {
+        if (this.obstacle === 0) {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         } else {
-            birdFunctions[this.bird].draw(this.x, this.y);
+            obstacleFunctions[this.obstacle].draw(this.x, this.y);
         }
 
         if (this.powerup === "spring") {
@@ -54,7 +54,7 @@ function block() {
             }
         }
 
-        if (this.bird === "Birds") {
+        if (this.obstacle === "Obstacle") {
             if (this.direction === "right") {
                 this.x += 1;
                 this.moveTime -= 1;

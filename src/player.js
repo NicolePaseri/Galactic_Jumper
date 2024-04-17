@@ -9,6 +9,7 @@ var player = new function() {
     this.ySpeed = 0;
     this.springBootsDurability = 0;
     this.direction = "left";
+    this.isBlinking = false;
 
     this.update = function() {
         if (!dead) {
@@ -50,7 +51,7 @@ var player = new function() {
                     this.y >= blocks[i].y - this.height && this.y <= blocks[i].y + blocks[i].height - this.height) {
                     if (blocks[i].type === "break") {
                         blocks[i] = 0;
-                    } else if (blocks[i].bird !== 0) {
+                    } else if (blocks[i].obstacle !== 0) {
                         this.jump(blocks[i].powerup, blocks[i].type);
                         blocks[i] = 0;
                     } else {
@@ -59,8 +60,8 @@ var player = new function() {
                 }
             } 
             if (this.y > blocks[i].y) {
-                //Check for hit bird
-                if (blocks[i].bird !== 0 && blocks[i].bird !== undefined) {
+                //Check for hit obstacle
+                if (blocks[i].obstacle !== 0 && blocks[i].obstacle !== undefined) {
                     if (this.x >= blocks[i].x - this.width + 15 && this.x <= blocks[i].x + blocks[i].width - 15 &&
                         this.y >= blocks[i].y - blocks[i].height && this.y <= blocks[i].y + blocks[i].height) {
                         loseLife();
@@ -123,6 +124,11 @@ var player = new function() {
     }
 
     this.draw = function() {
+
+        if (isBlinking && Math.floor(Date.now() / 200) % 2 === 0) {
+            return;
+        }
+
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
 
         if (this.springBootsDurability !== 0) {
