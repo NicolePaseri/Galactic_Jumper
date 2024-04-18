@@ -29,9 +29,9 @@ var backgroundImage = new Image();
 var backgroundImageLevel1 = new Image();
 var backgroundImageLevel2 = new Image();
 var backgroundImageLevel3 = new Image();
-backgroundImageLevel1.src = "Sprites/level1.png"; // Chemin d'accès pour le fond d'écran du niveau 1
-backgroundImageLevel2.src = "Sprites/level2.png"; // Chemin d'accès pour le fond d'écran du niveau 2
-backgroundImageLevel3.src = "Sprites/level3.png"; // Chemin d'accès pour le fond d'écran du niveau 3
+backgroundImageLevel1.src = "Sprites/level1.png"; 
+backgroundImageLevel2.src = "Sprites/level2.png"; 
+backgroundImageLevel3.src = "Sprites/level3.png"; 
 
 
 // Time variables
@@ -173,35 +173,46 @@ function loop() {
 
 
         // Mise à jour et affichage des blocs
-        for (var i = 0; i < blocks.length; i++) {
-            if (blocks[i] !== 0) {
-                blocks[i].update();
-                blocks[i].draw();
-
-                if (blocks[i].obstacle === 1 && collisionWithPlayer(blocks[i])) {
-                    loseLife(); // Appelle la fonction pour perdre une vie
-                    blocks[i] = 0;
+        if (delta > interval) {
+            ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
+        
+            // Affichage du fond d'écran en fonction du score
+            if (score > 2000) {
+                backgroundImage = backgroundImageLevel3;
+                updateLevel(3);
+            } else if (score > 1000) {
+                backgroundImage = backgroundImageLevel2;
+                updateLevel(2);
+            } else {
+                backgroundImage = backgroundImageLevel1;
+                updateLevel(1);
+            }        
+            ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
+        
+            drawLives();
+        
+            // Mise à jour et affichage des blocs
+            for (var i = 0; i < blocks.length; i++) {
+                if (blocks[i] !== 0) {
+                    blocks[i].update();
+                    blocks[i].draw();
+        
+                    if (blocks[i].obstacle === 1 && collisionWithPlayer(blocks[i])) {
+                        loseLife(); // Appelle la fonction pour perdre une vie
+                        blocks[i] = 0;
+                    }
                 }
             }
-        }
-
-
-        // Mise à jour et affichage du joueur
-        player.update();
-        player.draw();
-
-        // Vérifier si le score dépasse 10'000 pour passer au niveau 2
-        if (score > 10000) {
-            // Code pour passer au niveau 2
-            backgroundImage = backgroundImageLevel2;
-        } else if(score > 20000){
-            backgroundImage = backgroundImageLevel3;
-        }else{
+        
+            // Mise à jour et affichage du joueur
+            player.update();
+            player.draw();
+        
+            // Affichage du score
             showScore();
+        
+            then = now - (delta % interval);
         }
-
-        then = now - (delta % interval);
     }
 }
-
-loop();
+    loop();
