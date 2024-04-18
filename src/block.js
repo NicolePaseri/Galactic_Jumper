@@ -9,21 +9,26 @@ function block() {
     this.direction = "right";
     this.moveTime = 10;
 
-    
-// Plateformes qui se cassent et plateformes qui bougent
+    // Plateformes qui se cassent et plateformes qui bougent
     this.draw = function() {
         if (this.type === "break") {
             ctx.fillStyle = "#876537";
         } else if (this.type === "sideways") {
             ctx.fillStyle = "#14a7c8";
         } else {
-            ctx.fillStyle = "#FFFFFF";
+            ctx.fillStyle = "#FFFFFF"; // Plateforme blanche retirée d'ici
         }
 
         if (this.obstacle === 0) {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         } else {
             obstacleFunctions[this.obstacle].draw(this.x, this.y);
+        }
+
+        if (this.particule === 0) {
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        } else {
+            particuleFunctions[this.particule].draw(this.x, this.y);
         }
 
         if (this.powerup === "spring") {
@@ -54,7 +59,7 @@ function block() {
             }
         }
 
-        if (this.obstacle === "Obstacle") {
+        if (this.obstacle === "obstacle") {
             if (this.direction === "right") {
                 this.x += 1;
                 this.moveTime -= 1;
