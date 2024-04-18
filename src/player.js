@@ -7,7 +7,7 @@ var player = new function() {
     this.height = 80;
     this.xSpeed = 6.7;
     this.ySpeed = 0;
-    this.springBootsDurability = 0;
+    this.rocketDurability = 0;
     this.direction = "left";
     this.isBlinking = false;
 
@@ -93,8 +93,8 @@ var player = new function() {
     this.jump = function(powerup, type) {
         this.ySpeed = -13.2;
 
-        if (powerup === "springBoots") {
-            this.springBootsDurability = 6;
+        if (powerup === "rocket") {
+            this.rocketDurability = 6;
         }
         
         if (type === 0) {
@@ -103,9 +103,9 @@ var player = new function() {
             } 
         }
 
-        if (this.springBootsDurability !== 0) {
+        if (this.rocketDurability !== 0) {
             this.ySpeed = -20;
-            this.springBootsDurability -= 1;
+            this.rocketDurability -= 1;
         }  
     }
 
@@ -131,7 +131,7 @@ var player = new function() {
 
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
 
-        if (this.springBootsDurability !== 0) {
+        if (this.rocketDurability !== 0) {
             if (this.direction === "right") {
                 ctx.fillStyle = "blue";
                 ctx.fillRect(this.x + 10, this.y + 66, 15, 10);
