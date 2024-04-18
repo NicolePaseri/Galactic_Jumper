@@ -19,7 +19,7 @@ var difficulty = 0;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
-let lives = 30;
+let lives = 15;
 var canLoseLife = true;
 var isBlinking = false;
 var isDesoriented = false; 
@@ -73,40 +73,12 @@ function showScore() {
     ctx.fillText(score, 15, 40); 
 }
 
-// Lives
-
-function drawLives() {
-    for (let i = 0; i < lives; i++) {
-        let heartImg = new Image();
-        heartImg.src = "Sprites/heart.png";
-        ctx.drawImage(heartImg, screenWidth - (i + 1) * 30, 5, 25, 25);
-    }
-}
-
-function loseLife() {
-    if(canLoseLife) {
-        lives--; 
-        canLoseLife = false;
-        isBlinking = true;
-        console.log("You lose a life");
-        if (lives <= 0) {
-            gameOver();
-        }
-        setTimeout(function(){canLoseLife = true; isBlinking = false;}, 2000)    
-    }
-}
-
-function gameOver() {
-    dead = true;
-    console.log("GameOver !");
-}
-
 function resetGame() {
     blocks = [];
     lowestBlock = 0;
     difficulty = 0;
     score = 0;
-    lives = 30;
+    lives = 15;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
     backgroundImage = backgroundImageLevel1;
