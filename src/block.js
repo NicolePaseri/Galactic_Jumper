@@ -1,3 +1,10 @@
+var cloudImage = new Image();
+cloudImage.src = 'Sprites/cloud.png';
+
+var rocketImage = new Image();
+rocketImage.src = 'Sprites/rocket.png';
+
+
 function block() {
     this.x;
     this.y;
@@ -31,19 +38,12 @@ function block() {
             particuleFunctions[this.particule].draw(this.x, this.y);
         }
 
-        if (this.powerup === "spring") {
-            ctx.fillStyle = "grey";
-            ctx.fillRect(this.x + 35, this.y - 10, 30, 10);
+        if (this.powerup === "cloud") {
+            ctx.drawImage(cloudImage, this.x + 25, this.y - 20, 90, 90); // Ajustez la taille ici
         } else if (this.powerup === "rocket") {
-            ctx.fillStyle = "blue";
-            ctx.fillRect(this.x + 30, this.y - 25, 15, 10);
-            ctx.fillRect(this.x + 53, this.y - 25, 15, 10);  
-            ctx.fillStyle = "grey";
-            ctx.fillRect(this.x + 30, this.y - 15, 15, 15);
-            ctx.fillRect(this.x + 53, this.y - 15, 15, 15);
+            ctx.drawImage(rocketImage, this.x + 20, this.y - 40, 100, 100); // Ajustez la taille ici
         }
     }
-
     this.update = function() {
         if (this.type === "sideways") {
             if (this.x >= screenWidth - this.width) {
