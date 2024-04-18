@@ -4,87 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doodle Jump in JS</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        /* Styles spécifiques au formulaire d'inscription */
-        .inscription-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 530px; /* Moitié de la largeur de l'écran */
-            height: 110vh; /* Hauteur de l'écran */
-            background-image: url('Sprites/fondecraninscription.png');
-            background-size : contain;
-            background-repeat: no-repeat;
-            background-attachment: fixed; 
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .inscription-container h1 {
-            font-size: 24px;
-        }
-        .inscription-container form {
-            margin-top: 20px;
-        }
-        .inscription-container input[type="text"],
-        .inscription-container button {
-            padding: 10px;
-            margin: 5px;
-            font-size: 16px;
-        }
-          /* Styles spécifiques au jeu */
-          .game-container {
-            position: absolute;
-            top: 0;
-            left: 50%; /* À partir de la moitié de l'écran */
-            width: 50%; /* Moitié de la largeur de l'écran */
-            height: 100vh; /* Hauteur de l'écran */
-            background-color: #c0c0c0; /* Couleur de fond */
-        }
-        /* Cacher le jeu par défaut */
-        .game-container {
-            display: none;
-        }
-        /* Style de la boîte de dialogue modale */
-        .modal {
-          display: none; /* Par défaut, la boîte de dialogue est masquée */
-          position: fixed; /* Position fixe pour couvrir toute la fenêtre */
-          z-index: 1; /* Position au-dessus de tout le reste */
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          overflow: auto; /* Permet le défilement si nécessaire */
-          background-color: rgba(0,0,0,0.4); /* Fond semi-transparent */
-        }
-        /* Style du contenu de la boîte de dialogue */
-        .modal-content {
-          background-color: #fefefe;
-          margin: 10% auto; /* Centrer verticalement et horizontalement */
-          padding: 20px;
-          border: 1px solid #888;
-          width: 80%;
-        }
-        /* Style pour le bouton de fermeture */
-        .close {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-          color: black;
-          text-decoration: none;
-          cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
@@ -110,6 +30,7 @@
 <script src="src/blockSpawner.js"></script>
 <script src="src/inscription.js"></script>
 <script src="src/main.js"></script>
+<script src="src/life.js"></script>
 
     <!-- page inscription -->
     <div class="inscription-container" id="inscriptionContainer">

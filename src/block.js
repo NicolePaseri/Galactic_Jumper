@@ -26,23 +26,17 @@ function block() {
             ctx.fillStyle = "#FFFFFF"; // Plateforme blanche retirée d'ici
         }
 
-        if (this.obstacle === 0) {
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        } else {
+        if (this.obstacle !== 0) {
             obstacleFunctions[this.obstacle].draw(this.x, this.y);
-        }
-
-        if (this.particule === 0) {
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        } else {
-            particuleFunctions[this.particule].draw(this.x, this.y);
-        }
-
-        if (this.powerup === "cloud") {
-            ctx.drawImage(cloudImage, this.x + 25, this.y - 20, 90, 90); // Ajustez la taille ici
-        } else if (this.powerup === "rocket") {
-            ctx.drawImage(rocketImage, this.x + 20, this.y - 40, 100, 100); // Ajustez la taille ici
-        }
+        } else if (this.particule !== 0) {
+                particuleFunctions[this.particule].draw(this.x, this.y);
+            } else if (this.powerup === "cloud") {
+                ctx.drawImage(cloudImage, this.x + 25, this.y - 20, 90, 90); // Ajustez la taille ici
+                } else if (this.powerup === "rocket") {
+                    ctx.drawImage(rocketImage, this.x + 20, this.y - 40, 100, 100); // Ajustez la taille ici
+                        } else {
+                            ctx.fillRect(this.x, this.y, this.width, this.height);
+                        }
     }
     this.update = function() {
         if (this.type === "sideways") {
