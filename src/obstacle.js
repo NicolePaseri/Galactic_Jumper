@@ -1,5 +1,3 @@
-var Level = 1; // Initialisez le niveau à 1
-
 // Fonction pour faire apparaître des obstacles
 function spawnObstacle() {
     // gère les chances d'avoir des obstacles

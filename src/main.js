@@ -19,7 +19,7 @@ var difficulty = 0;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
-let lives = 3;
+let lives = 30;
 var canLoseLife = true;
 var isBlinking = false;
 
@@ -103,7 +103,7 @@ function resetGame() {
     lowestBlock = 0;
     difficulty = 0;
     score = 0;
-    lives = 3;
+    lives = 30;
     yDistanceTravelled = 0;
     player.springBootsDurability = 0;
     backgroundImage = backgroundImageLevel1;
@@ -112,6 +112,7 @@ function resetGame() {
     blocks[0].x = 300;
     blocks[0].y = 650;
     blocks[0].obstacle = 0;
+    blocks[0].particule = 0;
     blocks[0].type = 0;
     blocks[0].powerup = 0;
 
@@ -138,10 +139,12 @@ blocks.push(new block);
 blocks[0].x = 300;
 blocks[0].y = 650;
 blocks[0].obstacle = 0;
+blocks[0].particule = 0;
 blocks[0].type = 0;
 blocks[0].powerup = 0;
 
 blockSpawner();
+
 
 function loop() {
     requestAnimationFrame(loop);
@@ -154,7 +157,7 @@ function loop() {
         ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
 
         // Affichage du fond d'écran
-        if (score > 2000) {
+        if (score > 10000) {
             backgroundImage = backgroundImageLevel3;
             updateLevel(3);
         } else if (score > 1000) {
@@ -163,9 +166,7 @@ function loop() {
         } else {
             backgroundImage = backgroundImageLevel1;
             updateLevel(1);
-            showScore();
-            
-        }
+        }        
         ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
 
         drawLives();
