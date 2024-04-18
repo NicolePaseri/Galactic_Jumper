@@ -10,6 +10,7 @@ var player = new function() {
     this.rocketDurability = 0;
     this.direction = "left";
     this.isBlinking = false;
+    this.isDesoriented = false;
 
     this.update = function() {
         if (!dead) {
@@ -67,6 +68,14 @@ var player = new function() {
                         loseLife();
                     }
                 }
+                if (blocks[i].particule !== 0 && blocks[i].particule !== undefined) {
+                    if (this.x >= blocks[i].x - this.width + 15 && this.x <= blocks[i].x + blocks[i].width - 15 &&
+                        this.y >= blocks[i].y - blocks[i].height && this.y <= blocks[i].y + blocks[i].height) {
+                        isDesoriented = true;
+                        console.log("You are desoriented")
+                        setTimeout(function(){isDesoriented = false;console.log("The desorientation finished");}, 5000) 
+                    }
+                }
             }
         }
 
@@ -109,19 +118,28 @@ var player = new function() {
         }  
     }
 
-    this.moveLeft = function() {
+ this.moveLeft = function() {
+    if (isDesoriented) { // Si le joueur est désorienté
+        this.x += this.xSpeed; // Soustrayez le xSpeed au lieu de l'ajouter
+    } else {
         this.x -= this.xSpeed;
-        if (this.x <= -this.width) {
-            this.x = screenWidth;
-        }
     }
+    if (this.x <= -this.width) {
+        this.x = screenWidth;
+    }
+}
 
-    this.moveRight = function() {
+this.moveRight = function() {
+    if (isDesoriented) { // Si le joueur est désorienté
+        this.x -= this.xSpeed; // Ajoutez le xSpeed au lieu de le soustraire
+    } else {
         this.x += this.xSpeed;
-        if (this.x >= screenWidth) {
-            this.x = -this.width;
-        }
     }
+    if (this.x >= screenWidth) {
+        this.x = -this.width;
+    }
+}
+
 
     this.draw = function() {
 

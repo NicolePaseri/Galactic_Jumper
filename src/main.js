@@ -22,6 +22,7 @@ var yDistanceTravelled = 0;
 let lives = 30;
 var canLoseLife = true;
 var isBlinking = false;
+var isDesoriented = false; 
 
 var blocks = [];
 var powerups = [];
@@ -87,6 +88,7 @@ function loseLife() {
         lives--; 
         canLoseLife = false;
         isBlinking = true;
+        console.log("You lose a life");
         if (lives <= 0) {
             gameOver();
         }
@@ -96,6 +98,7 @@ function loseLife() {
 
 function gameOver() {
     dead = true;
+    console.log("GameOver !");
 }
 
 function resetGame() {
@@ -196,11 +199,6 @@ function loop() {
                 if (blocks[i] !== 0) {
                     blocks[i].update();
                     blocks[i].draw();
-        
-                    if (blocks[i].obstacle === 1 && collisionWithPlayer(blocks[i])) {
-                        loseLife(); // Appelle la fonction pour perdre une vie
-                        blocks[i] = 0;
-                    }
                 }
             }
         
