@@ -34,7 +34,7 @@ function block() {
         if (this.powerup === "spring") {
             ctx.fillStyle = "grey";
             ctx.fillRect(this.x + 35, this.y - 10, 30, 10);
-        } else if (this.powerup === "springBoots") {
+        } else if (this.powerup === "rocket") {
             ctx.fillStyle = "blue";
             ctx.fillRect(this.x + 30, this.y - 25, 15, 10);
             ctx.fillRect(this.x + 53, this.y - 25, 15, 10);  

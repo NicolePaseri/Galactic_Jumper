@@ -105,7 +105,7 @@ function resetGame() {
     score = 0;
     lives = 30;
     yDistanceTravelled = 0;
-    player.springBootsDurability = 0;
+    player.rocketDurability = 0;
     backgroundImage = backgroundImageLevel1;
 
     blocks.push(new block);
