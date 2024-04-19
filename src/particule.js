@@ -2,11 +2,12 @@
 function spawnParticule() {
     // gère les chances d'avoir des particules
     var particuleChances = {
-        "particule": 50
+        "particule": 2
     };
 
     // Génère un nombre aléatoire et vérifie s'il correspond aux chances d'avoir un obstacle
     if (Math.round(Math.random() * particuleChances["particule"] - 1) === 0) {
+        console.log("Create a particule");
         return "particule"; // Si c'est le cas, retourne "particule" pour indiquer qu'un obstacle doit être créé
     }
     return 0; // Sinon, retourne 0 pour indiquer qu'aucune particule ne doit être créé

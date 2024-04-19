@@ -133,7 +133,7 @@ function loop() {
     if (delta > interval) {
         ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
 
-        updateLevel(score);
+        level = updateLevel(score);
                
         ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
 
@@ -145,7 +145,7 @@ function loop() {
             ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
         
             // Affichage du fond d'écran en fonction du score
-            updateLevel(score);
+            level = updateLevel(score);
 
             ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
         
