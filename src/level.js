@@ -1,16 +1,22 @@
 function updateLevel(score) {
-    if (score > 1000) {
+    if (score < 3000) {
+        level = 1;
+        backgroundImage = backgroundImageLevel1;
+        obstacle.img.src = "Sprites/GalacticDangers/oiseau-transformed.png";
+    } else if (score < 6000) {
         level = 2;
         backgroundImage = backgroundImageLevel2;
         obstacle.img.src = "Sprites/GalacticDangers/Satélite-transformed.png";
-    } else if (score > 5000) {
+    } else if (score < 9000 ){
         level = 3;
         backgroundImage = backgroundImageLevel3;
         obstacle.img.src = "Sprites/GalacticDangers/meteore.png";
     } else {
-        level = 1;
-        backgroundImage = backgroundImageLevel1;
-        obstacle.img.src = "Sprites/GalacticDangers/oiseau-transformed.png";
+        level = 4;
+        win();
     }
+
+    return level;
+    
 }
 

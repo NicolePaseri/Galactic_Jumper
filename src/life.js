@@ -31,3 +31,8 @@ function gameOver() {
             ctx.fillText("Press espace to restart", screenWidth / 2, (screenHeight / 2) + 50);
     dead = true;
 }
+
+
+function win() {
+    
+}
