@@ -27,29 +27,8 @@ var obstacle = new function() {
     }
 }
 
-// Fonction pour définir le chemin d'accès à l'image en fonction du niveau
-function setImageSrc(level) {
-    if (level === 1) {
-        obstacle.img.src = "Sprites/GalacticDangers/oiseau-transformed.png";
-    } else if (level === 2) {
-        obstacle.img.src = "Sprites/GalacticDangers/Satélite-transformed.png";
-    } else if (level === 3) {
-        obstacle.img.src = "Sprites/GalacticDangers/meteore.png";
-    } else {
-        // Niveau par défaut ou autre traitement selon vos besoins
-    }
-}
-
 // Objet contenant les fonctions associées à chaque type d'élément
 var obstacleFunctions = {
     "obstacle": obstacle // Associe le type "obstacle" à l'objet représentant l'obstacle
 }
 
-// Utilisation de la fonction pour définir le chemin d'accès à l'image en fonction du niveau actuel
-function updateLevel(level) {
-    Level = level; // Met à jour le niveau actuel
-    setImageSrc(Level); // Met à jour le chemin d'accès à l'image en fonction du niveau
-}
-
-// Exemple de mise à jour du niveau (à appeler lorsque le niveau change)
-// updateLevel(2); // Change le niveau à 2 (à décommenter et à utiliser au bon endroit dans votre code)

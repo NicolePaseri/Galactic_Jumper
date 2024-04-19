@@ -23,6 +23,7 @@ let lives = 15;
 var canLoseLife = true;
 var isBlinking = false;
 var isDesoriented = false; 
+var level = 1;
 
 var blocks = [];
 var powerups = [];
@@ -79,6 +80,7 @@ function resetGame() {
     difficulty = 0;
     score = 0;
     lives = 15;
+    level = 1;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
     backgroundImage = backgroundImageLevel1;
@@ -131,17 +133,8 @@ function loop() {
     if (delta > interval) {
         ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
 
-        // Affichage du fond d'écran
-        if (score > 10000) {
-            backgroundImage = backgroundImageLevel3;
-            updateLevel(3);
-        } else if (score > 1000) {
-            backgroundImage = backgroundImageLevel2;
-            updateLevel(2);
-        } else {
-            backgroundImage = backgroundImageLevel1;
-            updateLevel(1);
-        }        
+        updateLevel(score);
+               
         ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
 
         drawLives();
@@ -152,16 +145,8 @@ function loop() {
             ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
         
             // Affichage du fond d'écran en fonction du score
-            if (score > 2000) {
-                backgroundImage = backgroundImageLevel3;
-                updateLevel(3);
-            } else if (score > 1000) {
-                backgroundImage = backgroundImageLevel2;
-                updateLevel(2);
-            } else {
-                backgroundImage = backgroundImageLevel1;
-                updateLevel(1);
-            }        
+            updateLevel(score);
+
             ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
         
             drawLives();

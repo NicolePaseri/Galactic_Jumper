@@ -2,7 +2,7 @@
 function spawnParticule() {
     // gère les chances d'avoir des particules
     var particuleChances = {
-        "particule": 3
+        "particule": 50
     };
 
     // Génère un nombre aléatoire et vérifie s'il correspond aux chances d'avoir un obstacle

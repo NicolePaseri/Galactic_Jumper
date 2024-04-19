@@ -33,7 +33,8 @@ function block() {
             } else if (this.powerup === "cloud") {
                 ctx.drawImage(cloudImage, this.x + 25, this.y - 20, 90, 90); // Ajustez la taille ici
                 } else if (this.powerup === "rocket") {
-                    ctx.drawImage(rocketImage, this.x + 20, this.y - 40, 100, 100); // Ajustez la taille ici
+                    ctx.drawImage(rocketImage, this.x + 20, this.y - 100, 100, 100); // Ajustez la taille ici
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
                         } else {
                             ctx.fillRect(this.x, this.y, this.width, this.height);
                         }

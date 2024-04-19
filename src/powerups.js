@@ -1,7 +1,7 @@
 function spawnPowerup() {
     var powerupChances = {
         "cloud": 20,
-        "rocket": 80,
+        "rocket": 50,
       
     };
 
