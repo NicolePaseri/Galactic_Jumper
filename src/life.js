@@ -22,6 +22,12 @@ function loseLife() {
 }
 
 function gameOver() {
-    dead = true;
     console.log("GameOver !");
+    ctx.font = "25px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText("The astronaut failed the mission!", screenWidth / 2, screenHeight / 2); 
+            ctx.font = "36px Arial";
+            ctx.fillText("Press espace to restart", screenWidth / 2, (screenHeight / 2) + 50);
+    dead = true;
 }

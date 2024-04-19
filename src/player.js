@@ -24,12 +24,7 @@ var player = new function() {
             }
             yDistanceTravelled -= this.ySpeed;
         } else {
-            ctx.font = "25px Arial";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText("The astronaut failed the mission!", screenWidth / 2, screenHeight / 2); 
-            ctx.font = "36px Arial";
-            ctx.fillText("Press espace to restart", screenWidth / 2, (screenHeight / 2) + 50);
+            gameOver();
         }
 
         // ← key pressed
@@ -151,19 +146,17 @@ this.moveRight = function() {
 
         if (this.rocketDurability !== 0) {
             if (this.direction === "right") {
-                ctx.fillStyle = "blue";
-                ctx.fillRect(this.x + 10, this.y + 66, 15, 10);
-                ctx.fillRect(this.x + 33, this.y + 66, 15, 10);  
-                ctx.fillStyle = "grey";
-                ctx.fillRect(this.x + 10, this.y + 76, 15, 15);
-                ctx.fillRect(this.x + 33, this.y + 76, 15, 15);
+                var rocketImg = new Image();
+                rocketImg.src = "Sprites/rocket.png";
+                rocketImg.onload = function() {
+                    ctx.drawImage(rocketImg, this.x - 40, this.y, 100, 100);
+                }.bind(this);
             } else {
-                ctx.fillStyle = "blue";
-                ctx.fillRect(this.x + 30, this.y + 66, 15, 10);
-                ctx.fillRect(this.x + 53, this.y + 66, 15, 10);  
-                ctx.fillStyle = "grey";
-                ctx.fillRect(this.x + 30, this.y + 76, 15, 15);
-                ctx.fillRect(this.x + 53, this.y + 76, 15, 15);
+                var rocketImg = new Image();
+                rocketImg.src = "Sprites/rocket.png";
+                rocketImg.onload = function() {
+                    ctx.drawImage(rocketImg, this.x + 20, this.y, 100, 100);
+                }.bind(this);
             }
         }
     }

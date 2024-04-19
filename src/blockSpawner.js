@@ -31,8 +31,8 @@ function blockSpawner() {
                 // Si aucune puissance spéciale n'est générée, détermine s'il y aura un oiseau ou une particule
                 if (blocks[i].powerup === 0) {
                     blocks[i].obstacle = spawnObstacle(); // Détermine s'il y aura un oiseau sur le bloc
-                if(blocks[i].obstacle === 0){
-                    blocks[i].particule = spawnParticule(); // Détermine s'il y aura une particule sur le bloc si le niveau est 2
+                    if(blocks[i].obstacle === 0){
+                        blocks[i].particule = spawnParticule(); // Détermine s'il y aura une particule sur le bloc si le niveau est 2
                 }
                 
             }
