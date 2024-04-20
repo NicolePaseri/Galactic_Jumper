@@ -38,15 +38,15 @@ function gameOver() {
 
 // Fonction pour afficher le message de victoire
 function win() {
-    // Affichage du nouveau background
-    container.style.backgroundImage = "url('Sprites/background_win.png')";
+    console.log("You win !");
+    ctx.clearRect(0, 0, screenWidth, screenHeight);
+    ctx.drawImage(backgroundImageWin, 0, 0, screenWidth, screenHeight);
 
-    // Création et ajout du texte de victoire
-    const winText = document.createElement('p');
-    winText.textContent = "Congratulations! You've reached the moon!";
-    winText.style.color = 'white';
-    winText.style.fontSize = '24px';
-    winText.style.textAlign = 'center';
-    winText.style.marginTop = '20px';
-    container.appendChild(winText);
+    ctx.font = "25px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText("The astronaut archived the mission!", screenWidth / 2, screenHeight * 0.75); 
+    ctx.font = "36px Arial";
+    ctx.fillText("Press espace to restart", screenWidth / 2, (screenHeight * 0.75) + 50);
+dead = true;
 }

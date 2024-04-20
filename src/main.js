@@ -29,10 +29,12 @@ var level = 1;
 var blocks = [];
 var powerups = [];
 var backgroundImage = new Image();
+var backgroundImageWin = new Image();
 var backgroundImageGameOver = new Image();
 var backgroundImageLevel1 = new Image();
 var backgroundImageLevel2 = new Image();
 var backgroundImageLevel3 = new Image();
+backgroundImageWin.src = "Sprites/backgroundWin.png";
 backgroundImageGameOver.src = "Sprites/backgroundGameOver.png"
 backgroundImageLevel1.src = "Sprites/level1.png"; 
 backgroundImageLevel2.src = "Sprites/level2.png"; 
@@ -93,6 +95,7 @@ function resetGame() {
     blocks[0].y = 650;
     blocks[0].obstacle = 0;
     blocks[0].particule = 0;
+    blocks[0].alien = 0;
     blocks[0].type = 0;
     blocks[0].powerup = 0;
 
@@ -120,6 +123,7 @@ blocks[0].x = 300;
 blocks[0].y = 650;
 blocks[0].obstacle = 0;
 blocks[0].particule = 0;
+blocks[0].alien = 0;
 blocks[0].type = 0;
 blocks[0].powerup = 0;
 
