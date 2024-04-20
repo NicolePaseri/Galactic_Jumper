@@ -4,6 +4,7 @@ var screenWidth = 500;
 var screenHeight = 800;
 c.width = screenWidth;
 c.height = screenHeight;
+
 document.body.appendChild(c);
 
 window.addEventListener('keydown', this.keydown, false);
@@ -28,9 +29,11 @@ var level = 1;
 var blocks = [];
 var powerups = [];
 var backgroundImage = new Image();
+var backgroundImageGameOver = new Image();
 var backgroundImageLevel1 = new Image();
 var backgroundImageLevel2 = new Image();
 var backgroundImageLevel3 = new Image();
+backgroundImageGameOver.src = "Sprites/backgroundGameOver.png"
 backgroundImageLevel1.src = "Sprites/level1.png"; 
 backgroundImageLevel2.src = "Sprites/level2.png"; 
 backgroundImageLevel3.src = "Sprites/level3.png"; 
@@ -132,6 +135,10 @@ function loop() {
 
     if (delta > interval) {
         ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
+
+        if (container.style.display !== 'none') {
+            return; // Ne rien dessiner si la page d'accueil est affichée
+        }
 
         level = updateLevel(score);
                
