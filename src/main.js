@@ -96,6 +96,7 @@ function resetGame() {
     blocks[0].obstacle = 0;
     blocks[0].particule = 0;
     blocks[0].alien = 0;
+    blocks[0].blackHole=0;
     blocks[0].type = 0;
     blocks[0].powerup = 0;
 
@@ -124,6 +125,7 @@ blocks[0].y = 650;
 blocks[0].obstacle = 0;
 blocks[0].particule = 0;
 blocks[0].alien = 0;
+blocks[0].blackHole=0;
 blocks[0].type = 0;
 blocks[0].powerup = 0;
 

@@ -15,6 +15,7 @@ function block() {
     this.obstacle;
     this.particule;
     this.alien;
+    this.blackHole;
     this.direction = "right";
     this.moveTime = 10;
 
@@ -49,6 +50,10 @@ this.draw = function() {
     else if (this.alien !== 0) {
         alienFunctions[this.alien].draw(this.x, this.y); // Assurez-vous d'avoir les fonctions appropriées pour dessiner les aliens
     } 
+   // Dessiner le trou noir si présent
+    else if (this.blackHole !== 0) {
+    blackHoleFunctions[this.blackHole].draw(this.x, this.y); // Assurez-vous d'avoir les fonctions appropriées pour dessiner les trous noirs
+    }   
     // Si aucun des cas ci-dessus, dessiner simplement un rectangle
     else {
         ctx.fillRect(this.x, this.y, this.width, this.height);
