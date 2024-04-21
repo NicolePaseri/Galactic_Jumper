@@ -23,8 +23,20 @@ var player = new function() {
                 this.y += this.ySpeed;
             }
             yDistanceTravelled -= this.ySpeed;
+    
+            // Collision avec les trous noirs
+            for (var i = 0; i < blocks.length; i++) {
+                if (blocks[i].blackHole !== 0) {
+                    if (this.x + this.width >= blocks[i].x && this.x <= blocks[i].x + blocks[i].width &&
+                        this.y + this.height >= blocks[i].y && this.y <= blocks[i].y + blocks[i].height) {
+                        gameOver(); // Fin du jeu si le joueur touche un trou noir
+                        return; // Arrêt de la mise à jour du joueur
+                    }
+                }
+            }
+    
         } else {
-            gameOver();
+            gameOver(); // Affiche l'écran de fin de jeu si le joueur est mort
         }
 
         // ← key pressed
