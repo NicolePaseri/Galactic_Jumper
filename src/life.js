@@ -27,27 +27,17 @@ function gameOver() {
     // Supprimer le canevas du jeu
     c.parentNode.removeChild(c);
 
-    // Créer une nouvelle div pour afficher le message de fin de partie et les boutons
     var gameOverDiv = document.createElement("div");
     gameOverDiv.id = "game-over-div";
-    gameOverDiv.style.backgroundImage = 'url("Sprites/gameover.png")';
+    gameOverDiv.style.backgroundImage = 'url("Sprites/MissionFailed.png")';
     gameOverDiv.style.width = screenWidth + "px";
     gameOverDiv.style.height = screenHeight + "px";
     gameOverDiv.style.position = "absolute";
     gameOverDiv.style.top = "0";
     gameOverDiv.style.left = "0";
-
-    // Créer un paragraphe pour le message de fin de partie
-    var gameOverMessage = document.createElement("p");
-    gameOverMessage.textContent = "The astronaut failed the mission!";
-    gameOverMessage.style.fontSize = "25px";
-    gameOverMessage.style.color = "white";
-    gameOverMessage.style.textAlign = "center";
-    gameOverMessage.style.position = "absolute";
-    gameOverMessage.style.top = "50%";
-    gameOverMessage.style.left = "50%";
-    gameOverMessage.style.transform = "translate(-50%, -50%)";
-    gameOverDiv.appendChild(gameOverMessage);
+    gameOverDiv.style.backgroundSize = "cover"; // Ajuste la taille de l'image pour remplir la div sans déformation
+    gameOverDiv.style.backgroundPosition = "center"; // Centre l'image dans la div
+    
 
     // Créer un bouton pour redémarrer le jeu
     var restartButton = document.createElement("button");
@@ -62,7 +52,7 @@ function gameOver() {
         location.reload();
     });
     gameOverDiv.appendChild(restartButton);
-
+    
     // Créer un bouton pour accéder au "Wall of Fame"
     var wallOfFameButton = document.createElement("button");
     wallOfFameButton.textContent = "Wall of Fame";
@@ -72,10 +62,11 @@ function gameOver() {
     wallOfFameButton.style.left = "50%";
     wallOfFameButton.style.transform = "translateX(-50%)";
     wallOfFameButton.addEventListener("click", function() {
-        // Rediriger vers la page du "Wall of Fame"
-        window.location.href = "src/wallOfFame.html"; // Remplacez "wall_of_fame.html" par l'URL de votre page
+        // Appeler la fonction pour afficher le "Wall of Fame"
+        displayWallOfFameWithOverlayImage();
     });
     gameOverDiv.appendChild(wallOfFameButton);
+
 
     // Créer un bouton pour revenir à la page d'accueil
     var homeButton = document.createElement("button");
@@ -94,6 +85,10 @@ function gameOver() {
     // Ajouter la div de fin de partie à la page
     document.body.appendChild(gameOverDiv);
 }
+
+
+
+
 
 
 
