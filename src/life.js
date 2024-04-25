@@ -23,6 +23,7 @@ function loseLife() {
 
 function gameOver() {
     console.log("GameOver !");
+    dead = true;
     
     // Supprimer le canevas du jeu
     c.parentNode.removeChild(c);
