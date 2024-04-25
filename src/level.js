@@ -7,7 +7,7 @@ function updateLevel(score) {
         level = 2;
         backgroundImage = backgroundImageLevel2;
         obstacle.img.src = "Sprites/GalacticDangers/Satélite-transformed.png";
-    } else if (score < 9000 ){
+    } else if (score < 13000 ){
         level = 3;
         backgroundImage = backgroundImageLevel3;
         obstacle.img.src = "Sprites/GalacticDangers/meteore.png";
