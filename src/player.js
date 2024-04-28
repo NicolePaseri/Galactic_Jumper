@@ -114,7 +114,7 @@ var player = new function() {
         }
         
         if (type === 0) {
-            if (powerup === "spring") {
+            if (powerup === "cloud") {
                 this.ySpeed = -20;
             } 
         }
