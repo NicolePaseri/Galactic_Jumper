@@ -1,5 +1,17 @@
-var c = document.createElement("canvas");
+var c = document.getElementById("gameCanvas");
+const background = document.getElementById("background");
+const walloffame = document.getElementById("WallOfFame");
+const homepage = document.getElementById("homePage");
+const rules = document.getElementById("Rules");
+const victory = document.getElementById("Victoy");
+
 var ctx = c.getContext("2d");
+var backgroundctx = background.getContext("2d");
+var walloffamectx = walloffame.getContext("2d");
+var homepagectx = homepage.getContext("2d");
+var rulesctx = rules.getContext("2d");
+var victoryctx = victory.getContext("2d");
+
 var screenWidth = 500;
 var screenHeight = 800;
 c.width = screenWidth;
@@ -39,7 +51,6 @@ backgroundImageGameOver.src = "Sprites/backgroundGameOver.png"
 backgroundImageLevel1.src = "Sprites/level1.png"; 
 backgroundImageLevel2.src = "Sprites/level2.png"; 
 backgroundImageLevel3.src = "Sprites/level3.png"; 
-
 
 // Time variables
 var fps = 60;
@@ -88,7 +99,6 @@ function resetGame() {
     level = 1;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
-    backgroundImage = backgroundImageLevel1;
 
     blocks.push(new block);
     blocks[0].x = 300;
@@ -145,10 +155,10 @@ function loop() {
         if (container.style.display !== 'none') {
             return; // Ne rien dessiner si la page d'accueil est affichée
         }
-
         level = updateLevel(score);
+        backgroundctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
                
-        ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
+        
 
         drawLives();
 
@@ -156,11 +166,12 @@ function loop() {
         // Mise à jour et affichage des blocs
         if (delta > interval) {
             ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
-        
-            // Affichage du fond d'écran en fonction du score
+            
             level = updateLevel(score);
+            // Affichage du fond d'écran en fonction du score
+            backgroundctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
 
-            ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
+            
         
             drawLives();
         
