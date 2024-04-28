@@ -85,5 +85,25 @@
     cursor: pointer;
 }
 
+#background {
+    position: absolute;
+        border: 3px solid white;
+        width: 800px;
+        height: 700px;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        z-index: 1; 
+}
+
+#gameCanvas {
+   
+        height: 100vh;       /* Hauteur équivalente à 100% de la hauteur de la fenêtre du navigateur */
+        position: absolute;  /* Positionnement absolu pour permettre le centrage */
+        left: 50%;           /* Décaler à 50% de la gauche de l'écran */
+        transform: translateX(-50%); /* Centrer horizontalement */
+        z-index: 2;          /* Plus haut z-index pour qu'il apparaisse au-dessus de l'arrière-plan */
+    
+}
 
  
