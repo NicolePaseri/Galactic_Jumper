@@ -1,6 +1,7 @@
 // Création des éléments de la page
 const body = document.body;
 const container = document.createElement('div');
+container.id = 'homepage' ;
 container.style.backgroundImage = "url('Sprites/fondecraninscription.png')"; 
 container.style.backgroundSize = '1920px 1080px';
 container.style.width = '1920px';

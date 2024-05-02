@@ -31,13 +31,10 @@ function gameOver() {
     var gameOverDiv = document.createElement("div");
     gameOverDiv.id = "game-over-div";
     gameOverDiv.style.backgroundImage = 'url("Sprites/MissionFailed.png")';
-    gameOverDiv.style.width = screenWidth + "px";
-    gameOverDiv.style.height = screenHeight + "px";
-    gameOverDiv.style.position = "absolute";
-    gameOverDiv.style.top = "0";
-    gameOverDiv.style.left = "0";
-    gameOverDiv.style.backgroundSize = "cover"; // Ajuste la taille de l'image pour remplir la div sans déformation
-    gameOverDiv.style.backgroundPosition = "center"; // Centre l'image dans la div
+    gameOverDiv.style.width = 1920 + "px";
+    gameOverDiv.style.height = 1080 + "px";
+    gameOverDiv.style.backgroundSize = "cover";
+  
     
 
     // Créer un bouton pour redémarrer le jeu
