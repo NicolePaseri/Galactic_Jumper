@@ -83,6 +83,19 @@ var player = new function() {
                         setTimeout(function(){isDesoriented = false;console.log("The desorientation finished");}, 5000) 
                     }
                 }
+                if (blocks[i].alien !== 0 && blocks[i].alien !== undefined) {
+                    if (this.x >= blocks[i].x - this.width + 15 && this.x <= blocks[i].x + blocks[i].width - 15 &&
+                        this.y >= blocks[i].y - blocks[i].height && this.y <= blocks[i].y + blocks[i].height) {
+                        
+                        // il faudrait afficher ici l'écran du kidnapping
+
+                        setTimeout(function() {
+                            // enlever ici l'écran du kidnapping
+                            // ajouter quelque part le drag&drop du player
+                            }, 3000);
+                        score = 3000;
+                    }
+                }
             }
         }
 
