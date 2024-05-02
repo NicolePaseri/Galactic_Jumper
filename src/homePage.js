@@ -1,4 +1,5 @@
 // Création des éléments de la page
+
 const body = document.body;
 const container = document.createElement('div');
 container.id = 'homepage' ;
@@ -20,7 +21,6 @@ const rulesButton = document.createElement('button');
 rulesButton.textContent = 'Rules of Galactic Jumper';
 rulesButton.style.marginBottom = '10px';
 rulesButton.addEventListener('click', function() {
-    console.log("Bouton 'Rules of Galactic Jumper' cliqué");
     showRules();
 });
 
@@ -32,7 +32,6 @@ startButton.addEventListener('click', () => {
         // Masquer la page d'accueil lorsque le jeu commence
         container.style.display = 'none';
         
-        // Tu peux ajouter ici la logique pour commencer à jouer avec le username entré
         console.log(`Starting to play with ${username}`);
         resetGame();
     } else {

@@ -13,7 +13,7 @@ function updateLevel(score) {
         obstacle.img.src = "Sprites/GalacticDangers/meteore.png";
     } else {
         level = 4;
-        win();
+        gameWon();
     }
 
     return level;

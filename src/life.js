@@ -9,17 +9,18 @@ function drawLives() {
 }
 
 function loseLife() {
-    if(canLoseLife) {
+    if (canLoseLife) {
         lives--; 
         canLoseLife = false;
         isBlinking = true;
         console.log("You lose a life");
         if (lives <= 0) {
-            gameOver();
+            gameOver(playerScore); // Passer le score du joueur à gameOver()
         }
-        setTimeout(function(){canLoseLife = true; isBlinking = false;}, 2000)    
+        setTimeout(function(){canLoseLife = true; isBlinking = false;}, 2000);    
     }
 }
+
 
 
 
