@@ -23,6 +23,7 @@ function loseLife() {
 
 function gameOver() {
     console.log("GameOver !");
+    dead = true;
     
     // Supprimer le canevas du jeu
     c.parentNode.removeChild(c);
@@ -48,46 +49,30 @@ function gameOver() {
     restartButton.style.left = "50%";
     restartButton.style.transform = "translateX(-50%)";
     restartButton.addEventListener("click", function() {
-        // Recharger la page pour redémarrer le jeu
-        location.reload();
+        // Appeler la fonction resetGame pour redémarrer le jeu
+        resetGame();
+        // Supprimer la div de fin de partie après le redémarrage du jeu
+        document.body.removeChild(gameOverDiv);
     });
     gameOverDiv.appendChild(restartButton);
-    
-    // Créer un bouton pour accéder au "Wall of Fame"
-    var wallOfFameButton = document.createElement("button");
-    wallOfFameButton.textContent = "Wall of Fame";
-    wallOfFameButton.style.fontSize = "20px";
-    wallOfFameButton.style.position = "absolute";
-    wallOfFameButton.style.top = "70%";
-    wallOfFameButton.style.left = "50%";
-    wallOfFameButton.style.transform = "translateX(-50%)";
-    wallOfFameButton.addEventListener("click", function() {
-        // Appeler la fonction pour afficher le "Wall of Fame"
-        displayWallOfFameWithOverlayImage();
-    });
-    gameOverDiv.appendChild(wallOfFameButton);
-
 
     // Créer un bouton pour revenir à la page d'accueil
     var homeButton = document.createElement("button");
     homeButton.textContent = "Home";
     homeButton.style.fontSize = "20px";
     homeButton.style.position = "absolute";
-    homeButton.style.top = "80%";
+    homeButton.style.top = "70%";
     homeButton.style.left = "50%";
     homeButton.style.transform = "translateX(-50%)";
     homeButton.addEventListener("click", function() {
         // Rediriger vers la page d'accueil
-        location.reload(); // Remplacez "home.html" par l'URL de votre page d'accueil
+        // Insérez ici le code pour rediriger vers la page d'accueil de votre jeu
     });
     gameOverDiv.appendChild(homeButton);
 
     // Ajouter la div de fin de partie à la page
     document.body.appendChild(gameOverDiv);
 }
-
-
-
 
 
 

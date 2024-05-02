@@ -83,6 +83,7 @@ function showScore() {
 }
 
 function resetGame() {
+    // Réinitialiser les variables du jeu
     blocks = [];
     lowestBlock = 0;
     difficulty = 0;
@@ -98,17 +99,24 @@ function resetGame() {
     blocks[0].obstacle = 0;
     blocks[0].particule = 0;
     blocks[0].alien = 0;
-    blocks[0].blackHole=0;
+    blocks[0].blackHole = 0;
     blocks[0].type = 0;
     blocks[0].powerup = 0;
 
     blockSpawner();
-    
+
     player.x = 300;
     player.y = 550;
 
     dead = false;
+
+    // Effacer la div de fin de partie s'il existe
+    var gameOverDiv = document.getElementById("game-over-div");
+    if (gameOverDiv) {
+        gameOverDiv.parentNode.removeChild(gameOverDiv);
+    }
 }
+
 
 // Collision
 
