@@ -23,5 +23,15 @@ function loseLife() {
 
 
 
+    var gameOverDiv = document.createElement("div");
+    gameOverDiv.id = "game-over-div";
+    gameOverDiv.style.backgroundImage = 'url("Sprites/MissionFailed.png")';
+    gameOverDiv.style.width = 1920 + "px";
+    gameOverDiv.style.height = 1080 + "px";
+    gameOverDiv.style.backgroundSize = "cover";
+  
+    
+
+
 
 
