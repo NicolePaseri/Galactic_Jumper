@@ -1,16 +1,8 @@
 var c = document.getElementById("gameCanvas");
 const background = document.getElementById("background");
-const walloffame = document.getElementById("WallOfFame");
-const homepage = document.getElementById("homePage");
-const rules = document.getElementById("Rules");
-const victory = document.getElementById("Victoy");
 
 var ctx = c.getContext("2d");
 var backgroundctx = background.getContext("2d");
-var walloffamectx = walloffame.getContext("2d");
-var homepagectx = homepage.getContext("2d");
-var rulesctx = rules.getContext("2d");
-var victoryctx = victory.getContext("2d");
 
 var screenWidth = 500;
 var screenHeight = 800;
