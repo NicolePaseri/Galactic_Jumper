@@ -1,5 +1,5 @@
 var c = document.getElementById("gameCanvas");
-const background = document.getElementById("background");
+var background = document.getElementById("background");
 
 var ctx = c.getContext("2d");
 var backgroundctx = background.getContext("2d");
@@ -8,6 +8,11 @@ var screenWidth = 500;
 var screenHeight = 800;
 c.width = screenWidth;
 c.height = screenHeight;
+
+var screenHeightBackground = 1080;
+var screenWidthBackground = 1920;
+background.width = screenWidthBackground;
+background.height = screenHeightBackground;
 
 document.body.appendChild(c);
 
@@ -38,7 +43,7 @@ var backgroundImageLevel1 = new Image();
 var backgroundImageLevel2 = new Image();
 var backgroundImageLevel3 = new Image();
 backgroundImageWin.src = "Sprites/backgroundWin.png";
-backgroundImageLevel1.src = "Sprites/level1.png"; 
+backgroundImageLevel1.src = "Sprites/backgroundRules.png"; 
 backgroundImageLevel2.src = "Sprites/level2.png"; 
 backgroundImageLevel3.src = "Sprites/level3.png"; 
 
@@ -128,7 +133,7 @@ function loop() {
             return; // Ne rien dessiner si la page d'accueil est affichée
         }
         level = updateLevel(score);
-        backgroundctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
+        backgroundctx.drawImage(backgroundImage, 0, 0, screenWidthBackground, screenHeightBackground);
 
         drawLives();
 
@@ -138,7 +143,7 @@ function loop() {
             
             level = updateLevel(score);
             // Affichage du fond d'écran en fonction du score
-            backgroundctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
+            backgroundctx.drawImage(backgroundImage, 0, 0, screenWidthBackground, screenHeightBackground);
          // choisir quand est ce que la win page s'affiche
             drawLives();
         
