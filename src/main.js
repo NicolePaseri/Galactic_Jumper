@@ -141,7 +141,7 @@ function loop() {
             backgroundctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
          // choisir quand est ce que la win page s'affiche
             drawLives();
-            if (score >= 10000) {
+            if (score >= 300) {
                 gameWon();
                 return; // Sortir de la boucle de jeu car le jeu est terminé
             }

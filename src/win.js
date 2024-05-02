@@ -17,7 +17,7 @@ function gameWon() {
     playAgainButton.textContent = "Play Again";
     playAgainButton.style.fontSize = "20px";
     playAgainButton.style.position = "absolute";
-    playAgainButton.style.top = "60%";
+    playAgainButton.style.top = "50%";
     playAgainButton.style.left = "50%";
     playAgainButton.style.transform = "translateX(-50%)";
     playAgainButton.addEventListener("click", function() {
@@ -33,7 +33,7 @@ function gameWon() {
     homeButton.textContent = "Home";
     homeButton.style.fontSize = "20px";
     homeButton.style.position = "absolute";
-    homeButton.style.top = "70%";
+    homeButton.style.top = "60%";
     homeButton.style.left = "50%";
     homeButton.style.transform = "translateX(-50%)";
     homeButton.addEventListener("click", function() {
@@ -47,7 +47,7 @@ function gameWon() {
     wallOfFameButton.textContent = "Wall of Fame";
     wallOfFameButton.style.fontSize = "20px";
     wallOfFameButton.style.position = "absolute";
-    wallOfFameButton.style.top = "80%";
+    wallOfFameButton.style.top = "70%";
     wallOfFameButton.style.left = "50%";
     wallOfFameButton.style.transform = "translateX(-50%)";
     wallOfFameButton.addEventListener("click", function() {
