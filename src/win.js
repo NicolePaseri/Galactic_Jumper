@@ -37,8 +37,7 @@ function gameWon() {
     homeButton.style.left = "50%";
     homeButton.style.transform = "translateX(-50%)";
     homeButton.addEventListener("click", function() {
-        // Rediriger vers la page d'accueil
-        // Insérez ici le code pour rediriger vers la page d'accueil de votre jeu
+        location.reload();
     });
     winScreenDiv.appendChild(homeButton);
 
@@ -51,8 +50,7 @@ function gameWon() {
     wallOfFameButton.style.left = "50%";
     wallOfFameButton.style.transform = "translateX(-50%)";
     wallOfFameButton.addEventListener("click", function() {
-        // Rediriger vers la page d'accueil
-        // Insérez ici le code pour rediriger vers la page d'accueil de votre jeu
+        showWallOfFame();
     });
     winScreenDiv.appendChild(wallOfFameButton);
 

@@ -1,5 +1,5 @@
 function showRules() {
-    var rulesDiv = document.createElement("div");
+    var rulesDiv = document.createElement("rules");
     rulesDiv.id = "rules-div";
     rulesDiv.style.backgroundImage = 'url("Sprites/backgroundRules.png")'; // Changer le chemin d'accès à votre image de règles
     rulesDiv.style.width = "1920px";
@@ -21,6 +21,19 @@ function showRules() {
     rulesContent.style.transform = "translate(-50%, -50%)";
     rulesContent.style.textAlign = "center";
     rulesDiv.appendChild(rulesContent);
+
+     // Créer un bouton pour revenir à la page d'accueil
+     var homeButton = document.createElement("button");
+     homeButton.textContent = "Home";
+     homeButton.style.fontSize = "20px";
+     homeButton.style.position = "absolute";
+     homeButton.style.top = "70%";
+     homeButton.style.left = "50%";
+     homeButton.style.transform = "translateX(-50%)";
+     homeButton.addEventListener("click", function() {
+         location.reload();
+     });
+     rulesDiv.appendChild(homeButton);
 
     // Ajouter la div des règles à la page
     document.body.appendChild(rulesDiv);
