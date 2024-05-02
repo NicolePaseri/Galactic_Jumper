@@ -7,8 +7,8 @@ function displayWallOfFameWithOverlayImage() {
     overlayImage.style.position = 'absolute';
     overlayImage.style.top = '0';
     overlayImage.style.left = '0';
-    overlayImage.style.width = '500px';
-    overlayImage.style.height = '800px';
+    overlayImage.style.width = '1920px';
+    overlayImage.style.height = '1080px';
     overlayImage.style.zIndex = '999'; // Assurez-vous que l'image est au-dessus de tous les autres éléments
 
     // Ajouter l'image superposée à la page

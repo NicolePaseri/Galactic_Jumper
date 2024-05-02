@@ -1,22 +1,5 @@
 
-/* Styles spécifiques au formulaire d'inscription */
-.inscription-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 530px; /* Moitié de la largeur de l'écran */
-    height: 110vh; /* Hauteur de l'écran */
-    background-image: url('Sprites/fondecraninscription.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .inscription-container h1 {
     font-size: 24px;
