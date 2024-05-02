@@ -2,6 +2,8 @@ function gameOver() {
     console.log("GameOver !");
     dead = true;
     
+    localStorage.setItem("lastScore", score);
+    
     // Supprimer le canevas du jeu
     c.parentNode.removeChild(c);
 
