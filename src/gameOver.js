@@ -15,7 +15,7 @@ function gameOver() {
 
     // Créer un bouton pour redémarrer le jeu
     var restartButton = document.createElement("button");
-    restartButton.textContent = "Restart";
+    restartButton.textContent = "Play Again";
     restartButton.style.fontSize = "20px";
     restartButton.style.position = "absolute";
     restartButton.style.top = "60%";
