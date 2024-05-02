@@ -37,6 +37,7 @@ startButton.addEventListener('click', () => {
         
         // Tu peux ajouter ici la logique pour commencer à jouer avec le username entré
         console.log(`Starting to play with ${username}`);
+        resetGame();
     } else {
         alert('You must enter a username to play');
     }

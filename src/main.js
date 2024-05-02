@@ -24,7 +24,7 @@ var difficulty = 0;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
-let lives = 15;
+var lives = 15;
 var canLoseLife = true;
 var isBlinking = false;
 var isDesoriented = false; 
@@ -83,7 +83,12 @@ function showScore() {
 }
 
 function resetGame() {
+
+    document.body.appendChild(c);
     // Réinitialiser les variables du jeu
+
+    dead = false;
+
     blocks = [];
     lowestBlock = 0;
     difficulty = 0;
@@ -92,6 +97,9 @@ function resetGame() {
     level = 1;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
+    
+    player.x = 300;
+    player.y = 550;
 
     blocks.push(new block);
     blocks[0].x = 300;
@@ -105,16 +113,7 @@ function resetGame() {
 
     blockSpawner();
 
-    player.x = 300;
-    player.y = 550;
-
-    dead = false;
-
-    // Effacer la div de fin de partie s'il existe
-    var gameOverDiv = document.getElementById("game-over-div");
-    if (gameOverDiv) {
-        gameOverDiv.parentNode.removeChild(gameOverDiv);
-    }
+    loop();
 }
 
 
@@ -128,19 +127,6 @@ function collisionWithPlayer(block) {
         player.y + player.height > block.y
     );
 }
-
-blocks.push(new block);
-blocks[0].x = 300;
-blocks[0].y = 650;
-blocks[0].obstacle = 0;
-blocks[0].particule = 0;
-blocks[0].alien = 0;
-blocks[0].blackHole=0;
-blocks[0].type = 0;
-blocks[0].powerup = 0;
-
-blockSpawner();
-
 
 function loop() {
     requestAnimationFrame(loop);
@@ -194,4 +180,4 @@ function loop() {
         }
     }
 }
-    loop();
+
