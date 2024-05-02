@@ -2,9 +2,9 @@
 const body = document.body;
 const container = document.createElement('div');
 container.style.backgroundImage = "url('Sprites/fondecraninscription.png')"; 
-container.style.backgroundSize = '500px 800px';
-container.style.width = '500px';
-container.style.height = '800px';
+container.style.backgroundSize = '1920px 1080px';
+container.style.width = '1920px';
+container.style.height = '1080px';
 container.style.display = 'flex';
 container.style.flexDirection = 'column';
 container.style.alignItems = 'center';
