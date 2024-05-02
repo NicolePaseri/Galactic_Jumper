@@ -1,4 +1,3 @@
-// Création de la classe WallOfFame
 class WallOfFame {
     constructor() {
         this.container = document.createElement("div");
@@ -37,8 +36,30 @@ class WallOfFame {
         });
         this.container.appendChild(homeButton);
 
+        // Appel de la méthode pour afficher le contenu du Wall of Fame
+        this.displayWallOfFameContent();
+
         // Ajouter le conteneur du Wall of Fame à la page
         document.body.appendChild(this.container);
+    }
+
+    displayWallOfFameContent() {
+        // Récupérer le score enregistré dans le stockage local
+        const lastScore = localStorage.getItem("lastScore");
+
+        // Créer un paragraphe pour afficher le score
+        const scoreParagraph = document.createElement("p");
+        scoreParagraph.textContent = "Last Score: " + lastScore;
+        scoreParagraph.style.fontSize = "24px";
+        scoreParagraph.style.color = "white";
+        scoreParagraph.style.position = "absolute";
+        scoreParagraph.style.top = "40%";
+        scoreParagraph.style.left = "50%";
+        scoreParagraph.style.transform = "translate(-50%, -50%)";
+        scoreParagraph.style.textAlign = "center";
+
+        // Ajouter le paragraphe au contenu du Wall of Fame
+        this.container.appendChild(scoreParagraph);
     }
 }
 
