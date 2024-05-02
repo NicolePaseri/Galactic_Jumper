@@ -34,12 +34,10 @@ var blocks = [];
 var powerups = [];
 var backgroundImage = new Image();
 var backgroundImageWin = new Image();
-var backgroundImageGameOver = new Image();
 var backgroundImageLevel1 = new Image();
 var backgroundImageLevel2 = new Image();
 var backgroundImageLevel3 = new Image();
 backgroundImageWin.src = "Sprites/backgroundWin.png";
-backgroundImageGameOver.src = "Sprites/backgroundGameOver.png"
 backgroundImageLevel1.src = "Sprites/level1.png"; 
 backgroundImageLevel2.src = "Sprites/level2.png"; 
 backgroundImageLevel3.src = "Sprites/level3.png"; 
@@ -116,18 +114,6 @@ function resetGame() {
     loop();
 }
 
-
-// Collision
-
-function collisionWithPlayer(block) {
-    return (
-        player.x < block.x + block.width &&
-        player.x + player.width > block.x &&
-        player.y < block.y + block.height &&
-        player.y + player.height > block.y
-    );
-}
-
 function loop() {
     requestAnimationFrame(loop);
 
@@ -143,11 +129,8 @@ function loop() {
         }
         level = updateLevel(score);
         backgroundctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
-               
-        
 
         drawLives();
-
 
         // Mise à jour et affichage des blocs
         if (delta > interval) {
@@ -156,8 +139,6 @@ function loop() {
             level = updateLevel(score);
             // Affichage du fond d'écran en fonction du score
             backgroundctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight);
-
-            
         
             drawLives();
         
