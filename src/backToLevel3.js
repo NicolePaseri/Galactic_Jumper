@@ -60,7 +60,8 @@ function showBackToLevel3() {
     setTimeout(function() {
         backToLevel3.removeBackToLevel3Frame();
     }, 3000); // Remove the frame after 3 seconds
-    score = 3000;
+    yDistanceTravelled = 3000;
+    showScore();
 }
 
 
