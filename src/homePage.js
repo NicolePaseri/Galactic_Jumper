@@ -29,6 +29,9 @@ startButton.textContent = 'Starting to play';
 startButton.addEventListener('click', () => {
     const username = input.value;
     if (username.trim() !== '') {
+        // Enregistrer le nom d'utilisateur dans le stockage local
+        localStorage.setItem("username", username);
+        
         // Masquer la page d'accueil lorsque le jeu commence
         container.style.display = 'none';
         
@@ -38,7 +41,6 @@ startButton.addEventListener('click', () => {
         alert('You must enter a username to play');
     }
 });
-
 // Ajout des éléments à la page
 container.appendChild(input);
 container.appendChild(rulesButton);

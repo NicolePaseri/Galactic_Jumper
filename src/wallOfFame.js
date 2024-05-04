@@ -1,5 +1,8 @@
 class WallOfFame {
     constructor() {
+        // Récupérer le nom d'utilisateur depuis le stockage local
+        const username = localStorage.getItem("username");
+        
         this.container = document.createElement("div");
         this.container.id = "wall-of-fame-container";
         this.container.style.backgroundImage = 'url("Sprites/wallOfFame.png")'; // Changer le chemin d'accès à votre image de fond
@@ -11,17 +14,28 @@ class WallOfFame {
         this.container.style.left = "0";
         this.container.style.zIndex = "9999"; // Assurer que le Wall of Fame apparaît au-dessus de la page d'accueil
 
-        // Ajouter le contenu du Wall of Fame
-        const wallOfFameContent = document.createElement("p");
-        wallOfFameContent.textContent = "Wall of Fame Content"; // Remplacez par le contenu du Wall of Fame
-        wallOfFameContent.style.fontSize = "24px";
-        wallOfFameContent.style.color = "white";
-        wallOfFameContent.style.position = "absolute";
-        wallOfFameContent.style.top = "50%";
-        wallOfFameContent.style.left = "50%";
-        wallOfFameContent.style.transform = "translate(-50%, -50%)";
-        wallOfFameContent.style.textAlign = "center";
-        this.container.appendChild(wallOfFameContent);
+        // Créer un paragraphe pour afficher le nom d'utilisateur et le score
+        const userScoreParagraph = document.createElement("p");
+        userScoreParagraph.textContent = `Player: ${username}`;
+        userScoreParagraph.style.fontSize = "24px";
+        userScoreParagraph.style.color = "white";
+        userScoreParagraph.style.position = "absolute";
+        userScoreParagraph.style.top = "40%";
+        userScoreParagraph.style.left = "50%";
+        userScoreParagraph.style.transform = "translate(-50%, -50%)";
+        userScoreParagraph.style.textAlign = "center";
+        this.container.appendChild(userScoreParagraph);
+
+        // Créer un paragraphe pour afficher le score
+        this.scoreParagraph = document.createElement("p");
+        this.scoreParagraph.style.fontSize = "24px";
+        this.scoreParagraph.style.color = "white";
+        this.scoreParagraph.style.position = "absolute";
+        this.scoreParagraph.style.top = "50%";
+        this.scoreParagraph.style.left = "50%";
+        this.scoreParagraph.style.transform = "translate(-50%, -50%)";
+        this.scoreParagraph.style.textAlign = "center";
+        this.container.appendChild(this.scoreParagraph);
 
         // Créer un bouton pour revenir à la page d'accueil
         const homeButton = document.createElement("button");
@@ -47,19 +61,8 @@ class WallOfFame {
         // Récupérer le score enregistré dans le stockage local
         const lastScore = localStorage.getItem("lastScore");
 
-        // Créer un paragraphe pour afficher le score
-        const scoreParagraph = document.createElement("p");
-        scoreParagraph.textContent = "Last Score: " + lastScore;
-        scoreParagraph.style.fontSize = "24px";
-        scoreParagraph.style.color = "white";
-        scoreParagraph.style.position = "absolute";
-        scoreParagraph.style.top = "40%";
-        scoreParagraph.style.left = "50%";
-        scoreParagraph.style.transform = "translate(-50%, -50%)";
-        scoreParagraph.style.textAlign = "center";
-
-        // Ajouter le paragraphe au contenu du Wall of Fame
-        this.container.appendChild(scoreParagraph);
+        // Afficher le score dans le paragraphe approprié
+        this.scoreParagraph.textContent = "Last Score: " + lastScore;
     }
 }
 

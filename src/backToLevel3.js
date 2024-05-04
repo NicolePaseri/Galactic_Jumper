@@ -2,7 +2,7 @@ class BackToLevel3 {
     constructor() {
         this.container = document.createElement("div");
         this.container.id = "back-to-level-3-container";
-        this.container.style.backgroundImage = 'url("Sprites/wallOfFame.png")'; // Changer le chemin d'accès à votre image de fond
+        this.container.style.backgroundImage = 'url("Sprites/AlienBackGround.png")'; // Changer le chemin d'accès à votre image de fond
         this.container.style.width = "1920px";
         this.container.style.height = "1080px";
         this.container.style.backgroundSize = "cover";

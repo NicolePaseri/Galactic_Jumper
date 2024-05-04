@@ -103,6 +103,7 @@ html, body {
 }
 
 #win-screen-div {
+    
     height: 100vh;
     position: absolute;
     left: 50%;
