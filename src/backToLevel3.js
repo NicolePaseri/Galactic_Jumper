@@ -61,6 +61,7 @@ function showBackToLevel3() {
         backToLevel3.removeBackToLevel3Frame();
     }, 3000); // Remove the frame after 3 seconds
     yDistanceTravelled = 3000;
+    score = 3000;
     showScore();
 }
 
