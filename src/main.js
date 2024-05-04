@@ -43,7 +43,7 @@ var backgroundImageLevel1 = new Image();
 var backgroundImageLevel2 = new Image();
 var backgroundImageLevel3 = new Image();
 backgroundImageWin.src = "Sprites/backgroundWin.png";
-backgroundImageLevel1.src = "Sprites/backgroundRules.png"; 
+backgroundImageLevel1.src = "Sprites/level1.png"; 
 backgroundImageLevel2.src = "Sprites/level2.png"; 
 backgroundImageLevel3.src = "Sprites/level3.png"; 
 
