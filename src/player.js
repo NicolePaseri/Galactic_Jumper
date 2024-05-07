@@ -22,7 +22,7 @@ var player = new function() {
             } else {
                 this.y += this.ySpeed;
             }
-            yDistanceTravelled -= this.ySpeed;
+            yDistanceTravelled -= this.ySpeed * 30;
     
             // Collision avec les trous noirs
             for (var i = 0; i < blocks.length; i++) {
