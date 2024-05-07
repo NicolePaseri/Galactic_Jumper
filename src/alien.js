@@ -2,7 +2,7 @@
 function spawnAlien() {
     // gère les chances d'avoir des aliens
     var alienChances = {
-        "alien": 30
+        "alien": 60
     };
 
     // Génère un nombre aléatoire et vérifie s'il correspond aux chances d'avoir un alien

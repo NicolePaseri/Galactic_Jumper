@@ -30,7 +30,7 @@ function blockSpawner() {
             // Génération de la puissance spéciale du bloc (si le bloc n'est pas cassant)
            // Génération de la puissance spéciale du bloc (si le bloc n'est pas cassant)
 if (blocks[i].type === 0) {
-    blocks[i].powerup = spawnPowerup(); // Détermination de la puissance spéciale du bloc
+    blocks[i].powerup = spawnPowerup(level); // Détermination de la puissance spéciale du bloc
     // Si aucune puissance spéciale n'est générée, détermine s'il y aura un oiseau, une particule ou un trou noir
     if (blocks[i].powerup === 0) {
         blocks[i].obstacle = spawnObstacle(); // Détermine s'il y aura un oiseau sur le bloc
@@ -39,11 +39,11 @@ if (blocks[i].type === 0) {
                 blocks[i].particule = spawnParticule(); // Détermine s'il y aura une particule sur le bloc si le niveau est 2
             }
             if (level === 3){
-            blocks[i].alien = spawnAlien(); // Détermine s'il y aura un alien sur le bloc
-            if (blocks[i].alien === 0) {
-                blocks[i].blackHole = spawnBlackHole(); // Détermine s'il y aura un trou noir sur le bloc
+                blocks[i].alien = spawnAlien(); // Détermine s'il y aura un alien sur le bloc
+                    if (blocks[i].alien === 0) {
+                    blocks[i].blackHole = spawnBlackHole(); // Détermine s'il y aura un trou noir sur le bloc
+                }
             }
-        }
         }
     }
 }
@@ -54,13 +54,13 @@ blocks[i].x = Math.random() * (screenWidth - blocks[i].width);
 
 // Détermination de la position verticale du bloc en fonction du type de bloc précédent et de la présence d'oiseau, d'alien ou de trou noir
 if (blocks[i].type === "break" || blocks[i - 1].type === "break") {
-    blocks[i].y = (blocks[i - 1].y) - (((Math.random() * (5 + (difficulty * 25))) + 30) / 2); // Positionnement pour les blocs cassants
+    blocks[i].y = (blocks[i - 1].y) - (((Math.random() * difficulty) + 30) / 2); // Positionnement pour les blocs cassants
 } else if (blocks[i].obstacle !== 0 || blocks[i].particule !== 0 || blocks[i].alien !== 0 || blocks[i].blackHole !== 0) {
-    blocks[i].y = (blocks[i - 1].y) - ((Math.random() * (5 + (difficulty * 25))) + 50); // Positionnement pour les blocs avec oiseau, particule, alien ou trou noir
+    blocks[i].y = (blocks[i - 1].y) - ((Math.random() * difficulty) + 50); // Positionnement pour les blocs avec oiseau, particule, alien ou trou noir
 } else if (blocks[i - 1].obstacle !== 0 || blocks[i - 1].particule !== 0 || blocks[i - 1].alien !== 0 || blocks[i - 1].blackHole !== 0) {
-    blocks[i].y = (blocks[i - 1].y) - ((Math.random() * (5 + (difficulty * 25))) + 50); // Positionnement pour les blocs avec oiseau, particule, alien ou trou noir précédent
+    blocks[i].y = (blocks[i - 1].y) - ((Math.random() * difficulty)+ 50); // Positionnement pour les blocs avec oiseau, particule, alien ou trou noir précédent
 } else {
-    blocks[i].y = (blocks[i - 1].y) - ((Math.random() * (80 + (difficulty * 25))) + 100); // Positionnement pour les autres types de blocs
+    blocks[i].y = (blocks[i - 1].y) - ((Math.random() * (difficulty * 5)) + 100); // Positionnement pour les autres types de blocs
 }
         }
     }
