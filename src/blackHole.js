@@ -2,7 +2,7 @@
 function spawnBlackHole() {
     // Gère les chances d'avoir des trous noirs
     var blackHoleChances = {
-        "blackHole": 50
+        "blackHole": 10
     };
 
     // Génère un nombre aléatoire et vérifie s'il correspond aux chances d'avoir un trou noir
