@@ -111,28 +111,26 @@ if (this.x > screenWidth) {
 }
 
         }else if (level === 3) {
-           // Définition des variables
-var startY = 0; // Position de départ sur l'axe des y
-var speedY = 1; // Vitesse verticale
-var time = Date.now(); // Utilisation du temps comme paramètre pour le mouvement diagonal
+            // Mouvement de haut en bas en diagonale pour le niveau 3
+            if (this.direction === "downRight") {
+                this.x += 1;
+                this.y += 1;
+                this.moveTime -= 1;
 
-// Mouvement de haut en bas en diagonale
-if (this.direction === "downRight") {
-    this.x += 1;
-    this.y += 1;
-} else {
-    this.x -= 1;
-    this.y -= 1;
-}
+                if (this.moveTime === 0) {
+                    this.direction = "upLeft";
+                    this.moveTime = 50;
+                }
+            } else {
+                this.x -= 1;
+                this.y -= 1;
+                this.moveTime -= 1;
 
-// Mise à jour de la position verticale de l'objet
-this.y += speedY;
-
-// Vérification si l'objet est sorti de l'écran en bas
-if (this.y > screenHeight) {
-    // Réinitialisation de la position en haut de l'écran
-    this.y = startY;
-}
+                if (this.moveTime === 0) {
+                    this.direction = "downRight";
+                    this.moveTime = 50;
+                }
+            }
         }
     }
 }
