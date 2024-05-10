@@ -16,13 +16,6 @@ const input = document.createElement('input');
 input.placeholder = 'Enter your username';
 input.style.marginBottom = '10px';
 
-const rulesButton = document.createElement('button');
-rulesButton.textContent = 'Rules of Galactic Jumper';
-rulesButton.style.marginBottom = '10px';
-rulesButton.addEventListener('click', function() {
-    showRules();
-});
-
 const startButton = document.createElement('button');
 startButton.textContent = 'Starting to play';
 startButton.addEventListener('click', () => {
@@ -39,7 +32,31 @@ startButton.addEventListener('click', () => {
     } else {
         alert('You must enter a username to play');
     }
+
+    // Récupération de la localisation une fois que l'utilisateur a cliqué sur "Starting to play"
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+          
+            // Utilisez les coordonnées ici, par exemple :
+            console.log("Latitude :", latitude);
+            console.log("Longitude :", longitude);
+        });
+    } else {
+        console.log("La géolocalisation n'est pas prise en charge par ce navigateur.");
+    }
 });
+
+
+const rulesButton = document.createElement('button');
+rulesButton.textContent = 'Rules of Galactic Jumper';
+rulesButton.style.marginBottom = '10px';
+rulesButton.addEventListener('click', function() {
+    showRules();
+});
+
+
 
 // Création du bouton de pause
 const pauseButton = document.createElement('button');
