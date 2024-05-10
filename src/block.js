@@ -61,29 +61,31 @@ this.draw = function() {
 }
 
 
-    this.update = function() {
-        if (this.type === "sideways") {
-            if (this.x >= screenWidth - this.width) {
-                this.direction = "left";
-            } else if (this.x <= 0) {
-                this.direction = "right";
-            }
-
-            if (this.direction === "right") {
-                this.x += 2.5;
-            } else {
-                this.x -= 2.5;
-            }
+this.update = function() {
+    if (this.type === "sideways") {
+        if (this.x >= screenWidth - this.width) {
+            this.direction = "left";
+        } else if (this.x <= 0) {
+            this.direction = "right";
         }
 
-        if (this.obstacle === "obstacle") {
+        if (this.direction === "right") {
+            this.x += 2.5;
+        } else {
+            this.x -= 2.5;
+        }
+    }
+
+    if (this.obstacle === "obstacle") {
+        if (level === 1) {
+            // Mouvement de gauche à droite pour le niveau 1
             if (this.direction === "right") {
                 this.x += 1;
                 this.moveTime -= 1;
 
                 if (this.moveTime === 0) {
                     this.direction = "left";
-                    this.moveTime = 25;
+                    this.moveTime = 40;
                 }
             } else {
                 this.x -= 1;
@@ -91,9 +93,48 @@ this.draw = function() {
 
                 if (this.moveTime === 0) {
                     this.direction = "right";
-                    this.moveTime = 25;
+                    this.moveTime = 40;
                 }
             }
+        } else if (level === 2) {
+           // Définition des variables
+var startX = 0; // Position de départ sur l'axe des x
+var speedX = 2; // Vitesse horizontale
+
+// Mise à jour de la position horizontale de l'objet
+this.x += speedX;
+
+// Vérification si l'objet est sorti de l'écran à droite
+if (this.x > screenWidth) {
+    // Réinitialisation de la position à gauche de l'écran
+    this.x = startX;
+}
+
+        }else if (level === 3) {
+           // Définition des variables
+var startY = 0; // Position de départ sur l'axe des y
+var speedY = 1; // Vitesse verticale
+var time = Date.now(); // Utilisation du temps comme paramètre pour le mouvement diagonal
+
+// Mouvement de haut en bas en diagonale
+if (this.direction === "downRight") {
+    this.x += 1;
+    this.y += 1;
+} else {
+    this.x -= 1;
+    this.y -= 1;
+}
+
+// Mise à jour de la position verticale de l'objet
+this.y += speedY;
+
+// Vérification si l'objet est sorti de l'écran en bas
+if (this.y > screenHeight) {
+    // Réinitialisation de la position en haut de l'écran
+    this.y = startY;
+}
         }
     }
+}
+
 }
