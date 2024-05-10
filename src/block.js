@@ -79,23 +79,19 @@ this.update = function() {
     if (this.obstacle === "obstacle") {
         if (level === 1) {
             // Mouvement de gauche à droite pour le niveau 1
-            if (this.direction === "right") {
-                this.x += 1;
-                this.moveTime -= 1;
+            // Définition des variables
+var startX = 0; // Position de départ sur l'axe des x
+var speedX = 2; // Vitesse horizontale
 
-                if (this.moveTime === 0) {
-                    this.direction = "left";
-                    this.moveTime = 40;
-                }
-            } else {
-                this.x -= 1;
-                this.moveTime -= 1;
+// Mise à jour de la position horizontale de l'objet
+this.x -= speedX; // Modification pour aller dans l'autre sens
 
-                if (this.moveTime === 0) {
-                    this.direction = "right";
-                    this.moveTime = 40;
-                }
-            }
+// Vérification si l'objet est sorti de l'écran à gauche
+if (this.x < 0) { // Changement de la condition pour vérifier si l'objet sort à gauche
+    // Réinitialisation de la position à droite de l'écran
+    this.x = screenWidth;
+}
+
         } else if (level === 2) {
            // Définition des variables
 var startX = 0; // Position de départ sur l'axe des x
@@ -111,28 +107,29 @@ if (this.x > screenWidth) {
 }
 
         }else if (level === 3) {
-            // Mouvement de haut en bas en diagonale pour le niveau 3
-            if (this.direction === "downRight") {
-                this.x += 1;
-                this.y += 1;
-                this.moveTime -= 1;
+           // Mouvement de haut en bas en diagonale pour le niveau 3
+if (this.direction === "downRight") {
+    this.x -= 1; // Changement de direction pour aller vers la gauche
+    this.y -= 1; // Changement de direction pour aller vers le haut
+    this.moveTime -= 1;
 
-                if (this.moveTime === 0) {
-                    this.direction = "upLeft";
-                    this.moveTime = 50;
-                }
-            } else {
-                this.x -= 1;
-                this.y -= 1;
-                this.moveTime -= 1;
+    if (this.moveTime === 0) {
+        this.direction = "upLeft";
+        this.moveTime = 50;
+    }
+} else {
+    this.x += 1; // Changement de direction pour aller vers la droite
+    this.y += 1; // Changement de direction pour aller vers le bas
+    this.moveTime -= 1;
 
-                if (this.moveTime === 0) {
-                    this.direction = "downRight";
-                    this.moveTime = 50;
-                }
-            }
-        }
+    if (this.moveTime === 0) {
+        this.direction = "downRight";
+        this.moveTime = 50;
     }
 }
 
+    }
 }
+}
+}
+

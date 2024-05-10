@@ -101,7 +101,7 @@ function resetGame() {
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
     player.x = Math.floor(screenWidth / 2 / 100) * 100;
-    
+
     player.x = 300;
     player.y = 550;
 
