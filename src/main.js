@@ -96,11 +96,12 @@ function resetGame() {
     lowestBlock = 0;
     difficulty = 0;
     score = 0;
-    lives = 15;
+    lives = 5;
     level = 1;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
     player.x = Math.floor(screenWidth / 2 / 100) * 100;
+
     player.x = 300;
     player.y = 550;
 
