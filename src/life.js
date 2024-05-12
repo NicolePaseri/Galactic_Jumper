@@ -15,7 +15,7 @@ function loseLife() {
         isBlinking = true;
         console.log("You lose a life");
         if (lives <= 0) {
-            gameOver(playerScore); // Passer le score du joueur à gameOver()
+            gameOver(); 
         }
         setTimeout(function(){canLoseLife = true; isBlinking = false;}, 2000);    
     }
