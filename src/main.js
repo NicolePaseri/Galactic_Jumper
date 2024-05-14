@@ -134,7 +134,7 @@ function loop() {
             return; // Ne rien dessiner si la page d'accueil est affichée
         }
         level = updateLevel(score);
-        backgroundctx.drawImage(backgroundImage, 0, 0, screenWidthBackground, screenHeightBackground);
+        
 
         drawLives();
 
@@ -144,7 +144,7 @@ function loop() {
             
             level = updateLevel(score);
             // Affichage du fond d'écran en fonction du score
-            backgroundctx.drawImage(backgroundImage, 0, 0, screenWidthBackground, screenHeightBackground);
+           
          // choisir quand est ce que la win page s'affiche
             drawLives();
         
