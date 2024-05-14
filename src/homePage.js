@@ -63,7 +63,7 @@ rulesButton.addEventListener('click', function() {
 // Création du bouton de pause
 const pauseButton = document.createElement('button');
 const pauseIcon = document.createElement('img');
-pauseIcon.src = 'Sprites/pasvolume.jpg'; // Remplacez 'chemin/vers/votre/image_pause.png' par le chemin de votre image de pause
+pauseIcon.src = 'Sprites/volume off.png'; // Remplacez 'chemin/vers/votre/image_pause.png' par le chemin de votre image de pause
 pauseIcon.style.width = '30px'; // Définissez la largeur de l'icône
 pauseIcon.style.height = '30px'; // Définissez la hauteur de l'icône
 pauseButton.appendChild(pauseIcon);
@@ -78,9 +78,12 @@ pauseButton.addEventListener('click', function() {
 const playButton = document.createElement('button');
 const playIcon = document.createElement('img');
 playIcon.src = 'Sprites/Volume.png'; 
-playIcon.style.width = '20px'; // Définissez la largeur de l'icône
-playIcon.style.height = '20px'; // Définissez la hauteur de l'icône
+playIcon.style.width = '30px'; // Définissez la largeur de l'icône
+playIcon.style.height = '30px'; // Définissez la hauteur de l'icône
 playButton.appendChild(playIcon);
+playButton.style.padding = '5px'; // Ajoutez un peu d'espace autour de l'icône
+playButton.style.border = 'none'; // Supprimez la bordure du bouton
+playButton.style.background = 'none'; // Supprimez le fond du bouton
 playButton.addEventListener('click', function() {
     document.getElementById('backgroundMusic').play();
 });

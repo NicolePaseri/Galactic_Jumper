@@ -2,7 +2,7 @@ class Level1 {
     constructor() {
         this.container = document.createElement("div");
         this.container.id = "level-1-container";
-        this.container.style.backgroundImage = 'url("Sprites/AlienBackGround.png")'; // Changer le chemin d'accès à votre image de fond
+        this.container.style.backgroundImage = 'url("Sprites/Backgrounds/level1transition.png")'; // Changer le chemin d'accès à votre image de fond
         this.container.style.width = "1920px";
         this.container.style.height = "1080px";
         this.container.style.backgroundSize = "cover";

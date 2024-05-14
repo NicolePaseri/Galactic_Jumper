@@ -1,23 +1,15 @@
 var c = document.getElementById("gameCanvas");
-var background = document.getElementById("background");
-
 var ctx = c.getContext("2d");
-var backgroundctx = background.getContext("2d");
 
 var screenWidth = 500;
 var screenHeight = 800;
 c.width = screenWidth;
 c.height = screenHeight;
 
-var screenHeightBackground = 1080;
-var screenWidthBackground = 1920;
-background.width = screenWidthBackground;
-background.height = screenHeightBackground;
-
 document.body.appendChild(c);
 
-window.addEventListener('keydown', this.keydown, false);
-window.addEventListener('keyup', this.keyup, false);
+window.addEventListener('keydown', keydown, false);
+window.addEventListener('keyup', keyup, false);
 
 // Variables
 const gravity = 0.34;
@@ -53,6 +45,19 @@ var now;
 var then = Date.now();
 var interval = 1000 / fps;
 var delta;
+var isPaused = false;
+
+document.getElementById('pauseButton').addEventListener('click', function() {
+    isPaused = true;
+});
+
+document.getElementById('playButton').addEventListener('click', function() {
+    if (isPaused) {
+        isPaused = false;
+        then = Date.now(); // Reset the time to avoid large delta
+        loop();
+    }
+});
 
 function keydown(e) {
     if (e.keyCode === 37) {
@@ -86,7 +91,6 @@ function showScore() {
 }
 
 function resetGame() {
-
     document.body.appendChild(c);
     // Réinitialiser les variables du jeu
 
@@ -121,6 +125,8 @@ function resetGame() {
 }
 
 function loop() {
+    if (isPaused) return;
+
     requestAnimationFrame(loop);
 
     // Mise à jour du FPS
@@ -130,41 +136,33 @@ function loop() {
     if (delta > interval) {
         ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
 
-        if (container.style.display !== 'none') {
+        if (container && container.style.display !== 'none') {
             return; // Ne rien dessiner si la page d'accueil est affichée
         }
         level = updateLevel(score);
         
-
         drawLives();
 
         // Mise à jour et affichage des blocs
-        if (delta > interval) {
-            ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
-            
-            level = updateLevel(score);
-            // Affichage du fond d'écran en fonction du score
-           
-         // choisir quand est ce que la win page s'affiche
-            drawLives();
-        
-            // Mise à jour et affichage des blocs
-            for (var i = 0; i < blocks.length; i++) {
-                if (blocks[i] !== 0) {
-                    blocks[i].update();
-                    blocks[i].draw();
-                }
+        for (var i = 0; i < blocks.length; i++) {
+            if (blocks[i] !== 0) {
+                blocks[i].update();
+                blocks[i].draw();
             }
-        
-            // Mise à jour et affichage du joueur
-            player.update();
-            player.draw();
-        
-            // Affichage du score
-            showScore();
-        
-            then = now - (delta % interval);
         }
+
+        // Mise à jour et affichage du joueur
+        player.update();
+        player.draw();
+
+        // Affichage du score
+        showScore();
+
+        then = now - (delta % interval);
     }
 }
 
+// Démarrer le jeu au chargement de la page
+window.onload = function() {
+    loop();
+}
