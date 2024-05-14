@@ -1,5 +1,3 @@
-var temporaryImage = "Sprites/AlienBackGround.png"; // Chemin de votre image temporaire
-
 function updateLevel(score) {
     if (score < 128133) {
         if(level !== 1){
@@ -14,14 +12,8 @@ function updateLevel(score) {
             showLevel2();
         }
         level = 2;
-        // Affichage de l'image temporaire avant le niveau 2
-        backgroundImage = backgroundImageLevel2; // Assurez-vous de ne pas changer l'arrière-plan
-        obstacle.img.src = temporaryImage; // Affichez l'image temporaire
-        
-        // Réinitialisez l'image de l'obstacle après 5 secondes
-        setTimeout(function() {
-            obstacle.img.src = "Sprites/GalacticDangers/Satélite-transformed.png";
-        }, 5000); // 5000 millisecondes = 5 secondes
+        backgroundImage = backgroundImageLevel2;
+        obstacle.img.src = "Sprites/GalacticDangers/Satélite-transformed.png";
         
     } else if (score < 384400 ){
         if(level !== 3){
