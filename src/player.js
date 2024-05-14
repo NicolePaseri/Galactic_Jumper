@@ -86,9 +86,7 @@ var player = new function() {
                 if (blocks[i].alien !== 0 && blocks[i].alien !== undefined) {
                     if (this.x >= blocks[i].x - this.width + 15 && this.x <= blocks[i].x + blocks[i].width - 15 &&
                         this.y >= blocks[i].y - blocks[i].height && this.y <= blocks[i].y + blocks[i].height) {
-                        
                         showBackToLevel3();
-                        
                     }
                 }
             }
