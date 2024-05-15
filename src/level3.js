@@ -11,9 +11,16 @@ class Level3 {
         this.container.style.left = "0";
         this.container.style.zIndex = "9999"; // Assurer que le Wall of Fame apparaît au-dessus de la page d'accueil
 
+        // Appel de la méthode pour afficher le contenu du Wall of Fame
+    this.displayLevel3Content();
 
-    }
+    // Ajouter le conteneur du Wall of Fame à la page
+    document.body.appendChild(this.container);
+}
 
+displayLevel3Content() {
+
+}
 
     removeLevel3Frame() {
         // Remove the container from the document

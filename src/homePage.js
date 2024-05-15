@@ -51,6 +51,12 @@ startButton.addEventListener('click', () => {
 });
 
 
+const chooseCharacterButton = document.createElement('button');
+chooseCharacterButton.textContent = 'Choose Character';
+chooseCharacterButton.addEventListener('click', function() {
+    showCharacter();
+});
+
 const rulesButton = document.createElement('button');
 rulesButton.textContent = 'Rules of Galactic Jumper';
 rulesButton.style.marginBottom = '10px';
@@ -105,6 +111,7 @@ volumeButton.addEventListener('click', function() {
 
 // Ajout des éléments à la page
 container.appendChild(input);
+container.appendChild(chooseCharacterButton);
 container.appendChild(rulesButton);
 container.appendChild(startButton);
 container.appendChild(pauseButton);
