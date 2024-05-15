@@ -17,7 +17,7 @@ function showCharacter() {
     charactersContainer.style.alignItems = "flex-start";
     charactersContainer.style.padding = "20px";
 
-    var characters = ["Sprites/Personnage/Guerrier.png", "Sprites/Personnage/Humain.png", "Sprites/Personnage/Magicien.png", "Sprites/Personnage/PersonnageFusé.png", "Sprites/Personnage/PetitMonstre.png", "Sprites/Personnage/PetitMonstreViolet.png"];
+    var characters = ["Sprites/Personnage/AlienPersonnage.png", "Sprites/Personnage/Humain.png", "Sprites/Personnage/Magicien.png", "Sprites/Personnage/PersonnageFusé.png", "Sprites/Personnage/PetitMonstre.png", "Sprites/Personnage/PetitMonstreViolet.png"];
     characters.forEach(function (character) {
         var characterImage = document.createElement("img");
         characterImage.src = character;
@@ -38,8 +38,9 @@ function showCharacter() {
     dropZone.style.margin = "20px";
     dropZone.style.position = "absolute";
     dropZone.style.top = "50%";
-    dropZone.style.right = "50%";
-    dropZone.style.transform = "translate(50%, -50%)"; // Centrer la boîte horizontalement et verticalement
+    dropZone.style.right = "20px"; // Déplacer le carré vers la droite de 20 pixels
+    dropZone.style.transform = "translateY(-50%)"; // Centrer le carré verticalement
+    // Centrer la boîte horizontalement et verticalement
 
     dropZone.addEventListener("dragover", function (event) {
         event.preventDefault();
@@ -59,6 +60,7 @@ function showCharacter() {
         characterImage.style.height = "100%";
         dropZone.appendChild(characterImage);
     });
+    
 
     var homeButton = document.createElement("button");
     homeButton.textContent = "Home";
@@ -75,4 +77,10 @@ function showCharacter() {
     characterDiv.appendChild(charactersContainer);
     characterDiv.appendChild(dropZone);
     document.body.appendChild(characterDiv);
+    document.body.appendChild(saveButton);
+
+
+
+   
+    
 }

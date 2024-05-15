@@ -53,6 +53,7 @@ startButton.addEventListener('click', () => {
 
 const chooseCharacterButton = document.createElement('button');
 chooseCharacterButton.textContent = 'Choose Character';
+chooseCharacterButton.style.marginBottom = '10px';
 chooseCharacterButton.addEventListener('click', function() {
     showCharacter();
 });
