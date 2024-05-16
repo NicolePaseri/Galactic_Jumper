@@ -3,7 +3,7 @@ var player = new function() {
     this.x = 300;
     this.y = 550;
     this.img = new Image();
-    var relativePath = "Sprites/Personnage/AstronauteLeft.png";
+    var relativePath = "Sprites/Personnage/Astronaute.png";
     this.img.src = relativePath;
     this.width = 80;
     this.height = 80;
@@ -44,13 +44,13 @@ var player = new function() {
         // ← key pressed
         if (holdingLeftKey) {
             this.direction = "left";
-            this.img.src = relativePath;
+            this.img.src = addWordToEndOfPath(relativePath, "Left");
             player.moveLeft();
         }
         // → key pressed 
         if (holdingRightKey) {
             this.direction = "right";
-            this.img.src = relativePath;
+            this.img.src = addWordToEndOfPath(relativePath, "Right");
             player.moveRight();
         }
 
@@ -178,5 +178,24 @@ this.moveRight = function() {
             }
         }
     }
+}
+
+function addWordToEndOfPath(path, word) {
+    // Séparer le chemin en parties (directory, nom du fichier, extension)
+    const parts = path.split('/');
+    
+    // Extraire le nom de fichier et son extension
+    const filenameWithExtension = parts.pop();
+    const filenameParts = filenameWithExtension.split('.');
+    const filename = filenameParts[0];
+    const extension = filenameParts[1];
+    
+    // Ajouter le mot à la fin du nom de fichier
+    const newFilename = filename + word;
+
+    // Reconstruire le chemin avec le nouveau nom de fichier
+    const newPath = parts.join('/') + '/' + newFilename + '.' + extension;
+
+    return newPath;
 }
 
