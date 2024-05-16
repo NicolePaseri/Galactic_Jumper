@@ -34,14 +34,11 @@ class Level2 {
 // Fonction pour afficher le Wall of Fame lorsque vous cliquez sur le bouton
 function showLevel2() {
     const level2 = new Level2();
+    isPaused = true;
     setTimeout(function() {
         level2.removeLevel2Frame();
     }, 3000); // Remove the frame after 3 seconds
-    resetGame();
-    difficulty = 2;
-    yDistanceTravelled = 128133;
-    score = 128133;
-    showScore();
+    isPaused = false;
 }
 
 
