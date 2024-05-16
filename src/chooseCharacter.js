@@ -17,7 +17,7 @@ function showCharacter() {
     charactersContainer.style.alignItems = "flex-start";
     charactersContainer.style.padding = "20px";
 
-    var characters = ["Sprites/Personnage/AlienLeft.png","Sprites/Personnage/MagicienRignt.png", "Sprites/Personnage/MonsterOrangeRight_00.png","Sprites/Personnage/AstronauteRight.png", "Sprites/Personnage/MonsterRight_00.png"  ];
+    var characters = ["Sprites/Personnage/AlienRight.png","Sprites/Personnage/MagicienRight.png", "Sprites/Personnage/MonsterOrangeRight.png","Sprites/Personnage/AstronauteRight.png", "Sprites/Personnage/MonsterRight.png"  ];
     characters.forEach(function (character) {
         var characterImage = document.createElement("img");
         characterImage.src = character;
