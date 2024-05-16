@@ -1,10 +1,18 @@
 var c = document.getElementById("gameCanvas");
 var ctx = c.getContext("2d");
 
+var background = document.getElementById("background");
+var backgroundctx = background.getContext("2d");
+
 var screenWidth = 500;
 var screenHeight = 800;
 c.width = screenWidth;
 c.height = screenHeight;
+
+var screenWidthBackground = 1920;
+var screenHeightBackground = 8000; // Hauteur du fond ajustable
+background.width = screenWidthBackground;
+background.height = screenHeightBackground;
 
 document.body.appendChild(c);
 
@@ -21,7 +29,7 @@ var difficulty = 0;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
-var lives = 15;
+var lives = 1000000; // 15
 var canLoseLife = true;
 var isBlinking = false;
 var isDesoriented = false; 
@@ -124,6 +132,19 @@ function resetGame() {
     loop();
 }
 
+// Ajout de la variable pour la position de défilement de l'image de fond
+var backgroundScrollY = 0;
+var scrollSpeed = 0.05; // Ajustez cette valeur pour changer la vitesse de défilement
+
+function updateBackgroundPosition(score) {
+    // Calculez la nouvelle position de défilement en fonction du score et de la vitesse
+    var maxScroll = screenHeightBackground - screenHeight;
+    // Calcul pour faire défiler de bas en haut
+    backgroundScrollY = maxScroll - (score * scrollSpeed) % maxScroll;
+    if (backgroundScrollY < 0) backgroundScrollY = 0; // S'assurer que la position ne dépasse pas la partie visible
+    if (backgroundScrollY > maxScroll) backgroundScrollY = maxScroll; // S'assurer que le fond ne "déborde" pas vers le haut
+}
+
 function loop() {
     if (isPaused) return;
 
@@ -135,12 +156,19 @@ function loop() {
 
     if (delta > interval) {
         ctx.clearRect(0, 0, screenWidth, screenHeight); // Effacer le canevas
+        backgroundctx.clearRect(0, 0, screenWidthBackground, screenHeightBackground); // Effacer le fond
 
         if (container && container.style.display !== 'none') {
             return; // Ne rien dessiner si la page d'accueil est affichée
         }
+
+        // Mettre à jour la position de fond en fonction du score
+        updateBackgroundPosition(score);
+
+        // Dessiner l'image de fond
+        backgroundctx.drawImage(backgroundImageLevel1, 0, -backgroundScrollY, screenWidthBackground, screenHeightBackground);
+
         level = updateLevel(score);
-        
         drawLives();
 
         // Mise à jour et affichage des blocs
