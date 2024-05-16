@@ -1,3 +1,5 @@
+var test = "Sprites/jumpLeft.png";
+
 function showCharacter() {
     var characterDiv = document.createElement("div");
     characterDiv.id = "character-div";
@@ -80,7 +82,9 @@ function showCharacter() {
     document.body.appendChild(saveButton);
 
 
-
+    
    
     
 }
+
+
