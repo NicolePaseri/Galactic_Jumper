@@ -72,10 +72,13 @@ html, body {
 }
 
 #background {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: -2; 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -2;
+    width: 1920px;        /* Largeur fixée à 1920 pixels */
+    height: 8000px;       /* Hauteur fixée selon la valeur maximale que vous souhaitez */
+    background-size: cover; /* S'assure que l'image de fond couvre entièrement l'élément, mais cela pourrait distordre l'image si ses dimensions natives ne correspondent pas */
 }
 
 #gameCanvas {
@@ -88,17 +91,6 @@ html, body {
     
 }
 
-.video-background video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: -2;
-}
 
 #homepage {
     height: 100vh;
