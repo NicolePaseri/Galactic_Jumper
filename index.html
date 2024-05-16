@@ -5,10 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>Galactic Jumper </title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Sprites\jumpRight.png" type="image/x-icon">
+    <link rel="icon" href=relativePath type="image/x-icon">
 </head>
 
+<script>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD7vqzDQtCp9NG0cXss7nIqh7l9oDxzUVk",
+  authDomain: "bdjumper-47b80.firebaseapp.com",
+  projectId: "bdjumper-47b80",
+  storageBucket: "bdjumper-47b80.appspot.com",
+  messagingSenderId: "609356317009",
+  appId: "1:609356317009:web:e9b408e0bd92ae6fb5d370",
+  measurementId: "G-4GSY1CM85Y"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
 
 <body>
 
@@ -24,11 +46,12 @@
         <source src="Audio\musicGame.mp3" type="audio/mpeg">
     </audio>
 
-<script src="src/chooseCharacter.js"></script>
+
 <script src="src/homePage.js"></script>
 <script src="src/rules.js"></script>
 <script src="src/wallOfFame.js"></script>
 <script src="src/player.js"></script>
+<script src="src/chooseCharacter.js"></script>
 <script src="src/obstacle.js"></script>
 <script src="src/block.js"></script>
 <script src="src/particule.js"></script>
