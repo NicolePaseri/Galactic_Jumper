@@ -24,7 +24,7 @@ this.draw = function() {
     if (this.type === "break") {
         ctx.fillStyle = "#876537";
     } else if (this.type === "sideways") {
-        ctx.fillStyle = "#14a7c8";
+        ctx.fillStyle = "#E34234";
     } else {
         ctx.fillStyle = "#FFFFFF"; // Plateforme blanche retirée d'ici
     }
