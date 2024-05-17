@@ -1,14 +1,23 @@
 function showRules() {
-    var rulesDiv = document.createElement("rules");
+    var rulesDiv = document.createElement("div");
     rulesDiv.id = "rules-div";
-    rulesDiv.style.backgroundImage = 'url("Sprites/backgroundRules.png")'; // Changer le chemin d'accès à votre image de règles
     rulesDiv.style.width = "1920px";
     rulesDiv.style.height = "1080px";
-    rulesDiv.style.backgroundSize = "cover";
     rulesDiv.style.position = "absolute"; // Position absolue pour superposer
     rulesDiv.style.top = "0"; // Positionner au-dessus de la page d'accueil
     rulesDiv.style.left = "0";
     rulesDiv.style.zIndex = "9999"; // Assurer que les règles apparaissent au-dessus de la page d'accueil
+  
+  // Ajouter la vidéo de fond
+    const video = document.createElement("video");
+    video.src = "Sprites/Rules.mp4"; // Remplacez par le chemin d'accès à votre vidéo
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.objectFit = "cover";
+    video.autoplay = true;
+    video.loop = true; // Supprimez cette ligne si vous ne voulez pas que la vidéo boucle
+    video.muted = true; // Supprimez cette ligne si vous voulez du son
+    rulesDiv.appendChild(video);
 
     // Ajouter le contenu des règles
 var rulesContent = document.createElement("p");

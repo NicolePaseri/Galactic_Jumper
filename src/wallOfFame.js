@@ -5,33 +5,39 @@ class WallOfFame {
         
         this.container = document.createElement("div");
         this.container.id = "wall-of-fame-container";
-        this.container.style.backgroundImage = 'url("Sprites/wallOfFame.png")'; // Changer le chemin d'accès à votre image de fond
         this.container.style.width = "100%"; // Ajuster la largeur pour remplir la page
         this.container.style.height = "100vh"; // Ajuster la hauteur pour remplir la hauteur de la fenêtre
-        this.container.style.backgroundSize = "cover";
         this.container.style.position = "absolute"; // Position absolue pour superposer
         this.container.style.top = "0"; // Positionner au-dessus de la page d'accueil
         this.container.style.left = "0";
         this.container.style.zIndex = "9999"; // Assurer que le Wall of Fame apparaît au-dessus de la page d'accueil
 
+        // Ajouter la vidéo de fond
+        const video = document.createElement("video");
+        video.src = "Sprites/WallOfFame.mp4"; // Remplacez par le chemin d'accès à votre vidéo
+        video.style.width = "100%";
+        video.style.height = "100%";
+        video.style.objectFit = "cover";
+        video.autoplay = true;
+        video.muted = true; // Supprimez cette ligne si vous voulez du son
+        this.container.appendChild(video);
         
         // Créer un tableau pour afficher les scores
-const table = document.createElement("table");
-table.style.width = "70%"; // Réduire la largeur pour que le tableau ne soit pas trop large
-table.style.position = "fixed"; // Position fixe pour centrer
-table.style.top = "50%"; // Décalage de 50% vers le bas
-table.style.left = "50%"; // Décalage de 50% vers la droite
-table.style.transform = "translate(-50%, -50%)"; // Centrage
-table.style.borderCollapse = "collapse"; // Pour fusionner les bordures des cellules
-table.style.color = "black"; // Couleur du texte
-table.style.border = "2px solid white"; // Ajouter des bordures au tableau
-this.container.appendChild(table);
+        const table = document.createElement("table");
+        table.style.width = "70%"; // Réduire la largeur pour que le tableau ne soit pas trop large
+        table.style.position = "fixed"; // Position fixe pour centrer
+        table.style.top = "50%"; // Décalage de 50% vers le bas
+        table.style.left = "50%"; // Décalage de 50% vers la droite
+        table.style.transform = "translate(-50%, -50%)"; // Centrage
+        table.style.borderCollapse = "collapse"; // Pour fusionner les bordures des cellules
+        table.style.color = "black"; // Couleur du texte
+        table.style.border = "2px solid white"; // Ajouter des bordures au tableau
+        this.container.appendChild(table);
 
-// En-tête du tableau
-const tableHeaderRow = document.createElement("tr");
-tableHeaderRow.innerHTML = "<th style='font-weight: bold; border: 1px solid white;'>Position</th><th style='font-weight: bold; border: 1px solid white;'>Name</th><th style='font-weight: bold; border: 1px solid white;'>Score</th>";
-table.appendChild(tableHeaderRow);
-
+        // En-tête du tableau
+        const tableHeaderRow = document.createElement("tr");
+        tableHeaderRow.innerHTML = "<th style='font-weight: bold; border: 1px solid white;'>Position</th><th style='font-weight: bold; border: 1px solid white;'>Name</th><th style='font-weight: bold; border: 1px solid white;'>Score</th>";
+        table.appendChild(tableHeaderRow);
 
         // Ajouter le score de l'utilisateur au tableau
         this.addUserScoreToTable(table, username);
@@ -101,7 +107,6 @@ table.appendChild(tableHeaderRow);
         // Ajouter la ligne de l'utilisateur au tableau
         table.appendChild(userRow);
     }
-    
 
     addScoresToTable(table, username) {
         // Récupérer tous les scores depuis le stockage local
