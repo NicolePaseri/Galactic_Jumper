@@ -20,7 +20,8 @@ const startButton = document.createElement('button');
 startButton.textContent = 'START TO PLAY';
 startButton.style.marginBottom = '10px'; // Ajout du marginBottom pour espacer les boutons
 startButton.addEventListener('click', () => {
-    const username = input.value;
+    // Nettoyer le nom d'utilisateur avec DOMPurify
+    const username = DOMPurify.sanitize(input.value);
     if (username.trim() !== '') {
         // Enregistrer le nom d'utilisateur dans le stockage local
         localStorage.setItem("username", username);
