@@ -18,6 +18,7 @@ class Level1 {
         video.autoplay = true;
         video.muted = true; // Supprimez cette ligne si vous voulez du son
         this.container.appendChild(video);
+    }
       
     removeLevel1Frame() {
         // Remove the container from the document
@@ -25,7 +26,8 @@ class Level1 {
             this.container.parentNode.removeChild(this.container);
         }
     }
-}
+    }
+
 
 // Fonction pour afficher le Level 1 lorsque vous cliquez sur le bouton
 function showLevel1() {
