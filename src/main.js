@@ -161,10 +161,8 @@ function loop() {
             return; // Ne rien dessiner si la page d'accueil est affichée
         }
 
-        // Mettre à jour la position de fond en fonction du score
         updateBackgroundPosition(score);
 
-        // Dessiner l'image de fond
         backgroundctx.drawImage(backgroundImage, 0, -backgroundScrollY, screenWidthBackground, screenHeightBackground);
 
         level = updateLevel(score);
@@ -178,11 +176,9 @@ function loop() {
             }
         }
 
-        // Mise à jour et affichage du joueur
         player.update();
         player.draw();
 
-        // Affichage du score
         showScore();
 
         then = now - (delta % interval);

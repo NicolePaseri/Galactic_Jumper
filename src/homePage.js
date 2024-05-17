@@ -53,7 +53,7 @@ startButton.addEventListener('click', () => {
             console.log("Longitude :", longitude);
         });
     } else {
-        console.log("La géolocalisation n'est pas prise en charge par ce navigateur.");
+        console.log("Geolocation is not supported by this browser.");
     }
 });
 

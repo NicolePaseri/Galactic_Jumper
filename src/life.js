@@ -1,4 +1,3 @@
-// Lives
 
 function drawLives() {
     for (let i = 0; i < lives; i++) {
