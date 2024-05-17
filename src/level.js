@@ -20,6 +20,7 @@ function updateLevel(score) {
             showLevel3();
         }
         level = 3;
+        backgroundTemp = 40;
         backgroundImage = backgroundImageLevel3;
         obstacle.img.src = "Sprites/GalacticDangers/meteore.png";
        

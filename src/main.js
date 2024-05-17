@@ -10,7 +10,7 @@ c.width = screenWidth;
 c.height = screenHeight;
 
 var screenWidthBackground = 1920;
-var screenHeightBackground = 8000; // Hauteur du fond ajustable
+var screenHeightBackground = 7500; // Hauteur du fond ajustable
 background.width = screenWidthBackground;
 background.height = screenHeightBackground;
 
@@ -34,6 +34,7 @@ var canLoseLife = true;
 var isBlinking = false;
 var isDesoriented = false; 
 var level = 1;
+var backgroundTemp = 0;
 
 var blocks = [];
 var powerups = [];
@@ -108,7 +109,7 @@ function resetGame() {
     lowestBlock = 0;
     difficulty = 0;
     score = 0;
-    lives = 5;
+    lives = 10;
     level = 1;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
@@ -140,7 +141,7 @@ function updateBackgroundPosition(score) {
     // Calculez la nouvelle position de défilement en fonction du score et de la vitesse
     var maxScroll = screenHeightBackground - screenHeight;
     // Calcul pour faire défiler de bas en haut
-    backgroundScrollY = maxScroll - (score * scrollSpeed) % maxScroll;
+    backgroundScrollY = maxScroll - (score * scrollSpeed) % maxScroll + backgroundTemp;
     if (backgroundScrollY < 0) backgroundScrollY = 0; // S'assurer que la position ne dépasse pas la partie visible
     if (backgroundScrollY > maxScroll) backgroundScrollY = maxScroll; // S'assurer que le fond ne "déborde" pas vers le haut
 }
@@ -166,7 +167,7 @@ function loop() {
         updateBackgroundPosition(score);
 
         // Dessiner l'image de fond
-        backgroundctx.drawImage(backgroundImageLevel1, 0, -backgroundScrollY, screenWidthBackground, screenHeightBackground);
+        backgroundctx.drawImage(backgroundImage, 0, -backgroundScrollY, screenWidthBackground, screenHeightBackground);
 
         level = updateLevel(score);
         drawLives();

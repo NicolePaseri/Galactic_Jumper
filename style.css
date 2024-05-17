@@ -76,9 +76,8 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     z-index: -2;
-    width: 1920px;        /* Largeur fixée à 1920 pixels */
-    height: 8000px;       /* Hauteur fixée selon la valeur maximale que vous souhaitez */
-    background-size: cover; /* S'assure que l'image de fond couvre entièrement l'élément, mais cela pourrait distordre l'image si ses dimensions natives ne correspondent pas */
+    width: auto;        /* Largeur fixée à 1920 pixels */
+    height: 7500px;       /* Hauteur fixée selon la valeur maximale que vous souhaitez */
 }
 
 #gameCanvas {
@@ -112,6 +111,29 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
 }
+
+#homepage button {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: grey;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  #homepage input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
 
 #game-over-div {
     height: 100vh;
