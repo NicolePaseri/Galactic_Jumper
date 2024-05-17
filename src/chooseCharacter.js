@@ -17,7 +17,7 @@ function showCharacter() {
     charactersContainer.style.alignItems = "flex-start";
     charactersContainer.style.padding = "20px";
 
-    var characters = ["Sprites/Personnage/AlienRight.png","Sprites/Personnage/MagicienRight.png", "Sprites/Personnage/MonsterOrangeRight.png","Sprites/Personnage/AstronauteRight.png", "Sprites/Personnage/MonsterRight.png"  ];
+    var characters = ["Sprites/Personnage/Alien.png","Sprites/Personnage/Magicien.png", "Sprites/Personnage/MonsterOrange.png","Sprites/Personnage/Astronaute.png", "Sprites/Personnage/Monster.png"  ];
     characters.forEach(function (character) {
         var characterImage = document.createElement("img");
         characterImage.src = character;
@@ -49,10 +49,10 @@ function showCharacter() {
         event.preventDefault();
         dropZoneDiv.innerHTML = "";
         var character = event.dataTransfer.getData("text/plain");
-
+    
         // Mise à jour de l'image du joueur avec le personnage drag and drop
-        player.img.src = character;
-
+        player.relativePath = character;
+    
         var characterImage = document.createElement("img");
         characterImage.src = character;
         characterImage.style.width = "100%";
