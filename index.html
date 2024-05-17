@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>Galactic Jumper </title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Sprites\jumpRight.png" type="image/x-icon">
+    <link rel="icon" href=relativePath type="image/x-icon">
 </head>
-
 
 
 <body>
@@ -23,12 +22,16 @@
     <audio id="backgroundMusic" autoplay loop>
         <source src="Audio\musicGame.mp3" type="audio/mpeg">
     </audio>
+    <div id="controls">
+        <button id="pauseButton">Pause</button>
+        <button id="playButton">Play</button>
+    </div>
 
-<script src="src/chooseCharacter.js"></script>
 <script src="src/homePage.js"></script>
 <script src="src/rules.js"></script>
 <script src="src/wallOfFame.js"></script>
 <script src="src/player.js"></script>
+<script src="src/chooseCharacter.js"></script>
 <script src="src/obstacle.js"></script>
 <script src="src/block.js"></script>
 <script src="src/particule.js"></script>

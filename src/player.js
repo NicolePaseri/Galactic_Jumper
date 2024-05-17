@@ -1,8 +1,11 @@
+
 var player = new function() {
     this.x = 300;
     this.y = 550;
     this.img = new Image();
-    this.img.src = "Sprites/Jumpleft.png";
+    var relativePath = "Sprites/Personnage/Astronaute.png";
+    var relativePathLeft = addWordToEndOfPath(relativePath, "Left");
+    this.img.src = relativePath;
     this.width = 80;
     this.height = 80;
     this.xSpeed = 6.7;
@@ -11,6 +14,17 @@ var player = new function() {
     this.direction = "left";
     this.isBlinking = false;
     this.isDesoriented = false;
+
+    Object.defineProperty(this, 'relativePath', {
+        get: function() {
+            return relativePath;
+        },
+        set: function(newPath) {
+            relativePath = newPath;
+            relativePathLeft = addWordToEndOfPath(newPath, "Left");
+            this.img.src = newPath;
+        }
+    });
 
     this.update = function() {
         if (!dead) {
@@ -42,13 +56,13 @@ var player = new function() {
         // ← key pressed
         if (holdingLeftKey) {
             this.direction = "left";
-            this.img.src = "Sprites/jumpLeft.png";
+            this.img.src = relativePathLeft;
             player.moveLeft();
         }
         // → key pressed 
         if (holdingRightKey) {
             this.direction = "right";
-            this.img.src = "Sprites/jumpRight.png";
+            this.img.src = relativePath;
             player.moveRight();
         }
 
@@ -91,7 +105,6 @@ var player = new function() {
                 }
             }
         }
-
 
         for (var i = blocks.length-1; i > 0; i--) {
             if (blocks[i].y > screenHeight) {
@@ -153,7 +166,6 @@ this.moveRight = function() {
     }
 }
 
-
     this.draw = function() {
 
         if (isBlinking && Math.floor(Date.now() / 200) % 2 === 0) {
@@ -178,4 +190,23 @@ this.moveRight = function() {
             }
         }
     }
+}
+
+function addWordToEndOfPath(path, word) {
+    // Séparer le chemin en parties (directory, nom du fichier, extension)
+    const parts = path.split('/');
+    
+    // Extraire le nom de fichier et son extension
+    const filenameWithExtension = parts.pop();
+    const filenameParts = filenameWithExtension.split('.');
+    const filename = filenameParts[0];
+    const extension = filenameParts[1];
+    
+    // Ajouter le mot à la fin du nom de fichier
+    const newFilename = filename + word;
+
+    // Reconstruire le chemin avec le nouveau nom de fichier
+    const newPath = parts.join('/') + '/' + newFilename + '.' + extension;
+
+    return newPath;
 }

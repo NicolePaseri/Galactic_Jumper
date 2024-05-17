@@ -44,7 +44,7 @@ startButton.addEventListener('click', () => {
         container.style.display = 'none';
 
         console.log(`Starting to play with ${username}`);
-        resetGame();
+        showLevel1();
     } else {
         alert('You must enter a username to play');
     }
@@ -58,8 +58,6 @@ startButton.addEventListener('click', () => {
             // Utilisez les coordonnées ici, par exemple :
             console.log("Latitude :", latitude);
             console.log("Longitude :", longitude);
-
-            getCity(latitude, longitude);
         });
     } else {
         console.log("La géolocalisation n'est pas prise en charge par ce navigateur.");
@@ -135,25 +133,3 @@ container.appendChild(pauseButton);
 container.appendChild(playButton);
 container.appendChild(volumeButton);
 body.appendChild(container);
-
-// Fonction pour récupérer la ville à partir de la latitude et la longitude
-function getCity(latitude, longitude) {
-    const apiKey = 'c12ca4a8049e4152a425eb8395c70062'; // Remplacez 'VOTRE_CLE_API' par votre clé API Apibundle.io
-    const url = `https://api.apibundle.io/geocoding/reverse?lat=${latitude}&lng=${longitude}&apiKey=${apiKey}`;
-
-    fetch(url)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .then(data => {
-            // Récupérer la ville à partir des données
-            const city = data.city;
-            console.log('User is in:', city);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
-}

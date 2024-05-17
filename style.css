@@ -89,6 +89,19 @@ html, body {
         z-index: -1;
     
 }
+#controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+#controls button {
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
 
 
 #homepage {

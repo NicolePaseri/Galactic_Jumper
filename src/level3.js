@@ -41,12 +41,9 @@ class Level3 {
 // Fonction pour afficher le Level 3 lorsque vous cliquez sur le bouton
 function showLevel3() {
     const level3 = new Level3();
+    isPaused = true;
     setTimeout(function() {
         level3.removeLevel3Frame();
     }, 3000); // Remove the frame after 3 seconds
-    resetGame();
-    difficulty = 3;
-    yDistanceTravelled = 256267;
-    score = 256267;
-    showScore();
+    isPaused = false;
 }
