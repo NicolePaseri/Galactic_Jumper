@@ -2,8 +2,6 @@
 const body = document.body;
 const container = document.createElement('div');
 container.id = 'homepage';
-container.style.backgroundImage = "url('Sprites/fondecraninscription.png')";
-container.style.backgroundSize = '1920px 1080px';
 container.style.width = '1920px';
 container.style.height = '1080px';
 container.style.display = 'flex';
@@ -11,13 +9,31 @@ container.style.flexDirection = 'column';
 container.style.alignItems = 'center';
 container.style.justifyContent = 'center';
 container.style.position = 'relative';
+container.style.overflow = 'hidden'; // Assurez-vous que le contenu ne dépasse pas
 
+// Ajouter la vidéo de fond
+const video = document.createElement('video');
+video.src = 'Sprites/HomePage.mp4'; // Remplacez par le chemin d'accès à votre vidéo
+video.style.width = '100%';
+video.style.height = '100%';
+video.style.objectFit = 'cover';
+video.autoplay = true;
+video.loop = true; // Supprimez cette ligne si vous ne voulez pas que la vidéo boucle
+video.muted = true; // Supprimez cette ligne si vous voulez du son
+video.style.position = 'absolute';
+video.style.top = '0';
+video.style.left = '0';
+container.appendChild(video);
+
+// Création des éléments de l'interface utilisateur
 const input = document.createElement('input');
 input.placeholder = 'Enter your username';
 input.style.marginBottom = '10px';
+input.style.zIndex = '1'; // Assurez-vous que l'input est au-dessus de la vidéo
 
 const startButton = document.createElement('button');
 startButton.textContent = 'Starting to play';
+startButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
 startButton.addEventListener('click', () => {
     const username = input.value;
     if (username.trim() !== '') {
@@ -50,10 +66,10 @@ startButton.addEventListener('click', () => {
     }
 });
 
-
 const chooseCharacterButton = document.createElement('button');
 chooseCharacterButton.textContent = 'Choose Character';
 chooseCharacterButton.style.marginBottom = '10px';
+chooseCharacterButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
 chooseCharacterButton.addEventListener('click', function() {
     showCharacter();
 });
@@ -61,11 +77,10 @@ chooseCharacterButton.addEventListener('click', function() {
 const rulesButton = document.createElement('button');
 rulesButton.textContent = 'Rules of Galactic Jumper';
 rulesButton.style.marginBottom = '10px';
+rulesButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
 rulesButton.addEventListener('click', function() {
     showRules();
 });
-
-
 
 // Création du bouton de pause
 const pauseButton = document.createElement('button');
@@ -77,10 +92,10 @@ pauseButton.appendChild(pauseIcon);
 pauseButton.style.padding = '5px'; // Ajoutez un peu d'espace autour de l'icône
 pauseButton.style.border = 'none'; // Supprimez la bordure du bouton
 pauseButton.style.background = 'none'; // Supprimez le fond du bouton
+pauseButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
 pauseButton.addEventListener('click', function() {
     document.getElementById('backgroundMusic').pause();
 });
-
 
 const playButton = document.createElement('button');
 const playIcon = document.createElement('img');
@@ -91,13 +106,14 @@ playButton.appendChild(playIcon);
 playButton.style.padding = '5px'; // Ajoutez un peu d'espace autour de l'icône
 playButton.style.border = 'none'; // Supprimez la bordure du bouton
 playButton.style.background = 'none'; // Supprimez le fond du bouton
+playButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
 playButton.addEventListener('click', function() {
     document.getElementById('backgroundMusic').play();
 });
 
-
 const volumeButton = document.createElement('button');
 volumeButton.textContent = 'Set Volume';
+volumeButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
 volumeButton.addEventListener('click', function() {
     const volume = prompt('Enter the volume (between 0 and 1):');
     if (volume !== null) {
@@ -119,8 +135,6 @@ container.appendChild(pauseButton);
 container.appendChild(playButton);
 container.appendChild(volumeButton);
 body.appendChild(container);
-
-
 
 // Fonction pour récupérer la ville à partir de la latitude et la longitude
 function getCity(latitude, longitude) {
