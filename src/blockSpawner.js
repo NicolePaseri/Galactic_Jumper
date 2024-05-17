@@ -38,7 +38,7 @@ if (blocks[i].type === 0) {
             if (level === 2) {
                 blocks[i].particule = spawnParticule(); // Détermine s'il y aura une particule sur le bloc si le niveau est 2
             }
-            if (level === 3){
+            if (level ===3 ){
                 blocks[i].alien = spawnAlien(); // Détermine s'il y aura un alien sur le bloc
                     if (blocks[i].alien === 0) {
                     blocks[i].blackHole = spawnBlackHole(); // Détermine s'il y aura un trou noir sur le bloc
