@@ -11,14 +11,14 @@ function showCharacter() {
     characterDiv.style.zIndex = "9999";
 
     var charactersContainer = document.createElement("div");
-    charactersContainer.style.flex = "1";
     charactersContainer.style.display = "flex";
-    charactersContainer.style.flexDirection = "column";
-    charactersContainer.style.alignItems = "flex-start";
-    charactersContainer.style.padding = "20px";
+    charactersContainer.style.justifyContent = "center";
+    charactersContainer.style.flexDirection = "row";
+    charactersContainer.style.padding = "500px";
 
     var characters = ["Sprites/Personnage/Alien.png","Sprites/Personnage/Magicien.png", "Sprites/Personnage/MonsterOrange.png","Sprites/Personnage/Astronaute.png", "Sprites/Personnage/Monster.png"  ];
     characters.forEach(function (character) {
+        
         var characterImage = document.createElement("img");
         characterImage.src = character;
         characterImage.style.width = "100px";
@@ -74,7 +74,7 @@ function showCharacter() {
 
     var buttonsContainerDiv = document.createElement("div"); // Container pour les boutons
     buttonsContainerDiv.style.position = "absolute";
-    buttonsContainerDiv.style.top = "20px"; // Position en haut de la page
+    buttonsContainerDiv.style.top = "700px"; // Position en haut de la page
     buttonsContainerDiv.style.left = "50%";
     buttonsContainerDiv.style.transform = "translateX(-50%)";
     buttonsContainerDiv.style.display = "flex";
