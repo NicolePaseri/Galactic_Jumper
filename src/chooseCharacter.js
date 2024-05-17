@@ -46,19 +46,31 @@ function showCharacter() {
     });
 
     dropZoneDiv.addEventListener("drop", function (event) {
-        event.preventDefault();
-        dropZoneDiv.innerHTML = "";
+        event.preventDefault(); // Empêche le comportement par défaut du navigateur
+        
+        // Récupérer les types de fichiers déposés dans la zone
+        var types = event.dataTransfer.types;
+    
+        // Récupérer le chemin de l'image déposée
         var character = event.dataTransfer.getData("text/plain");
     
-        // Mise à jour de l'image du joueur avec le personnage drag and drop
-        player.relativePath = character;
+        // Vérifier si le chemin de l'image fait partie de la liste autorisée
+        if (characters.includes(character)) {
+            dropZoneDiv.innerHTML = "";
     
-        var characterImage = document.createElement("img");
-        characterImage.src = character;
-        characterImage.style.width = "100%";
-        characterImage.style.height = "100%";
-        dropZoneDiv.appendChild(characterImage);
+            // Mise à jour de l'image du joueur avec le personnage drag and drop
+            player.relativePath = character;
+    
+            var characterImage = document.createElement("img");
+            characterImage.src = character;
+            characterImage.style.width = "100%";
+            characterImage.style.height = "100%";
+            dropZoneDiv.appendChild(characterImage);
+        } else {
+            alert("Vous ne pouvez pas déposer cette image.");
+        }
     });
+    
 
     var buttonsContainerDiv = document.createElement("div"); // Container pour les boutons
     buttonsContainerDiv.style.position = "absolute";
