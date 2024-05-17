@@ -25,7 +25,6 @@ var holdingLeftKey = false;
 var holdingRightKey = false;
 var keycode;
 var dead = false;
-var difficulty = 0;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
@@ -107,7 +106,6 @@ function resetGame() {
 
     blocks = [];
     lowestBlock = 0;
-    difficulty = 0;
     score = 0;
     lives = 10;
     level = 1;
@@ -163,10 +161,8 @@ function loop() {
             return; // Ne rien dessiner si la page d'accueil est affichée
         }
 
-        // Mettre à jour la position de fond en fonction du score
         updateBackgroundPosition(score);
 
-        // Dessiner l'image de fond
         backgroundctx.drawImage(backgroundImage, 0, -backgroundScrollY, screenWidthBackground, screenHeightBackground);
 
         level = updateLevel(score);
@@ -180,11 +176,9 @@ function loop() {
             }
         }
 
-        // Mise à jour et affichage du joueur
         player.update();
         player.draw();
 
-        // Affichage du score
         showScore();
 
         then = now - (delta % interval);

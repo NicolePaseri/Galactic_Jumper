@@ -67,7 +67,7 @@ function showCharacter() {
             characterImage.style.height = "100%";
             dropZoneDiv.appendChild(characterImage);
         } else {
-            alert("Vous ne pouvez pas déposer cette image.");
+            alert("You cannot upload a file.");
         }
     });
     
@@ -101,10 +101,10 @@ saveButton.addEventListener("click", function () {
         if (relativePath.charAt(0) === '/') {
             relativePath = relativePath.substring(1); // Supprimer le premier caractère s'il est "/"
         }
-        alert("Personnage enregistré : \"" + relativePath + "\"");
-        // Ici, vous pouvez effectuer toute action pour enregistrer le personnage
+        alert("Character saved : \"" + relativePath + "\"");
+
     } else {
-        alert("Aucun personnage sélectionné.");
+        alert("No character selected.");
     }
 });
 
@@ -113,7 +113,7 @@ saveButton.addEventListener("click", function () {
 
     characterDiv.appendChild(charactersContainer);
     characterDiv.appendChild(dropZoneDiv);
-    characterDiv.appendChild(buttonsContainerDiv); // Ajout du conteneur de boutons au conteneur principal
+    characterDiv.appendChild(buttonsContainerDiv); 
 
     document.body.appendChild(characterDiv);
 }

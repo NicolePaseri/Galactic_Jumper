@@ -20,19 +20,27 @@ const startButton = document.createElement('button');
 startButton.textContent = 'START TO PLAY';
 startButton.style.marginBottom = '10px'; // Ajout du marginBottom pour espacer les boutons
 startButton.addEventListener('click', () => {
-    const username = input.value;
-    if (username.trim() !== '') {
-        // Enregistrer le nom d'utilisateur dans le stockage local
-        localStorage.setItem("username", username);
+    let username = input.value.trim();
+    if (username !== '') {
+        // Utilisation de DOMPurify pour nettoyer le nom d'utilisateur
+        const cleanUsername = DOMPurify.sanitize(username);
 
-        // Masquer la page d'accueil lorsque le jeu commence
-        container.style.display = 'none';
+        if (cleanUsername === username) {
+            // Enregistrer le nom d'utilisateur dans le stockage local
+            localStorage.setItem("username", cleanUsername);
 
-        console.log(`Starting to play with ${username}`);
-        showLevel1();
+            // Masquer la page d'accueil lorsque le jeu commence
+            container.style.display = 'none';
+
+            console.log(`Starting to play with ${cleanUsername}`);
+            showLevel1();
+        } else {
+            alert('Your username contained invalid characters and was sanitized. Please try again.');
+        }
     } else {
         alert('You must enter a username to play');
     }
+
 
     // Récupération de la localisation une fois que l'utilisateur a cliqué sur "Starting to play"
     if ("geolocation" in navigator) {
@@ -45,7 +53,7 @@ startButton.addEventListener('click', () => {
             console.log("Longitude :", longitude);
         });
     } else {
-        console.log("La géolocalisation n'est pas prise en charge par ce navigateur.");
+        console.log("Geolocation is not supported by this browser.");
     }
 });
 
