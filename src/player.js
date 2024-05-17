@@ -4,6 +4,7 @@ var player = new function() {
     this.y = 550;
     this.img = new Image();
     var relativePath = "Sprites/Personnage/Astronaute.png";
+    var relativePathLeft = addWordToEndOfPath(relativePath, "Left");
     this.img.src = relativePath;
     this.width = 80;
     this.height = 80;
@@ -13,6 +14,17 @@ var player = new function() {
     this.direction = "left";
     this.isBlinking = false;
     this.isDesoriented = false;
+
+    Object.defineProperty(this, 'relativePath', {
+        get: function() {
+            return relativePath;
+        },
+        set: function(newPath) {
+            relativePath = newPath;
+            relativePathLeft = addWordToEndOfPath(newPath, "Left");
+            this.img.src = newPath;
+        }
+    });
 
     this.update = function() {
         if (!dead) {
@@ -44,13 +56,13 @@ var player = new function() {
         // ← key pressed
         if (holdingLeftKey) {
             this.direction = "left";
-            this.img.src = addWordToEndOfPath(relativePath, "Left");
+            this.img.src = relativePathLeft;
             player.moveLeft();
         }
         // → key pressed 
         if (holdingRightKey) {
             this.direction = "right";
-            this.img.src = addWordToEndOfPath(relativePath, "Right");
+            this.img.src = relativePath;
             player.moveRight();
         }
 
@@ -198,4 +210,3 @@ function addWordToEndOfPath(path, word) {
 
     return newPath;
 }
-
