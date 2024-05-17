@@ -74,7 +74,6 @@ function showBackToLevel3() {
     setTimeout(function() {
         backToLevel3.removeBackToLevel3Frame();
     }, 3000); // Remove the frame after 3 seconds
-    difficulty = 3;
     yDistanceTravelled = 256267;
     score = 256267;
     showScore();

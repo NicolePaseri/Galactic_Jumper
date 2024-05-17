@@ -2,7 +2,7 @@ function spawnPowerup(level) {
     // Définir les chances de chaque type de power-up en fonction du niveau
     var powerupChances = {
         "cloud": 20,
-        "rocket": 50,
+        "rocket": 30,
       
     };
     console.log("Create powerup");

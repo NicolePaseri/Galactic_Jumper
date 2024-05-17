@@ -117,10 +117,7 @@ var player = new function() {
             dead = true;
         }
 
-        if (lowestBlock >= 45) {
-            if (difficulty < 6) {
-                difficulty += 1;
-            }
+        if (lowestBlock >= 30) {
             blockSpawner();
         }
     }

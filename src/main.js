@@ -25,7 +25,6 @@ var holdingLeftKey = false;
 var holdingRightKey = false;
 var keycode;
 var dead = false;
-var difficulty = 0;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
@@ -107,7 +106,6 @@ function resetGame() {
 
     blocks = [];
     lowestBlock = 0;
-    difficulty = 0;
     score = 0;
     lives = 10;
     level = 1;
