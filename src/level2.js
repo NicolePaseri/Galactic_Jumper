@@ -19,15 +19,8 @@ class Level2 {
         video.muted = true; // Supprimez cette ligne si vous voulez du son
         this.container.appendChild(video);
 
-        // Appel de la méthode pour afficher le contenu du Level 2
-        this.displayLevel2Content();
-
         // Ajouter le conteneur du Level 2 à la page
         document.body.appendChild(this.container);
-    }
-
-    displayLevel2Content() {
-        // Vous pouvez ajouter ici tout autre contenu spécifique au Level 2
     }
 
     removeLevel2Frame() {

@@ -18,6 +18,9 @@ class Level1 {
         video.autoplay = true;
         video.muted = true; // Supprimez cette ligne si vous voulez du son
         this.container.appendChild(video);
+
+        // Ajouter le conteneur du Level 2 à la page
+        document.body.appendChild(this.container);
     }
       
     removeLevel1Frame() {
@@ -32,6 +35,8 @@ class Level1 {
 // Fonction pour afficher le Level 1 lorsque vous cliquez sur le bouton
 function showLevel1() {
     const level1 = new Level1();
-    
+    setTimeout(function() {
+        level1.removeLevel1Frame();
+    }, 3000);
     resetGame();
 }
