@@ -2,26 +2,40 @@
 const body = document.body;
 const container = document.createElement('div');
 container.id = 'homepage';
-container.id = 'homepage';
-container.style.backgroundImage = "url('Sprites/fondecraninscription.png')";
-container.style.backgroundSize = 'cover'; // Utilisez 'cover' pour que l'image de fond couvre toujours le conteneur complet
-container.style.backgroundPosition = 'center'; // Centre l'image de fond
+container.style.position = 'relative'; // Position relative pour le conteneur
 container.style.width = '100vw'; // Utilisez 100% de la largeur de la fenêtre
 container.style.height = '100vh'; // Utilisez 100% de la hauteur de la fenêtre
 container.style.display = 'flex';
 container.style.flexDirection = 'column';
 container.style.alignItems = 'center';
 container.style.justifyContent = 'center';
-container.style.position = 'relative'; // Position relative ici est correcte si elle n'interfère pas avec d'autres éléments
+container.style.overflow = 'hidden'; // Assurez-vous que le contenu supplémentaire est masqué
 
+// Ajout de la vidéo de fond
+const videoBackground = document.createElement('video');
+videoBackground.src = 'Sprites/HomePage.mp4'; // Remplacez par le chemin de votre vidéo
+videoBackground.autoplay = true;
+videoBackground.loop = true;
+videoBackground.muted = true;
+videoBackground.style.position = 'absolute';
+videoBackground.style.top = '50%';
+videoBackground.style.left = '50%';
+videoBackground.style.transform = 'translate(-50%, -50%)';
+videoBackground.style.width = '100%';
+videoBackground.style.height = '100%';
+videoBackground.style.objectFit = 'cover'; // Assurez-vous que la vidéo couvre l'ensemble du conteneur
+
+container.appendChild(videoBackground); // Ajoute la vidéo au conteneur
 
 const input = document.createElement('input');
 input.placeholder = 'Enter your username';
 input.style.marginBottom = '10px';
+input.style.zIndex = '1'; // Assurez-vous que l'input est au-dessus de la vidéo
 
 const startButton = document.createElement('button');
 startButton.textContent = 'START TO PLAY';
 startButton.style.marginBottom = '10px'; // Ajout du marginBottom pour espacer les boutons
+startButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
 startButton.addEventListener('click', () => {
     let username = input.value.trim();
     if (username !== '') {
@@ -43,7 +57,6 @@ startButton.addEventListener('click', () => {
     } else {
         alert('You must enter a username to play');
     }
-
 
     // Récupération de la localisation une fois que l'utilisateur a cliqué sur "Starting to play"
     if ("geolocation" in navigator) {
@@ -70,8 +83,9 @@ chooseCharacterIcon.style.height = '80px'; // Définir la hauteur de l'icône
 chooseCharacterButton.style.padding = '5px'; // Ajoutez un peu d'espace autour de l'icône
 chooseCharacterButton.style.border = 'none'; // Supprimez la bordure du bouton
 chooseCharacterButton.style.background = 'none'; // Supprimez le fond du bouton
-chooseCharacterButton.appendChild(chooseCharacterIcon); // Ajoute l'image au bouton
 chooseCharacterButton.style.marginBottom = '10px'; // Ajouter un marginBottom pour espacer les éléments
+chooseCharacterButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
+chooseCharacterButton.appendChild(chooseCharacterIcon); // Ajoute l'image au bouton
 chooseCharacterButton.addEventListener('click', function() {
     showCharacter();
 });
@@ -86,6 +100,7 @@ rulesButton.style.padding = '5px'; // Ajoutez un peu d'espace autour de l'icône
 rulesButton.style.border = 'none'; // Supprimez la bordure du bouton
 rulesButton.style.background = 'none'; // Supprimez le fond du bouton
 rulesButton.style.marginBottom = '10px';
+rulesButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
 rulesButton.appendChild(img); // Ajoute l'image au bouton
 rulesButton.addEventListener('click', function() {
     showRules();
@@ -94,6 +109,7 @@ rulesButton.addEventListener('click', function() {
 // Création du conteneur pour les boutons de pause et de lecture
 const buttonContainer = document.createElement('div');
 buttonContainer.style.display = 'inline-block'; // Utilise inline-block pour aligner les boutons côte à côte
+buttonContainer.style.zIndex = '1'; // Assurez-vous que le conteneur est au-dessus de la vidéo
 
 // Création du bouton de pause
 const pauseButton = document.createElement('button');

@@ -16,11 +16,16 @@ function gameOver() {
     // Ajouter la vidéo de fond
     const video = document.createElement("video");
     video.src = "Sprites/GameOver.mp4"; // Remplacez par le chemin d'accès à votre vidéo
-    video.style.width = "100%";
-    video.style.height = "100%";
-    video.style.objectFit = "cover";
     video.autoplay = true;
-    video.muted = true; // Supprimez cette ligne si vous voulez du son
+    video.loop = true;
+    video.muted = true;
+    video.style.position = 'absolute';
+    video.style.top = '50%';
+    video.style.left = '50%';
+    video.style.transform = 'translate(-50%, -50%)';
+    video.style.width = '100%';
+    video.style.height = '100%';
+    video.style.objectFit = 'cover'; // Assurez-vous que la vidéo couvre l'ensemble du conteneur
     gameOverDiv.appendChild(video);
 
     // Créer un bouton pour redémarrer le jeu

@@ -18,6 +18,7 @@ function gameWon() {
     video.style.height = "100%";
     video.style.objectFit = "cover";
     video.autoplay = true;
+    video.loop = true;
     video.muted = true; // Supprimez cette ligne si vous voulez du son
     winScreenDiv.appendChild(video);
 
