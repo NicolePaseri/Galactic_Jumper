@@ -1,13 +1,14 @@
 function showRules() {
     var rulesDiv = document.createElement("div");
     rulesDiv.id = "rules-div";
-    rulesDiv.style.width = "1920px";
-    rulesDiv.style.height = "1080px";
-    rulesDiv.style.position = "absolute"; // Position absolue pour superposer
-    rulesDiv.style.top = "0"; // Positionner au-dessus de la page d'accueil
-    rulesDiv.style.left = "0";
-    rulesDiv.style.zIndex = "9999"; // Assurer que les règles apparaissent au-dessus de la page d'accueil
-  
+rulesDiv.style.width = "100vw";  // Utiliser 100% de la largeur du viewport
+rulesDiv.style.height = "100vh";  // Utiliser 100% de la hauteur du viewport
+rulesDiv.style.position = "absolute"; // Position absolue pour superposer
+rulesDiv.style.top = "0"; // Positionner au sommet de la page
+rulesDiv.style.left = "0"; // Aligner à gauche de la page
+rulesDiv.style.zIndex = "9999"; // Assurer que les règles apparaissent au-dessus des autres éléments
+
+    
   // Ajouter la vidéo de fond
     const video = document.createElement("video");
     video.src = "Sprites/Rules.mp4"; // Remplacez par le chemin d'accès à votre vidéo
@@ -33,11 +34,13 @@ rulesDiv.appendChild(rulesContent);
 
 var closeButton = document.createElement("button");
 closeButton.textContent = "✖";
-closeButton.style.fontSize = "20px";
+closeButton.style.fontSize = "20px"; // Taille de la police ajustable si nécessaire
 closeButton.style.marginRight = "10px"; // Espacement entre les boutons
 closeButton.style.position = "absolute";
-closeButton.style.top = "70%";
-closeButton.style.left = "50%";
+closeButton.style.bottom = "10px"; // Positionné à 10px du bas
+closeButton.style.left = "50%"; // Centré horizontalement
+closeButton.style.transform = "translateX(-50%)"; // Compense pour que le centre du bouton soit exactement à 50%
+
 closeButton.addEventListener("click", function () {
     rulesDiv.remove(); // Supprimer l'élément contenant l'image du personnage et les boutons
 });

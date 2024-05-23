@@ -2,8 +2,10 @@ function updateLevel(score) {
     if (score < 128133) {
         if(level !== 1){
             showLevel1();
+            console.log("Level 1");
         }
         level = 1;
+        backgroundTemp = -300;
         backgroundImage = backgroundImageLevel1;
         obstacle.img.src = "Sprites/GalacticDangers/oiseau-transformed.png";
         
@@ -12,6 +14,7 @@ function updateLevel(score) {
             showLevel2();
         }
         level = 2;
+        backgroundScrollY = 0 ;
         backgroundImage = backgroundImageLevel2;
         obstacle.img.src = "Sprites/GalacticDangers/Satélite-transformed.png";
         
@@ -20,7 +23,7 @@ function updateLevel(score) {
             showLevel3();
         }
         level = 3;
-        backgroundTemp = 40;
+        backgroundScrollY = 0 ;
         backgroundImage = backgroundImageLevel3;
         obstacle.img.src = "Sprites/GalacticDangers/meteore.png";
        
