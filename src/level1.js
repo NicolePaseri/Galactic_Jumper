@@ -2,8 +2,8 @@ class Level1 {
     constructor() {
         this.container = document.createElement("div");
         this.container.id = "level-1-container";
-        this.container.style.width = "1920px";
-        this.container.style.height = "1080px";
+        this.container.style.width = "100vw";
+        this.container.style.height = "100vh";
         this.container.style.position = "absolute"; // Position absolue pour superposer
         this.container.style.top = "0"; // Positionner au-dessus de la page d'accueil
         this.container.style.left = "0";
@@ -32,8 +32,6 @@ class Level1 {
 // Fonction pour afficher le Level 1 lorsque vous cliquez sur le bouton
 function showLevel1() {
     const level1 = new Level1();
-    setTimeout(function() {
-        level1.removeLevel1Frame();
-    }, 3000); // Remove the frame after 3 seconds
+    
     resetGame();
 }

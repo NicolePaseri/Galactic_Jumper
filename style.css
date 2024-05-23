@@ -76,7 +76,7 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     z-index: -2;
-    width: auto;        /* Largeur fixée à 1920 pixels */
+    width: 2200px;        /* Largeur fixée à 1920 pixels */
     height: 7500px;       /* Hauteur fixée selon la valeur maximale que vous souhaitez */
 }
 
@@ -107,6 +107,7 @@ html, body {
 
 #homepage {
     height: 100vh;
+    width: 100vw;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -136,18 +137,20 @@ html, body {
   }
 
 #game-over-div {
-    height: 100vh;
+    height: 100vh; /* Utilise 100% de la hauteur de la fenêtre */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: 100vw; /* Utilise 100% de la largeur de la fenêtre */
 }
 
 #win-screen-div {
     
-    height: 100vh;
+    height: 100vh; /* Utilise 100% de la hauteur de la fenêtre */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: 100vw; /* Utilise 100% de la largeur de la fenêtre */
 }
 #controls {
     display: flex;

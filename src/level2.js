@@ -2,8 +2,8 @@ class Level2 {
     constructor() {
         this.container = document.createElement("div");
         this.container.id = "level-2-container";
-        this.container.style.width = "1920px";
-        this.container.style.height = "1080px";
+        this.container.style.width = "100vw";
+        this.container.style.height = "100vh";
         this.container.style.position = "absolute"; // Position absolue pour superposer
         this.container.style.top = "0"; // Positionner au-dessus de la page d'accueil
         this.container.style.left = "0";

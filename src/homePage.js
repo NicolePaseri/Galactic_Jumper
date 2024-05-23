@@ -2,15 +2,18 @@
 const body = document.body;
 const container = document.createElement('div');
 container.id = 'homepage';
+container.id = 'homepage';
 container.style.backgroundImage = "url('Sprites/fondecraninscription.png')";
-container.style.backgroundSize = '1920px 1080px';
-container.style.width = '1920px';
-container.style.height = '1080px';
+container.style.backgroundSize = 'cover'; // Utilisez 'cover' pour que l'image de fond couvre toujours le conteneur complet
+container.style.backgroundPosition = 'center'; // Centre l'image de fond
+container.style.width = '100vw'; // Utilisez 100% de la largeur de la fenêtre
+container.style.height = '100vh'; // Utilisez 100% de la hauteur de la fenêtre
 container.style.display = 'flex';
 container.style.flexDirection = 'column';
 container.style.alignItems = 'center';
 container.style.justifyContent = 'center';
-container.style.position = 'relative';
+container.style.position = 'relative'; // Position relative ici est correcte si elle n'interfère pas avec d'autres éléments
+
 
 const input = document.createElement('input');
 input.placeholder = 'Enter your username';

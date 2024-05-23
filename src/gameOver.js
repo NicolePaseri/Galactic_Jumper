@@ -9,8 +9,8 @@ function gameOver() {
 
     var gameOverDiv = document.createElement("div");
     gameOverDiv.id = "game-over-div";
-    gameOverDiv.style.width = 1920 + "px";
-    gameOverDiv.style.height = 1080 + "px";
+    gameOverDiv.style.width = 100 + "vw";
+    gameOverDiv.style.height = 100 + "vh";
     gameOverDiv.style.position = "relative"; // Position relative pour les enfants positionnés
 
     // Ajouter la vidéo de fond

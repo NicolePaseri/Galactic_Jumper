@@ -7,8 +7,8 @@ function gameWon() {
 
     var winScreenDiv = document.createElement("div");
     winScreenDiv.id = "win-screen-div";
-    winScreenDiv.style.width = 1920 + "px";
-    winScreenDiv.style.height = 1080 + "px";
+    winScreenDiv.style.width = 100 + "vw";
+    winScreenDiv.style.height = 100 + "vh";
     winScreenDiv.style.position = "relative"; // Position relative pour les enfants positionnés
 
     // Ajouter la vidéo de fond

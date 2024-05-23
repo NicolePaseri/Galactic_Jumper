@@ -32,7 +32,7 @@ var lives = 1000000; // 15
 var canLoseLife = true;
 var isBlinking = false;
 var isDesoriented = false; 
-var level = 1;
+var level = 0;
 var backgroundTemp = 0;
 
 var blocks = [];
