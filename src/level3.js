@@ -45,5 +45,4 @@ function showLevel3() {
     setTimeout(function() {
         level3.removeLevel3Frame();
     }, 3000); // Remove the frame after 3 seconds
-    isPaused = false;
 }
