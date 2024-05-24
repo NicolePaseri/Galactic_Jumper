@@ -23,19 +23,6 @@ class BackToLevel3 {
         video.style.left = "0";
         this.container.appendChild(video);
 
-        // Ajouter le contenu du message
-        const BackToLevel3Content = document.createElement("p");
-        BackToLevel3Content.textContent = "Back to level 3 Content"; // Remplacez par le contenu du Wall of Fame
-        BackToLevel3Content.style.fontSize = "24px";
-        BackToLevel3Content.style.color = "white";
-        BackToLevel3Content.style.position = "absolute";
-        BackToLevel3Content.style.top = "50%";
-        BackToLevel3Content.style.left = "50%";
-        BackToLevel3Content.style.transform = "translate(-50%, -50%)";
-        BackToLevel3Content.style.textAlign = "center";
-        BackToLevel3Content.style.zIndex = "1"; // Assurez-vous que le contenu est au-dessus de la vidéo
-        this.container.appendChild(BackToLevel3Content);
-
         // Appel de la méthode pour afficher le contenu du message
         this.displayBackToLevel3Content();
 
@@ -50,7 +37,7 @@ class BackToLevel3 {
         scoreParagraph.style.fontSize = "24px";
         scoreParagraph.style.color = "white";
         scoreParagraph.style.position = "absolute";
-        scoreParagraph.style.top = "40%";
+        scoreParagraph.style.top = "60%";
         scoreParagraph.style.left = "50%";
         scoreParagraph.style.transform = "translate(-50%, -50%)";
         scoreParagraph.style.textAlign = "center";
@@ -71,9 +58,11 @@ class BackToLevel3 {
 // Fonction pour afficher le message lorsque vous cliquez sur le bouton
 function showBackToLevel3() {
     const backToLevel3 = new BackToLevel3();
+    isPaused = true;
     setTimeout(function() {
         backToLevel3.removeBackToLevel3Frame();
     }, 3000); // Remove the frame after 3 seconds
+    isPaused = false;
     yDistanceTravelled = 256267;
     score = 256267;
     showScore();
