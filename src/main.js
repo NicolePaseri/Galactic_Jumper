@@ -1,6 +1,7 @@
+// Importez la fonction depuis firebase.js
+
 var c = document.getElementById("gameCanvas");
 var ctx = c.getContext("2d");
-
 var background = document.getElementById("background");
 var backgroundctx = background.getContext("2d");
 
@@ -34,7 +35,10 @@ var isBlinking = false;
 var isDesoriented = false; 
 var level = 0;
 var backgroundTemp = 0;
-
+var scoreTemp = 0;
+// Récupérer le nom d'utilisateur stocké
+var username = localStorage.getItem("username");
+console.log(username);
 var blocks = [];
 var powerups = [];
 var backgroundImage = new Image();
@@ -54,6 +58,7 @@ var then = Date.now();
 var interval = 1000 / fps;
 var delta;
 var isPaused = false;
+
 
 document.getElementById('pauseButton').addEventListener('click', function() {
     isPaused = true;
@@ -99,11 +104,12 @@ function showScore() {
 }
 
 function resetGame() {
+    username = localStorage.getItem("username");
+    console.log(username);
     document.body.appendChild(c);
     // Réinitialiser les variables du jeu
-
+    scoreTemp = score;
     dead = false;
-
     blocks = [];
     lowestBlock = 0;
     score = 0;
@@ -126,11 +132,16 @@ function resetGame() {
     blocks[0].type = 0;
     blocks[0].powerup = 0;
 
-    blockSpawner();
+    sendScoreToFirebase(scoreTemp, username);
 
+    blockSpawner();
+    
     loop();
 }
 
+
+ 
+  
 // Ajout de la variable pour la position de défilement de l'image de fond
 var backgroundScrollY = 0;
 var scrollSpeed = 0.05; // Ajustez cette valeur pour changer la vitesse de défilement
@@ -145,6 +156,8 @@ function updateBackgroundPosition(score) {
 }
 
 function loop() {
+
+
     if (isPaused) return;
 
     requestAnimationFrame(loop);
@@ -185,7 +198,9 @@ function loop() {
     }
 }
 
+
 // Démarrer le jeu au chargement de la page
 window.onload = function() {
     loop();
 }
+
