@@ -50,7 +50,10 @@ startButton.addEventListener('click', () => {
             container.style.display = 'none';
 
             console.log(`Starting to play with ${cleanUsername}`);
+            createUserIfNotExists(cleanUsername);
             showLevel1();
+            
+
         } else {
             alert('Your username contained invalid characters and was sanitized. Please try again.');
         }
