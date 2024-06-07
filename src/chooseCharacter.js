@@ -129,7 +129,6 @@ function showCharacter() {
             if (relativePath.charAt(0) === '/') {
                 relativePath = relativePath.substring(1); // Supprimer le premier caractère s'il est "/"
             }
-            alert("Character saved : \"" + relativePath + "\"");
         } else {
             alert("No character selected.");
         }

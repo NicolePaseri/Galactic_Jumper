@@ -8,8 +8,9 @@ container.style.height = '100vh'; // Utilisez 100% de la hauteur de la fenêtre
 container.style.display = 'flex';
 container.style.flexDirection = 'column';
 container.style.alignItems = 'center';
-container.style.justifyContent = 'center';
+container.style.justifyContent = 'flex-end'; // Alignez les éléments vers le bas
 container.style.overflow = 'hidden'; // Assurez-vous que le contenu supplémentaire est masqué
+container.style.paddingBottom = '50px'; // Ajustez la valeur pour décaler plus ou moins
 
 // Ajout de la vidéo de fond
 const videoBackground = document.createElement('video');
@@ -31,6 +32,7 @@ const input = document.createElement('input');
 input.placeholder = 'Enter your username';
 input.style.marginBottom = '10px';
 input.style.zIndex = '1'; // Assurez-vous que l'input est au-dessus de la vidéo
+input.style.marginTop = 'calc(50vh - 100px)'; // Ajustez la position pour être légèrement plus bas que le milieu
 
 const startButton = document.createElement('button');
 startButton.textContent = 'START TO PLAY';
