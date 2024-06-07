@@ -139,8 +139,6 @@ function resetGame() {
     loop();
 }
 
-
- 
   
 // Ajout de la variable pour la position de défilement de l'image de fond
 var backgroundScrollY = 0;

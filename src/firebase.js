@@ -68,7 +68,34 @@ function sendScoreToFirebase(score, playerName) {
     });
 }
 
+function fetchTopScores() {
+    return new Promise((resolve, reject) => {
+        const scoresRef = ref(db, 'scores');
+        get(scoresRef).then((snapshot) => {
+            if (snapshot.exists()) {
+                const scores = snapshot.val();
+                const sortedScores = Object.keys(scores).map(key => ({
+                    name: key,
+                    score: scores[key].score
+                })).sort((a, b) => b.score - a.score).slice(0, 10);
+                resolve(sortedScores); // Resolve the Promise with the scores
+            } else {
+                console.log("No scores available.");
+                resolve([]); // Resolve with an empty array if no scores
+            }
+        }).catch(error => {
+            console.error("Error fetching scores:", error);
+            reject(error);
+        });
+    });
+}
 
+
+// Add fetchTopScores to the window object if needed globally or export it
+window.fetchTopScores = fetchTopScores;
+
+
+window.fetchTopScores = fetchTopScores;
 window.createUserIfNotExists = createUserIfNotExists;
 window.sendScoreToFirebase = sendScoreToFirebase;
 
