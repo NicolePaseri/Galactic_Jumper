@@ -103,12 +103,21 @@ function showScore() {
     ctx.fillText(score, 15, 40); 
 }
 
-function resetGame() {
+function sendScore() {
     username = localStorage.getItem("username");
     console.log(username);
+    scoreTemp = score;
+    sendScoreToFirebase(scoreTemp, username);
+}
+
+
+function resetGame() {
+   
+    sendScore();
+    
     document.body.appendChild(c);
     // Réinitialiser les variables du jeu
-    scoreTemp = score;
+    
     dead = false;
     blocks = [];
     lowestBlock = 0;
@@ -132,7 +141,7 @@ function resetGame() {
     blocks[0].type = 0;
     blocks[0].powerup = 0;
 
-    sendScoreToFirebase(scoreTemp, username);
+    
 
     blockSpawner();
     
