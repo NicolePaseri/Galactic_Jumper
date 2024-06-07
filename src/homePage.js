@@ -34,26 +34,24 @@ input.style.zIndex = '1'; // Assurez-vous que l'input est au-dessus de la vidéo
 
 const startButton = document.createElement('button');
 startButton.textContent = 'START TO PLAY';
-startButton.style.marginBottom = '10px'; // Ajout du marginBottom pour espacer les boutons
-startButton.style.zIndex = '1'; // Assurez-vous que le bouton est au-dessus de la vidéo
+startButton.style.marginBottom = '10px'; 
+startButton.style.zIndex = '1'; 
 startButton.addEventListener('click', () => {
     let username = input.value.trim();
     if (username !== '') {
-        // Utilisation de DOMPurify pour nettoyer le nom d'utilisateur
+        // Use a DOM purify to ensure security
         const cleanUsername = DOMPurify.sanitize(username);
 
         if (cleanUsername === username) {
-            // Enregistrer le nom d'utilisateur dans le stockage local
+            
             localStorage.setItem("username", cleanUsername);
 
-            // Masquer la page d'accueil lorsque le jeu commence
             container.style.display = 'none';
 
             console.log(`Starting to play with ${cleanUsername}`);
             createUserIfNotExists(cleanUsername);
             showLevel1();
             
-
         } else {
             alert('Your username contained invalid characters and was sanitized. Please try again.');
         }

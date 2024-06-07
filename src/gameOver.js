@@ -38,7 +38,7 @@ function gameOver() {
     restartButton.style.transform = "translate(-50%, -50%)";
     restartButton.addEventListener("click", function() {
         // Appeler la fonction resetGame pour redémarrer le jeu
-        resetGame();
+        showLevel1();
         // Supprimer la div de fin de partie après le redémarrage du jeu
         document.body.removeChild(gameOverDiv);
     });
@@ -70,6 +70,8 @@ function gameOver() {
     wallOfFameButton.style.left = "50%";
     wallOfFameButton.style.transform = "translate(-50%, -50%)";
     wallOfFameButton.addEventListener("click", function() {
+        document.body.removeChild(gameOverDiv);
+        showWallOfFame();
         sendScore();
         setTimeout(function() {
             showWallOfFame();

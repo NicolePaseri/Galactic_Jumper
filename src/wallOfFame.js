@@ -41,6 +41,21 @@ class WallOfFame {
         this.scoresList.style.margin = "0"; // Remove default margins
         this.container.appendChild(this.scoresList);
 
+        // Créer un bouton pour redémarrer le jeu
+        var restartButton = document.createElement("button");
+        restartButton.textContent = "Play Again";
+        restartButton.style.fontSize = "20px";
+        restartButton.style.position = "absolute";
+        restartButton.style.top = "70%";
+        restartButton.style.left = "50%";
+        restartButton.style.transform = "translate(-50%, -50%)";
+        restartButton.addEventListener("click", () => {
+            // Appeler la fonction resetGame pour redémarrer le jeu
+            showLevel1();
+            // Supprimer la div de fin de partie après le redémarrage du jeu
+            document.body.removeChild(this.container);
+        });
+        this.container.appendChild(restartButton);
 
         document.body.appendChild(this.container);
     }
@@ -57,7 +72,6 @@ class WallOfFame {
 
 }
 
-
 function showWallOfFame() {
     const wallOfFame = new WallOfFame();
     fetchTopScores().then(scores => {
@@ -66,7 +80,6 @@ function showWallOfFame() {
         console.error("Failed to fetch scores:", error);
     });
 }
-
 
 // Sélectionnez votre bouton dans le DOM et ajoutez un gestionnaire d'événements
 const wallOfFameButton = document.getElementById("votre-bouton-id"); // Remplacez "votre-bouton-id" par l'ID de votre bouton

@@ -29,7 +29,7 @@ var dead = false;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
-var lives = 1000000; // 15
+var lives = 0;
 var canLoseLife = true;
 var isBlinking = false;
 var isDesoriented = false; 
@@ -122,7 +122,7 @@ function resetGame() {
     blocks = [];
     lowestBlock = 0;
     score = 0;
-    lives = 10;
+    lives = 5;
     level = 1;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
