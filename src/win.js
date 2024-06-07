@@ -22,14 +22,25 @@ function gameWon() {
     video.muted = true; // Supprimez cette ligne si vous voulez du son
     winScreenDiv.appendChild(video);
 
+    // Styles communs pour les boutons
+    const buttonStyle = {
+        fontSize: "20px",
+        position: "absolute",
+        left: "50%",
+        transform: "translateX(-50%)",
+        backgroundColor: "#007BFF", // Couleur de fond bleu
+        color: "white", // Texte en blanc
+        border: "none", // Enlève les bordures
+        padding: "10px 20px", // Espacement intérieur
+        borderRadius: "5px", // Coins arrondis
+        cursor: "pointer" // Changer le curseur en pointeur
+    };
+
     // Créer un bouton pour rejouer
     var playAgainButton = document.createElement("button");
     playAgainButton.textContent = "Play Again";
-    playAgainButton.style.fontSize = "20px";
-    playAgainButton.style.position = "absolute";
+    Object.assign(playAgainButton.style, buttonStyle);
     playAgainButton.style.top = "50%";
-    playAgainButton.style.left = "50%";
-    playAgainButton.style.transform = "translate(-50%, -50%)";
     playAgainButton.addEventListener("click", function() {
         // Appeler la fonction pour recommencer le jeu
         resetGame();
@@ -41,28 +52,21 @@ function gameWon() {
     // Créer un bouton pour revenir à la page d'accueil
     var homeButton = document.createElement("button");
     homeButton.textContent = "Home";
-    homeButton.style.fontSize = "20px";
-    homeButton.style.position = "absolute";
+    Object.assign(homeButton.style, buttonStyle);
     homeButton.style.top = "60%";
-    homeButton.style.left = "50%";
-    homeButton.style.transform = "translate(-50%, -50%)";
     homeButton.addEventListener("click", function() {
         sendScore();
         setTimeout(function() {
             location.reload();
         }, 1000); // attendre 1000 ms (1 seconde) avant de recharger
     });
-    
     winScreenDiv.appendChild(homeButton);
 
     // Créer un bouton pour revenir au Wall of Fame
     var wallOfFameButton = document.createElement("button");
     wallOfFameButton.textContent = "Wall of Fame";
-    wallOfFameButton.style.fontSize = "20px";
-    wallOfFameButton.style.position = "absolute";
+    Object.assign(wallOfFameButton.style, buttonStyle);
     wallOfFameButton.style.top = "70%";
-    wallOfFameButton.style.left = "50%";
-    wallOfFameButton.style.transform = "translate(-50%, -50%)";
     wallOfFameButton.addEventListener("click", function() {
         sendScore();
         setTimeout(function() {
