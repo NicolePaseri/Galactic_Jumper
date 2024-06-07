@@ -28,14 +28,25 @@ function gameOver() {
     video.style.objectFit = 'cover'; // Assurez-vous que la vidéo couvre l'ensemble du conteneur
     gameOverDiv.appendChild(video);
 
+    // Styles communs pour les boutons
+    const buttonStyle = {
+        fontSize: "20px",
+        position: "absolute",
+        left: "50%",
+        transform: "translateX(-50%)",
+        backgroundColor: "#007BFF", // Couleur de fond bleu
+        color: "white", // Texte en blanc
+        border: "none", // Enlève les bordures
+        padding: "10px 20px", // Espacement intérieur
+        borderRadius: "5px", // Coins arrondis
+        cursor: "pointer" // Changer le curseur en pointeur
+    };
+
     // Créer un bouton pour redémarrer le jeu
     var restartButton = document.createElement("button");
     restartButton.textContent = "Play Again";
-    restartButton.style.fontSize = "20px";
-    restartButton.style.position = "absolute";
+    Object.assign(restartButton.style, buttonStyle);
     restartButton.style.top = "70%";
-    restartButton.style.left = "50%";
-    restartButton.style.transform = "translate(-50%, -50%)";
     restartButton.addEventListener("click", function() {
         // Appeler la fonction resetGame pour redémarrer le jeu
         showLevel1();
@@ -47,31 +58,24 @@ function gameOver() {
     // Créer un bouton pour revenir à la page d'accueil
     var homeButton = document.createElement("button");
     homeButton.textContent = "Home";
-    homeButton.style.fontSize = "20px";
-    homeButton.style.position = "absolute";
-    homeButton.style.top = "60%";
-    homeButton.style.left = "50%";
-    homeButton.style.transform = "translate(-50%, -50%)";
+    Object.assign(homeButton.style, buttonStyle);
+    homeButton.style.top = "80%";
     homeButton.addEventListener("click", function() {
         sendScore();
         setTimeout(function() {
             location.reload();
         }, 1000); // attendre 1000 ms (1 seconde) avant de recharger
     });
-    
     gameOverDiv.appendChild(homeButton);
 
     // Créer un bouton pour accéder au Wall of Fame
     var wallOfFameButton = document.createElement("button");
     wallOfFameButton.textContent = "Wall of Fame";
-    wallOfFameButton.style.fontSize = "20px";
-    wallOfFameButton.style.position = "absolute";
-    wallOfFameButton.style.top = "50%";
-    wallOfFameButton.style.left = "50%";
-    wallOfFameButton.style.transform = "translate(-50%, -50%)";
+    Object.assign(wallOfFameButton.style, buttonStyle);
+    wallOfFameButton.style.top = "60%";
     wallOfFameButton.addEventListener("click", function() {
-        document.body.removeChild(gameOverDiv);
         showWallOfFame();
+        document.body.removeChild(gameOverDiv);
         sendScore();
         setTimeout(function() {
             showWallOfFame();

@@ -1,5 +1,6 @@
 class WallOfFame {
     constructor() {
+        // Les autres éléments de construction restent inchangés
         this.container = document.createElement("div");
         this.container.id = "wall-of-fame-container";
         this.container.style.width = "100%";
@@ -8,6 +9,7 @@ class WallOfFame {
         this.container.style.top = "0";
         this.container.style.left = "0";
         this.container.style.zIndex = "9999";
+        this.container.style.backgroundColor = "rgba(0,0,0,0.8)"; // Fond légèrement transparent
 
         const video = document.createElement("video");
         video.src = "Sprites/WallOfFame.mp4";
@@ -18,41 +20,47 @@ class WallOfFame {
         video.muted = true;
         this.container.appendChild(video);
 
+        // Styles communs pour les boutons
+        const buttonStyle = {
+            fontSize: "20px",
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
+            backgroundColor: "#007BFF", // Couleur de fond bleu
+            color: "white", // Texte en blanc
+            border: "none", // Enlève les bordures
+            padding: "10px 20px", // Espacement intérieur
+            borderRadius: "5px", // Coins arrondis
+            cursor: "pointer" // Changer le curseur en pointeur
+        };
+
         const homeButton = document.createElement("button");
         homeButton.textContent = "Home";
-        homeButton.style.fontSize = "20px";
-        homeButton.style.position = "absolute";
+        Object.assign(homeButton.style, buttonStyle);
         homeButton.style.bottom = "20px";
-        homeButton.style.left = "50%";
-        homeButton.style.transform = "translateX(-50%)";
         homeButton.addEventListener("click", () => location.reload());
         this.container.appendChild(homeButton);
 
-        this.scoresList = document.createElement("ul");
-        this.scoresList.style.position = "absolute";
-        this.scoresList.style.top = "50%";
-        this.scoresList.style.left = "50%";
-        this.scoresList.style.transform = "translate(-50%, -50%)"; // Perfect centering (horizontally and vertically)
-        this.scoresList.style.width = "100%";
-        this.scoresList.style.textAlign = "center";
-        this.scoresList.style.fontSize = "24px";
-        this.scoresList.style.listStyleType = "none";
-        this.scoresList.style.padding = "0";
-        this.scoresList.style.margin = "0"; // Remove default margins
-        this.container.appendChild(this.scoresList);
+        this.scoresTable = document.createElement("table");
+        this.scoresTable.style.position = "absolute";
+        this.scoresTable.style.borderRadius = "8px"; // Ajoute des coins arrondis
+        this.scoresTable.style.overflow = "hidden"; // Empêche le contenu débordant de rompre les coins arrondis
+        this.scoresTable.style.top = "55%"; // Abaisse le tableau
+        this.scoresTable.style.left = "50%";
+        this.scoresTable.style.transform = "translate(-50%, -50%)";
+        this.scoresTable.style.width = "80%";
+        this.scoresTable.style.textAlign = "center";
+        this.scoresTable.style.fontSize = "24px";
+        this.scoresTable.style.color = "white"; // Texte en blanc
+        this.scoresTable.style.borderCollapse = "collapse"; // Enlever les espaces entre les bordures
+        this.container.appendChild(this.scoresTable);
 
-        // Créer un bouton pour redémarrer le jeu
         var restartButton = document.createElement("button");
         restartButton.textContent = "Play Again";
-        restartButton.style.fontSize = "20px";
-        restartButton.style.position = "absolute";
-        restartButton.style.top = "70%";
-        restartButton.style.left = "50%";
-        restartButton.style.transform = "translate(-50%, -50%)";
+        Object.assign(restartButton.style, buttonStyle);
+        restartButton.style.bottom = "90px"; // Remonte un peu le bouton "Play Again"
         restartButton.addEventListener("click", () => {
-            // Appeler la fonction resetGame pour redémarrer le jeu
             showLevel1();
-            // Supprimer la div de fin de partie après le redémarrage du jeu
             document.body.removeChild(this.container);
         });
         this.container.appendChild(restartButton);
@@ -61,15 +69,52 @@ class WallOfFame {
     }
 
     displayScores(scores) {
-        this.scoresList.innerHTML = ''; // Clear previous scores
+        this.scoresTable.innerHTML = ''; // Clear previous scores
+        const headerRow = this.scoresTable.insertRow();
+
+        const headerCell1 = headerRow.insertCell();
+        headerCell1.textContent = 'Rank';
+        headerCell1.classList.add('table-cell');
+        headerCell1.style.fontWeight = 'bold'; // Titres en gras
+        headerCell1.style.textAlign = 'center'; // Contenu centré
+        headerCell1.style.color = 'white'; // Texte en blanc
+
+        const headerCell2 = headerRow.insertCell();
+        headerCell2.textContent = 'Name';
+        headerCell2.classList.add('table-cell');
+        headerCell2.style.fontWeight = 'bold'; // Titres en gras
+        headerCell2.style.textAlign = 'center'; // Contenu centré
+        headerCell2.style.color = 'white'; // Texte en blanc
+
+        const headerCell3 = headerRow.insertCell();
+        headerCell3.textContent = 'Distance from Earth';
+        headerCell3.classList.add('table-cell');
+        headerCell3.style.fontWeight = 'bold'; // Titres en gras
+        headerCell3.style.textAlign = 'center'; // Contenu centré
+        headerCell3.style.color = 'white'; // Texte en blanc
+
         scores.forEach((score, index) => {
-            const scoreElement = document.createElement("li");
-            scoreElement.textContent = `${index + 1}. ${score.name}: ${score.score}`;
-            scoreElement.style.color = "white"; // Make sure each score is also white
-            this.scoresList.appendChild(scoreElement);
+            const row = this.scoresTable.insertRow();
+
+            const cell1 = row.insertCell();
+            cell1.textContent = index + 1;
+            cell1.classList.add('table-cell');
+            cell1.style.textAlign = 'center'; // Contenu centré
+            cell1.style.color = 'white'; // Texte en blanc
+
+            const cell2 = row.insertCell();
+            cell2.textContent = score.name;
+            cell2.classList.add('table-cell');
+            cell2.style.textAlign = 'center'; // Contenu centré
+            cell2.style.color = 'white'; // Texte en blanc
+
+            const cell3 = row.insertCell();
+            cell3.textContent = `${score.score} km`;
+            cell3.classList.add('table-cell');
+            cell3.style.textAlign = 'center'; // Contenu centré
+            cell3.style.color = 'white'; // Texte en blanc
         });
     }
-
 }
 
 function showWallOfFame() {

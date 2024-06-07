@@ -38,7 +38,7 @@ function showCharacter() {
     charactersContainer.style.zIndex = '1'; // Assurez-vous que le conteneur de personnages est au-dessus de la vidéo
     charactersContainer.style.position = 'relative'; // Position relative pour assurer la visibilité
 
-    var characters = ["Sprites/Personnage/Alien.png","Sprites/Personnage/Magicien.png", "Sprites/Personnage/MonsterOrange.png","Sprites/Personnage/Astronaute.png", "Sprites/Personnage/Monster.png"];
+    var characters = ["Sprites/Personnage/Alien.png", "Sprites/Personnage/Magicien.png", "Sprites/Personnage/MonsterOrange.png", "Sprites/Personnage/Astronaute.png", "Sprites/Personnage/Monster.png"];
     characters.forEach(function (character) {
         var characterImage = document.createElement("img");
         characterImage.src = character;
@@ -66,20 +66,20 @@ function showCharacter() {
 
     dropZoneDiv.addEventListener("drop", function (event) {
         event.preventDefault(); // Empêche le comportement par défaut du navigateur
-        
+
         // Récupérer les types de fichiers déposés dans la zone
         var types = event.dataTransfer.types;
-    
+
         // Récupérer le chemin de l'image déposée
         var character = event.dataTransfer.getData("text/plain");
-    
+
         // Vérifier si le chemin de l'image fait partie de la liste autorisée
         if (characters.includes(character)) {
             dropZoneDiv.innerHTML = "";
-    
+
             // Mise à jour de l'image du joueur avec le personnage drag and drop
             player.relativePath = character;
-    
+
             var characterImage = document.createElement("img");
             characterImage.src = character;
             characterImage.style.width = "100%";
@@ -98,18 +98,28 @@ function showCharacter() {
     buttonsContainerDiv.style.display = "flex";
     buttonsContainerDiv.style.zIndex = '1'; // Assurez-vous que le conteneur des boutons est au-dessus de la vidéo
 
+    // Styles communs pour les boutons
+    const buttonStyle = {
+        fontSize: "20px",
+        backgroundColor: "#007BFF", // Couleur de fond bleu
+        color: "white", // Texte en blanc
+        border: "none", // Enlève les bordures
+        padding: "10px 20px", // Espacement intérieur
+        borderRadius: "5px", // Coins arrondis
+        cursor: "pointer", // Changer le curseur en pointeur
+        margin: "10px" // Espacement entre les boutons
+    };
+
     var closeButton = document.createElement("button");
     closeButton.textContent = "✖";
-    closeButton.style.fontSize = "20px";
-    closeButton.style.marginRight = "10px"; // Espacement entre les boutons
+    Object.assign(closeButton.style, buttonStyle);
     closeButton.addEventListener("click", function () {
         characterDiv.remove(); // Supprimer l'élément contenant l'image du personnage et les boutons
     });
 
     var saveButton = document.createElement("button");
     saveButton.textContent = "Save";
-    saveButton.style.fontSize = "20px";
-    saveButton.style.marginLeft = "10px"; // Espacement entre les boutons
+    Object.assign(saveButton.style, buttonStyle);
     saveButton.addEventListener("click", function () {
         var characterInDropZone = dropZoneDiv.querySelector("img");
         if (characterInDropZone) {
@@ -129,7 +139,7 @@ function showCharacter() {
 
     characterDiv.appendChild(charactersContainer);
     characterDiv.appendChild(dropZoneDiv);
-    characterDiv.appendChild(buttonsContainerDiv); 
+    characterDiv.appendChild(buttonsContainerDiv);
 
     document.body.appendChild(characterDiv);
 }

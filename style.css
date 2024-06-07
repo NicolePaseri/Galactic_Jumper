@@ -173,3 +173,18 @@ html, body {
     background-color: #0056b3; /* Couleur de fond bleu foncé au survol */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus grande au survol */
 }
+
+.table-cell {
+    padding: 8px 12px; /* Augmente le padding pour plus d'espacement */
+
+    
+    text-align: left; /* Alignement du texte à gauche */
+    font-size: 16px; /* Taille de police pour une meilleure lisibilité */
+    color: #333333; /* Couleur de texte sombre pour un contraste optimal */
+    font-family: Arial, sans-serif; /* Police propre et professionnelle */
+}
+
+/* Ajoute un style de survol pour les cellules du tableau */
+.table-cell:hover {
+    background-color: #f0f0f0aa; /* Changement de couleur de fond au survol */
+}
