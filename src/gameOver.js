@@ -53,8 +53,12 @@ function gameOver() {
     homeButton.style.left = "50%";
     homeButton.style.transform = "translate(-50%, -50%)";
     homeButton.addEventListener("click", function() {
-        location.reload();
+        sendScore();
+        setTimeout(function() {
+            location.reload();
+        }, 1000); // attendre 1000 ms (1 seconde) avant de recharger
     });
+    
     gameOverDiv.appendChild(homeButton);
 
     // Créer un bouton pour accéder au Wall of Fame
@@ -68,6 +72,10 @@ function gameOver() {
     wallOfFameButton.addEventListener("click", function() {
         document.body.removeChild(gameOverDiv);
         showWallOfFame();
+        sendScore();
+        setTimeout(function() {
+            showWallOfFame();
+        }, 1000); // attendre 1000 ms (1 seconde) avant de recharger$
     });
     gameOverDiv.appendChild(wallOfFameButton);
 
