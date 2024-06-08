@@ -17,8 +17,36 @@ background.height = screenHeightBackground;
 
 document.body.appendChild(c);
 
+// Ajout de variables pour stocker l'état des touches tactiles
+var holdingLeftTouch = false;
+var holdingRightTouch = false;
+
 window.addEventListener('keydown', keydown, false);
 window.addEventListener('keyup', keyup, false);
+
+c.addEventListener('touchstart', handleTouchStart, false);
+c.addEventListener('touchend', handleTouchEnd, false);
+
+// Fonction pour gérer le toucher initial
+function handleTouchStart(event) {
+    event.preventDefault();
+    var touch = event.touches[0];
+    var touchX = touch.clientX;
+    // Vérifier si le toucher est dans la moitié gauche ou droite de l'écran
+    if (touchX < screenWidth / 2) {
+        holdingLeftTouch = true;
+    } else {
+        holdingRightTouch = true;
+    }
+}
+
+// Fonction pour gérer le toucher de fin
+function handleTouchEnd(event) {
+    event.preventDefault();
+    // Réinitialiser les drapeaux des touches
+    holdingLeftTouch = false;
+    holdingRightTouch = false;
+}
 
 // Variables
 const gravity = 0.34;
@@ -112,12 +140,11 @@ function sendScore() {
 
 
 function resetGame() {
-   
     sendScore();
     
     document.body.appendChild(c);
+
     // Réinitialiser les variables du jeu
-    
     dead = false;
     blocks = [];
     lowestBlock = 0;
@@ -126,22 +153,9 @@ function resetGame() {
     level = 1;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
-    player.x = Math.floor(screenWidth / 2 / 100) * 100;
 
-    player.x = 300;
-    player.y = 550;
-
-    blocks.push(new block);
-    blocks[0].x = 300;
-    blocks[0].y = 650;
-    blocks[0].obstacle = 0;
-    blocks[0].particule = 0;
-    blocks[0].alien = 0;
-    blocks[0].blackHole = 0;
-    blocks[0].type = 0;
-    blocks[0].powerup = 0;
-
-    
+    setPlayerPosition();
+    createPlatformAtBottom();
 
     blockSpawner();
     
@@ -203,6 +217,24 @@ function loop() {
 
         then = now - (delta % interval);
     }
+}
+
+function createPlatformAtBottom() {
+    var newBlock = new block();
+    newBlock.x = Math.floor(screenWidth / 2 / 100) * 100;
+    newBlock.y = screenHeight - newBlock.height; 
+    newBlock.obstacle = 0;
+    newBlock.particule = 0;
+    newBlock.alien = 0;
+    newBlock.blackHole = 0;
+    newBlock.type = 0;
+    newBlock.powerup = 0;
+    blocks.push(newBlock);
+}
+
+function setPlayerPosition() {
+    player.x = Math.floor(screenWidth / 2 / 100) * 100;
+    player.y = 550;
 }
 
 
