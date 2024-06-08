@@ -140,12 +140,11 @@ function sendScore() {
 
 
 function resetGame() {
-   
     sendScore();
     
     document.body.appendChild(c);
+
     // Réinitialiser les variables du jeu
-    
     dead = false;
     blocks = [];
     lowestBlock = 0;
@@ -154,22 +153,9 @@ function resetGame() {
     level = 1;
     yDistanceTravelled = 0;
     player.rocketDurability = 0;
-    player.x = Math.floor(screenWidth / 2 / 100) * 100;
 
-    player.x = 300;
-    player.y = 550;
-
-    blocks.push(new block);
-    blocks[0].x = 300;
-    blocks[0].y = 650;
-    blocks[0].obstacle = 0;
-    blocks[0].particule = 0;
-    blocks[0].alien = 0;
-    blocks[0].blackHole = 0;
-    blocks[0].type = 0;
-    blocks[0].powerup = 0;
-
-    
+    setPlayerPosition();
+    createPlatformAtBottom();
 
     blockSpawner();
     
@@ -231,6 +217,24 @@ function loop() {
 
         then = now - (delta % interval);
     }
+}
+
+function createPlatformAtBottom() {
+    var newBlock = new block();
+    newBlock.x = Math.floor(screenWidth / 2 / 100) * 100;
+    newBlock.y = screenHeight - newBlock.height; 
+    newBlock.obstacle = 0;
+    newBlock.particule = 0;
+    newBlock.alien = 0;
+    newBlock.blackHole = 0;
+    newBlock.type = 0;
+    newBlock.powerup = 0;
+    blocks.push(newBlock);
+}
+
+function setPlayerPosition() {
+    player.x = Math.floor(screenWidth / 2 / 100) * 100;
+    player.y = 550;
 }
 
 

@@ -1,6 +1,7 @@
 function gameOver() {
     console.log("Game Over!");
     dead = true;
+    createPlatformAtBottom();
     
     localStorage.setItem("lastScore", score);
     
