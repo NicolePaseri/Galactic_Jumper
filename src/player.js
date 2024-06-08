@@ -53,14 +53,14 @@ var player = new function() {
             gameOver(); // Affiche l'écran de fin de jeu si le joueur est mort
         }
 
-        // ← key pressed
-        if (holdingLeftKey) {
+        // ← key pressed or left half of the screen touched
+        if (holdingLeftKey || holdingLeftTouch) {
             this.direction = "left";
             this.img.src = relativePathLeft;
             player.moveLeft();
         }
-        // → key pressed 
-        if (holdingRightKey) {
+        // → key pressed or right half of the screen touched
+        if (holdingRightKey || holdingRightTouch) {
             this.direction = "right";
             this.img.src = relativePath;
             player.moveRight();

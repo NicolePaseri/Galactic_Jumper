@@ -17,8 +17,36 @@ background.height = screenHeightBackground;
 
 document.body.appendChild(c);
 
+// Ajout de variables pour stocker l'état des touches tactiles
+var holdingLeftTouch = false;
+var holdingRightTouch = false;
+
 window.addEventListener('keydown', keydown, false);
 window.addEventListener('keyup', keyup, false);
+
+c.addEventListener('touchstart', handleTouchStart, false);
+c.addEventListener('touchend', handleTouchEnd, false);
+
+// Fonction pour gérer le toucher initial
+function handleTouchStart(event) {
+    event.preventDefault();
+    var touch = event.touches[0];
+    var touchX = touch.clientX;
+    // Vérifier si le toucher est dans la moitié gauche ou droite de l'écran
+    if (touchX < screenWidth / 2) {
+        holdingLeftTouch = true;
+    } else {
+        holdingRightTouch = true;
+    }
+}
+
+// Fonction pour gérer le toucher de fin
+function handleTouchEnd(event) {
+    event.preventDefault();
+    // Réinitialiser les drapeaux des touches
+    holdingLeftTouch = false;
+    holdingRightTouch = false;
+}
 
 // Variables
 const gravity = 0.34;
